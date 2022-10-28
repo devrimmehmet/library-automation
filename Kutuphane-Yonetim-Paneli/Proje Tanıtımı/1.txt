@@ -1,0 +1,45 @@
+C# Kütüphane Programı / Otomasyonu
+Program Hakkında Kısa Bilgi: Basit seviyede giriş ekranına (login ekranı) sahip, sisteme kayıt edilebilen öğrenci / kişi sayfası 
+ve sonrasında sisteme kayıtlı öğrencilere “Verilen Kitaplar” veya “Geri Gelen Kitaplar” sayfasından güncelleme işlemi yapabilir bu sayede tüm kitapların kontrolünü sağlayabilirsiniz..
+Bunların yanında ek olarak proje içerisinde “Etkinlik-Takvim-Ajanda” oluşturabileceğiniz bir sayfa, ek olarak istatistiklerin tutulduğu bir sayfa ve son olarak klasik bir “Hakkında” sayfası mevcuttur.
+
+ 
+
+Özellikler & Detaylar:
+1- Şifreli Yönetici Paneli: Yeni kayıt, kayıt düzenleme silme vs kısaca tüm işlemler için yönetici kullanıcı adı ve parolasına ihtiyaç vardır. İzinsiz kullanım ve veri hırsızlığı için bu özelliği aktif edebilirsiniz..
+
+2- Yeni Kişi / Öğrenci Kayıt Sayfası : Bir kitabı emanet olarak vermeden önce, kitabın verileceği kişiye sisteme kayıt etmelisiniz. 
+Kişinin sisteme kaydını tamamladıktan sonra mevcut ve uygun kitapları bu kişiye verebilirsiniz. 
+Yeni kişi kayıt ederken, o kişinin : TC No, İsim, Soyisim, Telefon Numarası, Email Adresi, Kayıt Olduğu Tarih ve Adres bilgilerini tutabilirsiniz. 
+Bu bilgiler sayesinde ileride bir sorun oluştuğu taktirde kişiye kolay bir şekilde erişim sağlanabilmektedir.. 
+Daha sonra bir değişiklik yapmak istediğiniz de o kişi/öğrenciyi listeden seçip “Güncelle” butonuna basmanız yeterlidir. 
+Ek olarak sisteme kayıt ettiğiniz tüm öğrenci veya kişilerin yedeğini alabilir veya tüm listeyi yazdırabilirsiniz.
+
+3- Yeni Kitap Sayfası: Sitem üzerinden bir öğrenci veya kişiye kitap emanet etmeden önce, emanet edilecek kitabın bu sayfa kayıt altına alınması gerekmektedir… 
+Kütüphaneye yeni bir kitap eklerken o kitabın: Adı, Yazar, Yayın Evi, Basım Tarihi, Kitabın Türü ve Kitabın Raf numarasını detaylı şekilde sisteme girebilirsiniz. 
+Daha sonra bir değişiklik yapmak istediğiniz de o kitabı listeden seçip “Güncelle” butonuna basmanız yeterlidir. Ek olarak sisteme kayıt ettiğiniz tüm kitapların yedeğini alabilir veya tüm listeyi yazdırabilirsiniz.
+
+4- Emanet Verilen Kitaplar Sayfası: Sisteme kayıtlı öğrenci veya kişiler üzerinden işlem yapılmaktadır. 
+Kişinin kaydı sisteme girildiyse daha sonra bu sayfa üzerinden emanet kitap verebilirsiniz. 
+Tabi ki diğer önemli bir husus, öğrenciye emanet kitap verilirken, verilen o kitabında daha önce “Yeni Kitap Kayıt” sayfasından eklenmesi lazım. 
+Yani hem tüm kitaplar hemde tüm öğrenci listesi daha önceden sisteme girilmelidir.
+
+5- Geri  Verilen (İade Edilen) Kitaplar Sayfası:  Emanet verilen kitaplar size tekrar geri getirildiği zaman bu sayfa üzerinden “Kitap Teslim Alındı” işlemini gerçekleştirebilirsiniz. 
+Yanlış bir kayıt veya işlem yaptığınız da “Güncelle” Butonuna basarak dilediğiniz değişikliği yapabilirsiniz.
+
+6- Etkinlik / Ajanda / Takvim Sayfası: Kütüphane programı içerisinde yeni bir hatırlatma , etkinlik veya bir ajanda  oluşturmak istenildiğinde  bu sayfayı kullanabilirsiniz. 
+Oluşturulan tüm etkinlik veya notlar kalıcı olarak Veritabanına aktarılmaktadır ve dilediğiniz zaman bu etkinliği silebilir veya güncelleme işlemi yapabilirsiniz.
+
+
+7- Ayarlar: Login sayfasında (şifreli giriş ekranında) sizlerden istenilen kullanıcı adı, parola ve şifre hatırlatıcı gibi özellikleri “Ayarlar” sayfasından değiştirebilirsiniz.
+
+8- Hakkında : Bu sayfada program hakkında version bilgisi veya benzer özellikleri görebilirsiniz.
+
+9- Kişileri Yazdırma ve Yedekleme: Programa kayıt edilen tüm kişileri, kitapları, etkinlikleri isterseniz toplu olarak isterseniz de tek tek yazıcıdan çıktı alarak yazdırabilirsiniz 
+Bunun yanında gene aynı şekilde tüm listeyi ister PDF olarak ister WORD isterseniz HTML veya benzer formatlarda bilgisayarınıza yedekleyebilirsiniz…
+
+Kullanılan Teknolojiler:
+Microsoft Visual Studio v2022 – C# Windows Form Application
+Microsoft SQL Server v2018.12.1
+.Net Firamework 4.7.2
+Devexpress – Telerik
