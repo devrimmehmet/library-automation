@@ -20,7 +20,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             InitializeComponent();
         }
-        SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-BM2J5V5; Initial Catalog=Library; Integrated Security=true");
+        SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
          
         private void TableReflesh()
         {
@@ -193,25 +193,41 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 }
                 else
                 {
-
-
-                    int Permission = comboBox2.SelectedIndex + 1;
-                    sqlConnection.Open();
-                    SqlCommand komut = new SqlCommand($"insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{Permission}','{txt_Password.Text}')");
-                    komut.Connection = sqlConnection;
-                    int eklenti = komut.ExecuteNonQuery();
-                    sqlConnection.Close();
-
-                    if (eklenti > 0)
+                    if (txt_Phone.TextLength>10)
                     {
-                        MessageBox.Show("Personel Sisteme Eklendi.");
-                        TableReflesh();
+                        if (txt_TC.TextLength>10)
+                        {
+                            int Permission = comboBox2.SelectedIndex + 1;
+                            sqlConnection.Open();
+                            SqlCommand komut = new SqlCommand($"insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{Permission}','{txt_Password.Text}')");
+                            komut.Connection = sqlConnection;
+                            int eklenti = komut.ExecuteNonQuery();
+                            sqlConnection.Close();
+
+                            if (eklenti > 0)
+                            {
+                                MessageBox.Show("Personel Sisteme Eklendi.");
+                                TableReflesh();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Personel eklenemedi.");
+                            }
+                            sqlConnection.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
                     }
                     else
                     {
-                        MessageBox.Show("Personel eklenemedi.");
+                        MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    sqlConnection.Close();
+
+                   
                 }
             }
 

@@ -20,7 +20,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             InitializeComponent();
         }
-        SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-BM2J5V5; Initial Catalog=Library; Integrated Security=true");
+        SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
          
         private void TableReflesh()
         {
@@ -157,7 +157,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 int IDD = Convert.ToInt32(txt_Id.Text);
                 sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UptadeFromAuthors {IDD},'{txt_Name.Text}','{richTextBox1.Text}'", sqlConnection);
+                SqlCommand Update = new SqlCommand($"UpdateFromAuthors {IDD},'{txt_Name.Text}','{richTextBox1.Text}'", sqlConnection);
                 Update.ExecuteNonQuery();
                 sqlConnection.Close();
                 TableReflesh();

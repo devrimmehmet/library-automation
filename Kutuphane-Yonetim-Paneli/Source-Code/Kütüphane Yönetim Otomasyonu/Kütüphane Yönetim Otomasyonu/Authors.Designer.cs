@@ -81,11 +81,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 41);
+            this.label2.Location = new System.Drawing.Point(92, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "NAME";
+            this.label2.Text = "NAMESurname";
             // 
             // button1
             // 
@@ -133,7 +133,6 @@
             this.txt_Search_Information.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Information.TabIndex = 35;
             this.txt_Search_Information.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
-        //    this.txt_Search_Information.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
             // 
             // txt_Search_Name
             // 

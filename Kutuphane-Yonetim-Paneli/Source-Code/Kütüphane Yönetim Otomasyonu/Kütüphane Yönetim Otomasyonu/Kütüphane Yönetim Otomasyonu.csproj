@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Publishers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Publishers.Designer.cs">
+      <DependentUpon>Publishers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Permissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Permissions.Designer.cs">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberStates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberStates.Designer.cs">
+      <DependentUpon>MemberStates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Languages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Languages.Designer.cs">
+      <DependentUpon>Languages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Categories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authors.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +115,21 @@
     <Compile Include="UserMenu.Designer.cs">
       <DependentUpon>UserMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Publishers.resx">
+      <DependentUpon>Publishers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Permissions.resx">
+      <DependentUpon>Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberStates.resx">
+      <DependentUpon>MemberStates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages.resx">
+      <DependentUpon>Languages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authors.resx">
       <DependentUpon>Authors.cs</DependentUpon>
     </EmbeddedResource>

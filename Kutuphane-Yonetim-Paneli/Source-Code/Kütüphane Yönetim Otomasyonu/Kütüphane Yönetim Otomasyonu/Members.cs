@@ -20,8 +20,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             InitializeComponent();
         }
-        SqlConnection sqlConnection = new SqlConnection("Data Source=DESKTOP-BM2J5V5; Initial Catalog=Library; Integrated Security=true");
-         
+        SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
+
         private void TableReflesh()
         {
             SqlDataAdapter adp = new SqlDataAdapter("select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID", sqlConnection);
@@ -194,25 +194,42 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 }
                 else
                 {
-
-
-                    int MemberState = comboBox2.SelectedIndex + 1;
-                    sqlConnection.Open();
-                    SqlCommand komut = new SqlCommand($"insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}')");
-                    komut.Connection = sqlConnection;
-                    int eklenti = komut.ExecuteNonQuery();
-                    sqlConnection.Close();
-
-                    if (eklenti > 0)
+                    if (txt_Phone.TextLength > 10)
                     {
-                        MessageBox.Show("Kullanıcı Sisteme Eklendi.");
-                        TableReflesh();
+
+                        if (txt_TC.TextLength > 10)
+                        {
+                            int MemberState = comboBox2.SelectedIndex + 1;
+                            sqlConnection.Open();
+                            SqlCommand komut = new SqlCommand($"insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}')");
+                            komut.Connection = sqlConnection;
+                            int eklenti = komut.ExecuteNonQuery();
+                            sqlConnection.Close();
+
+                            if (eklenti > 0)
+                            {
+                                MessageBox.Show("Kullanıcı Sisteme Eklendi.");
+                                TableReflesh();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kullanıcı eklenemedi.");
+                            }
+                            sqlConnection.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                     }
                     else
                     {
-                        MessageBox.Show("Kullanıcı eklenemedi.");
+                        MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     }
-                    sqlConnection.Close();
+
+
                 }
             }
 
@@ -242,20 +259,37 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button3_Click(object sender, EventArgs e)
         {
 
-            int MemberState = comboBox2.SelectedIndex + 1;
-            if (txt_Id.Text != "")
+            if (txt_Phone.TextLength > 10)
             {
-                int IDD = Convert.ToInt32(txt_Id.Text);
-                sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UptadeFromMembers {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}'", sqlConnection);
-                Update.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
+                if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
+                {
+                    MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+
+
+                    int MemberState = comboBox2.SelectedIndex + 1;
+                    if (txt_Id.Text != "")
+                    {
+                        int IDD = Convert.ToInt32(txt_Id.Text);
+                        sqlConnection.Open();
+                        SqlCommand Update = new SqlCommand($"UpdateFromMembers {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}'", sqlConnection);
+                        Update.ExecuteNonQuery();
+                        sqlConnection.Close();
+                        TableReflesh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
+                MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
         }
 
@@ -291,18 +325,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void txt_Search_TC_TextChanged(object sender, EventArgs e)
         {
             txt_Search_Name.Text = "";
-            if (txt_Search_TC.Text!="")
+            if (txt_Search_TC.Text != "")
             {
                 TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
             }
-           
+
         }
 
         private void txt_Search_Name_TextChanged(object sender, EventArgs e)
         {
             txt_Search_TC.Text = "";
             TableReflesh(txt_Search_Name.Text);
-           
+
 
         }
     }
