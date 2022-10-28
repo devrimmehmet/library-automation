@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Books.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books.Designer.cs">
+      <DependentUpon>Books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestTypes.Designer.cs">
+      <DependentUpon>RequestTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Publishers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +127,12 @@
     <Compile Include="UserMenu.Designer.cs">
       <DependentUpon>UserMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Books.resx">
+      <DependentUpon>Books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestTypes.resx">
+      <DependentUpon>RequestTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Publishers.resx">
       <DependentUpon>Publishers.cs</DependentUpon>
     </EmbeddedResource>

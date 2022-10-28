@@ -37,11 +37,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.txt_Search_Information = new System.Windows.Forms.TextBox();
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_Phone = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_Mail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,9 +85,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(92, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "NAMESurname";
+            this.label2.Text = "NAME";
             // 
             // button1
             // 
@@ -120,19 +122,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(112, 85);
+            this.label13.Location = new System.Drawing.Point(112, 149);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.Size = new System.Drawing.Size(34, 13);
             this.label13.TabIndex = 34;
-            this.label13.Text = "Description";
-            // 
-            // txt_Search_Information
-            // 
-            this.txt_Search_Information.Location = new System.Drawing.Point(749, 322);
-            this.txt_Search_Information.Name = "txt_Search_Information";
-            this.txt_Search_Information.Size = new System.Drawing.Size(133, 20);
-            this.txt_Search_Information.TabIndex = 35;
-            this.txt_Search_Information.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
+            this.label13.Text = "Adres";
             // 
             // txt_Search_Name
             // 
@@ -151,34 +145,59 @@
             this.label14.TabIndex = 37;
             this.label14.Text = "NAME";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(666, 329);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Description";
-            // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(174, 64);
+            this.richTextBox1.Location = new System.Drawing.Point(174, 128);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(753, 225);
+            this.richTextBox1.Size = new System.Drawing.Size(200, 92);
             this.richTextBox1.TabIndex = 39;
             this.richTextBox1.Text = "";
             // 
-            // Authors
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(73, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 13);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "PHONE NUMBER";
+            // 
+            // txt_Phone
+            // 
+            this.txt_Phone.Location = new System.Drawing.Point(174, 64);
+            this.txt_Phone.Name = "txt_Phone";
+            this.txt_Phone.Size = new System.Drawing.Size(133, 20);
+            this.txt_Phone.TabIndex = 40;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(136, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 45;
+            this.label5.Text = "MAIL";
+            // 
+            // txt_Mail
+            // 
+            this.txt_Mail.Location = new System.Drawing.Point(174, 90);
+            this.txt_Mail.Name = "txt_Mail";
+            this.txt_Mail.Size = new System.Drawing.Size(133, 20);
+            this.txt_Mail.TabIndex = 44;
+            // 
+            // Publishers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txt_Mail);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txt_Phone);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);
-            this.Controls.Add(this.txt_Search_Information);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -189,7 +208,7 @@
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Authors";
+            this.Name = "Publishers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Members";
             this.Load += new System.EventHandler(this.Members_Load);
@@ -210,10 +229,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txt_Search_Information;
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_Phone;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_Mail;
     }
 }
