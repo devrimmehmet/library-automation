@@ -152,24 +152,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_TC.Text = (dataGridView1.CurrentRow.Cells["IdentityNumber"].Value).ToString();
             txt_Mail.Text = dataGridView1.CurrentRow.Cells["Mail"].Value.ToString();
             rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Address"].Value.ToString();
-
-            SqlCommand komut = new SqlCommand("SELECT MemberState FROM MemberStates", sqlConnection);
-            SqlDataReader dr;
+            int MemberState = Convert.ToInt32((dataGridView1.CurrentRow.Cells["Member_State_ID"].Value).ToString());
             sqlConnection.Open();
-            dr = komut.ExecuteReader();
-            comboBox2.Items.Clear();
-            while (dr.Read())
+            SqlCommand MemberStateFind = new SqlCommand($"SELECT MemberState FROM MemberStates where ID='{MemberState}'", sqlConnection);
+            SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+            if (dr3.Read())
             {
-                comboBox2.Items.Add(dr["MemberState"]);
+
+                comboBox2.Text = (dr3["MemberState"].ToString());
+                sqlConnection.Close();
+
             }
-            try
-            {
-                comboBox2.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Member_State_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
-            sqlConnection.Close();
+            
             dateTimePicker2.Text = dataGridView1.CurrentRow.Cells["MemberDate"].Value.ToString();
             txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
         }
@@ -199,8 +193,22 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
                         if (txt_TC.TextLength > 10)
                         {
-                            int MemberState = comboBox2.SelectedIndex + 1;
+                            int MemberState=1;
                             sqlConnection.Open();
+                            SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{comboBox2.Text}'", sqlConnection);
+                            SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+                            if (dr3.Read())
+                            {
+
+                                MemberState = Convert.ToInt32(dr3["ID"].ToString());
+                                sqlConnection.Close();
+
+                            }
+                           
+
+
+
+                                sqlConnection.Open();
                             SqlCommand komut = new SqlCommand($"insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}')");
                             komut.Connection = sqlConnection;
                             int eklenti = komut.ExecuteNonQuery();
@@ -269,7 +277,17 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 {
 
 
-                    int MemberState = comboBox2.SelectedIndex + 1;
+                    int MemberState = 1;
+                    sqlConnection.Open();
+                    SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{comboBox2.Text}'", sqlConnection);
+                    SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+                    if (dr3.Read())
+                    {
+
+                        MemberState = Convert.ToInt32(dr3["ID"].ToString());
+                        sqlConnection.Close();
+
+                    }
                     if (txt_Id.Text != "")
                     {
                         int IDD = Convert.ToInt32(txt_Id.Text);
@@ -337,6 +355,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Search_TC.Text = "";
             TableReflesh(txt_Search_Name.Text);
 
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

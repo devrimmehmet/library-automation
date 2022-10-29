@@ -150,26 +150,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Phone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
             txt_TC.Text = (dataGridView1.CurrentRow.Cells["IdentityNumber"].Value).ToString();
             txt_Mail.Text = dataGridView1.CurrentRow.Cells["Mail"].Value.ToString();
-           // rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Address"].Value.ToString();
-
-            SqlCommand komut = new SqlCommand("SELECT Permission FROM Permissions", sqlConnection);
+           
+            int PermissionID= Convert.ToInt32(dataGridView1.CurrentRow.Cells["Permission_ID"].Value.ToString());
+            SqlCommand komut = new SqlCommand($"SELECT Permission FROM Permissions where ID={PermissionID}", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
-            comboBox2.Items.Clear();
+         
             while (dr.Read())
             {
-                comboBox2.Items.Add(dr["Permission"]);
+                comboBox2.Text=(dr["Permission"].ToString());
             }
-            try
-            {
-                comboBox2.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Permission_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
+            
             sqlConnection.Close();
-         //   dateTimePicker2.Text = dataGridView1.CurrentRow.Cells["MemberDate"].Value.ToString();
+       
             txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
         }
 
@@ -197,9 +191,21 @@ namespace Kütüphane_Yönetim_Otomasyonu
                     {
                         if (txt_TC.TextLength>10)
                         {
-                            int Permission = comboBox2.SelectedIndex + 1;
+                            
+                            int PermissionID = 0;
+                            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{comboBox2.Text}'", sqlConnection);
+                            SqlDataReader dr;
                             sqlConnection.Open();
-                            SqlCommand komut = new SqlCommand($"insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{Permission}','{txt_Password.Text}')");
+                            dr = komut1.ExecuteReader();
+
+                            while (dr.Read())
+                            {
+                            PermissionID  = Convert.ToInt32(dr["ID"].ToString());
+                            }
+
+                            sqlConnection.Close();
+                            sqlConnection.Open();
+                            SqlCommand komut = new SqlCommand($"insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{PermissionID}','{txt_Password.Text}')");
                             komut.Connection = sqlConnection;
                             int eklenti = komut.ExecuteNonQuery();
                             sqlConnection.Close();
@@ -257,12 +263,23 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button3_Click(object sender, EventArgs e)
         {
 
-            int Permission = comboBox2.SelectedIndex + 1;
+            int PermissionID = 0;
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{comboBox2.Text}'", sqlConnection);
+            SqlDataReader dr;
+            sqlConnection.Open();
+            dr = komut1.ExecuteReader();
+
+            while (dr.Read())
+            {
+                PermissionID = Convert.ToInt32(dr["ID"].ToString());
+            }
+
+            sqlConnection.Close();
             if (txt_Id.Text != "")
             {
                 int IDD = Convert.ToInt32(txt_Id.Text);
                 sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UptadeFromEmployees {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{Permission}','{txt_Password.Text}'", sqlConnection);
+                SqlCommand Update = new SqlCommand($"UpdateFromEmployees {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{PermissionID}','{txt_Password.Text}'", sqlConnection);
                 Update.ExecuteNonQuery();
                 sqlConnection.Close();
                 TableReflesh();

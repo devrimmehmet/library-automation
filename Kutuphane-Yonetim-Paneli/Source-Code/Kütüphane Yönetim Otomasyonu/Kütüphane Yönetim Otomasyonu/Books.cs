@@ -24,7 +24,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void TableReflesh()
         {
-            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where state=1 ", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
