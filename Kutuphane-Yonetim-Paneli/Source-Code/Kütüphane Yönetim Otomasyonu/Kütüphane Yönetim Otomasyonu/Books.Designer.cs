@@ -31,8 +31,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.txt_Name = new System.Windows.Forms.TextBox();
-            this.txt_Surname = new System.Windows.Forms.TextBox();
-            this.txt_Phone = new System.Windows.Forms.TextBox();
+            this.txt_ShelfNumber = new System.Windows.Forms.TextBox();
+            this.txt_PageNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,19 +44,19 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.rTxt_Address = new System.Windows.Forms.RichTextBox();
+            this.cB_Language = new System.Windows.Forms.ComboBox();
+            this.cB_Author = new System.Windows.Forms.ComboBox();
+            this.rTxt_Description = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txt_Search_TC = new System.Windows.Forms.TextBox();
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkB_State = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cB_Publisher = new System.Windows.Forms.ComboBox();
+            this.cB_Category = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_PublishYear = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,20 +85,20 @@
             this.txt_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Name.TabIndex = 2;
             // 
-            // txt_Surname
+            // txt_ShelfNumber
             // 
-            this.txt_Surname.Location = new System.Drawing.Point(174, 278);
-            this.txt_Surname.Name = "txt_Surname";
-            this.txt_Surname.Size = new System.Drawing.Size(133, 20);
-            this.txt_Surname.TabIndex = 3;
+            this.txt_ShelfNumber.Location = new System.Drawing.Point(174, 278);
+            this.txt_ShelfNumber.Name = "txt_ShelfNumber";
+            this.txt_ShelfNumber.Size = new System.Drawing.Size(133, 20);
+            this.txt_ShelfNumber.TabIndex = 3;
             // 
-            // txt_Phone
+            // txt_PageNumber
             // 
-            this.txt_Phone.Location = new System.Drawing.Point(175, 90);
-            this.txt_Phone.Name = "txt_Phone";
-            this.txt_Phone.Size = new System.Drawing.Size(133, 20);
-            this.txt_Phone.TabIndex = 6;
-            this.txt_Phone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
+            this.txt_PageNumber.Location = new System.Drawing.Point(175, 90);
+            this.txt_PageNumber.Name = "txt_PageNumber";
+            this.txt_PageNumber.Size = new System.Drawing.Size(133, 20);
+            this.txt_PageNumber.TabIndex = 6;
+            this.txt_PageNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
             // 
             // label1
             // 
@@ -202,31 +202,31 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // comboBox1
+            // cB_Language
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(174, 251);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(133, 21);
-            this.comboBox1.TabIndex = 30;
+            this.cB_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Language.FormattingEnabled = true;
+            this.cB_Language.Location = new System.Drawing.Point(174, 251);
+            this.cB_Language.Name = "cB_Language";
+            this.cB_Language.Size = new System.Drawing.Size(133, 21);
+            this.cB_Language.TabIndex = 30;
             // 
-            // comboBox2
+            // cB_Author
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(175, 224);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(133, 21);
-            this.comboBox2.TabIndex = 31;
+            this.cB_Author.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Author.FormattingEnabled = true;
+            this.cB_Author.Location = new System.Drawing.Point(175, 224);
+            this.cB_Author.Name = "cB_Author";
+            this.cB_Author.Size = new System.Drawing.Size(133, 21);
+            this.cB_Author.TabIndex = 31;
             // 
-            // rTxt_Address
+            // rTxt_Description
             // 
-            this.rTxt_Address.Location = new System.Drawing.Point(175, 113);
-            this.rTxt_Address.Name = "rTxt_Address";
-            this.rTxt_Address.Size = new System.Drawing.Size(203, 83);
-            this.rTxt_Address.TabIndex = 32;
-            this.rTxt_Address.Text = "";
+            this.rTxt_Description.Location = new System.Drawing.Point(175, 113);
+            this.rTxt_Description.Name = "rTxt_Description";
+            this.rTxt_Description.Size = new System.Drawing.Size(203, 83);
+            this.rTxt_Description.TabIndex = 32;
+            this.rTxt_Description.Text = "";
             // 
             // label13
             // 
@@ -263,15 +263,15 @@
             this.label14.TabIndex = 37;
             this.label14.Text = "NAME";
             // 
-            // checkBox1
+            // checkB_State
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(196, 202);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(71, 17);
-            this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "Mevcutta";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkB_State.AutoSize = true;
+            this.checkB_State.Location = new System.Drawing.Point(196, 202);
+            this.checkB_State.Name = "checkB_State";
+            this.checkB_State.Size = new System.Drawing.Size(71, 17);
+            this.checkB_State.TabIndex = 38;
+            this.checkB_State.Text = "Mevcutta";
+            this.checkB_State.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -282,23 +282,23 @@
             this.label15.TabIndex = 39;
             this.label15.Text = "Yayınevi";
             // 
-            // comboBox3
+            // cB_Publisher
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(174, 304);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(133, 21);
-            this.comboBox3.TabIndex = 40;
+            this.cB_Publisher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Publisher.FormattingEnabled = true;
+            this.cB_Publisher.Location = new System.Drawing.Point(174, 304);
+            this.cB_Publisher.Name = "cB_Publisher";
+            this.cB_Publisher.Size = new System.Drawing.Size(133, 21);
+            this.cB_Publisher.TabIndex = 40;
             // 
-            // comboBox4
+            // cB_Category
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(174, 331);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(133, 21);
-            this.comboBox4.TabIndex = 42;
+            this.cB_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cB_Category.FormattingEnabled = true;
+            this.cB_Category.Location = new System.Drawing.Point(174, 331);
+            this.cB_Category.Name = "cB_Category";
+            this.cB_Category.Size = new System.Drawing.Size(133, 21);
+            this.cB_Category.TabIndex = 42;
             // 
             // label16
             // 
@@ -309,13 +309,13 @@
             this.label16.TabIndex = 41;
             this.label16.Text = "Kategori";
             // 
-            // textBox1
+            // txt_PublishYear
             // 
-            this.textBox1.Location = new System.Drawing.Point(174, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 20);
-            this.textBox1.TabIndex = 43;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
+            this.txt_PublishYear.Location = new System.Drawing.Point(174, 64);
+            this.txt_PublishYear.Name = "txt_PublishYear";
+            this.txt_PublishYear.Size = new System.Drawing.Size(133, 20);
+            this.txt_PublishYear.TabIndex = 43;
+            this.txt_PublishYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
             // 
             // Books
             // 
@@ -323,19 +323,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(1150, 650);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.txt_PublishYear);
+            this.Controls.Add(this.cB_Category);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cB_Publisher);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.checkB_State);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);
             this.Controls.Add(this.txt_Search_TC);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.rTxt_Address);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.rTxt_Description);
+            this.Controls.Add(this.cB_Author);
+            this.Controls.Add(this.cB_Language);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -347,8 +347,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_Phone);
-            this.Controls.Add(this.txt_Surname);
+            this.Controls.Add(this.txt_PageNumber);
+            this.Controls.Add(this.txt_ShelfNumber);
             this.Controls.Add(this.txt_Name);
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.dataGridView1);
@@ -368,8 +368,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txt_Id;
         private System.Windows.Forms.TextBox txt_Name;
-        private System.Windows.Forms.TextBox txt_Surname;
-        private System.Windows.Forms.TextBox txt_Phone;
+        private System.Windows.Forms.TextBox txt_ShelfNumber;
+        private System.Windows.Forms.TextBox txt_PageNumber;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -381,18 +381,18 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.RichTextBox rTxt_Address;
+        private System.Windows.Forms.ComboBox cB_Language;
+        private System.Windows.Forms.ComboBox cB_Author;
+        private System.Windows.Forms.RichTextBox rTxt_Description;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txt_Search_TC;
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkB_State;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cB_Publisher;
+        private System.Windows.Forms.ComboBox cB_Category;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_PublishYear;
     }
 }

@@ -134,16 +134,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void Members_Load(object sender, EventArgs e)
         {
 
-            checkBox1.Checked = true;
+            checkB_State.Checked = true;
 
             SqlCommand komut = new SqlCommand("SELECT Language FROM Languages", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
-            comboBox1.Items.Clear();
+            cB_Language.Items.Clear();
             while (dr.Read())
             {
-                comboBox1.Items.Add(dr["Language"]);
+                cB_Language.Items.Add(dr["Language"]);
             }
             sqlConnection.Close();
 
@@ -151,10 +151,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
-            comboBox2.Items.Clear();
+            cB_Author.Items.Clear();
             while (dr1.Read())
             {
-                comboBox2.Items.Add(dr1["NameSurname"]);
+                cB_Author.Items.Add(dr1["NameSurname"]);
             }
             
             sqlConnection.Close();
@@ -162,10 +162,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
-            comboBox3.Items.Clear();
+            cB_Publisher.Items.Clear();
             while (dr2.Read())
             {
-                comboBox3.Items.Add(dr2["Name"]);
+                cB_Publisher.Items.Add(dr2["Name"]);
             }
 
             sqlConnection.Close();
@@ -175,10 +175,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
-            comboBox4.Items.Clear();
+            cB_Category.Items.Clear();
             while (dr3.Read())
             {
-                comboBox4.Items.Add(dr3["Name"]);
+                cB_Category.Items.Add(dr3["Name"]);
             }
 
             sqlConnection.Close();
@@ -188,12 +188,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
 
             TableReflesh();
-            comboBox1.SelectedIndex = 0;
+            cB_Language.SelectedIndex = 0;
             txt_Name.MaxLength = 50;
-            txt_Surname.MaxLength = 50;
-            txt_Phone.MaxLength = 11;
-            textBox1.MaxLength = 4;
-            rTxt_Address.MaxLength = 200;
+            txt_ShelfNumber.MaxLength = 50;
+            txt_PageNumber.MaxLength = 11;
+            txt_PublishYear.MaxLength = 4;
+            rTxt_Description.MaxLength = 200;
         
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
@@ -203,30 +203,30 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             if (Convert.ToInt32(dataGridView1.CurrentRow.Cells["State"].Value)==1)
             {
-                checkBox1.Checked = true;
+                checkB_State.Checked = true;
             }
             else
             {
-                checkBox1.Checked= false;
+                checkB_State.Checked= false;
             }
             txt_Id.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
             txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-            textBox1.Text =dataGridView1.CurrentRow.Cells["PublicationYear"].Value.ToString();
-            txt_Phone.Text = dataGridView1.CurrentRow.Cells["NumberOfPages"].Value.ToString();
-            rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
-            txt_Surname.Text = dataGridView1.CurrentRow.Cells["ShelfNumber"].Value.ToString();
+            txt_PublishYear.Text =dataGridView1.CurrentRow.Cells["PublicationYear"].Value.ToString();
+            txt_PageNumber.Text = dataGridView1.CurrentRow.Cells["NumberOfPages"].Value.ToString();
+            rTxt_Description.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
+            txt_ShelfNumber.Text = dataGridView1.CurrentRow.Cells["ShelfNumber"].Value.ToString();
             SqlCommand komut = new SqlCommand("SELECT Language FROM Languages", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
-            comboBox1.Items.Clear();
+            cB_Language.Items.Clear();
             while (dr.Read())
             {
-                comboBox1.Items.Add(dr["Language"]);
+                cB_Language.Items.Add(dr["Language"]);
             }
             try
             {
-                comboBox1.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Language_ID"].Value) - 1;
+                cB_Language.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Language_ID"].Value) - 1;
             }
             catch (Exception)
             {
@@ -237,14 +237,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
-            comboBox2.Items.Clear();
+            cB_Author.Items.Clear();
             while (dr1.Read())
             {
-                comboBox2.Items.Add(dr1["NameSurname"]);
+                cB_Author.Items.Add(dr1["NameSurname"]);
             }
             try
             {
-                comboBox2.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Author_ID"].Value) - 1;
+                cB_Author.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Author_ID"].Value) - 1;
             }
             catch (Exception)
             {
@@ -255,14 +255,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
-            comboBox3.Items.Clear();
+            cB_Publisher.Items.Clear();
             while (dr2.Read())
             {
-                comboBox3.Items.Add(dr2["Name"]);
+                cB_Publisher.Items.Add(dr2["Name"]);
             }
             try
             {
-                comboBox3.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Publisher_ID"].Value) - 1;
+                cB_Publisher.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Publisher_ID"].Value) - 1;
             }
             catch (Exception)
             {
@@ -274,14 +274,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
-            comboBox4.Items.Clear();
+            cB_Category.Items.Clear();
             while (dr3.Read())
             {
-                comboBox4.Items.Add(dr3["Name"]);
+                cB_Category.Items.Add(dr3["Name"]);
             }
             try
             {
-                comboBox4.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Category_ID"].Value) - 1;
+                cB_Category.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Category_ID"].Value) - 1;
             }
             catch (Exception)
             {
@@ -293,7 +293,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             int AuthorID = 0;
-            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{comboBox2.Text}'", sqlConnection);
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{cB_Author.Text}'", sqlConnection);
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
@@ -304,7 +304,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int LanguageID = 0;
-            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{comboBox1.Text}'", sqlConnection);
+            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{cB_Language.Text}'", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
@@ -315,7 +315,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int PublisherID = 0;
-            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{comboBox3.Text}'", sqlConnection);
+            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{cB_Publisher.Text}'", sqlConnection);
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
@@ -326,7 +326,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int CategoryID = 0;
-            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{comboBox4.Text}'", sqlConnection);
+            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{cB_Category.Text}'", sqlConnection);
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
@@ -336,7 +336,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             sqlConnection.Close();
             int State = 0;
-            if (checkBox1.Checked==true)
+            if (checkB_State.Checked==true)
             {
                 State = 1;
             }
@@ -344,24 +344,91 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 State = 0;
             }
-            sqlConnection.Open();
-            if (textBox1.Text!="")
+           
+            if (txt_PublishYear.Text!="")
             {
                 
-                if (txt_Phone.Text=="")
+                if (txt_PageNumber.Text=="")
                 {
-                    txt_Phone.Text = "0";
+                    txt_PageNumber.Text = "0";
                 }
+                if (cB_Language.Text!="")
+                {
+                    if (cB_Publisher.Text!="")
+                    {
+                        if (txt_ShelfNumber.Text!="")
+                        {
+                            if (rTxt_Description.Text=="")
+                            {
+                                rTxt_Description.Text = " ";
+                            }
+                            if (cB_Category.Text!="")
+                            {
 
-                SqlCommand Add = new SqlCommand($"insert into Books (Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values('{txt_Name.Text}',{AuthorID},{textBox1.Text},{txt_Phone.Text},{LanguageID},{PublisherID},'{rTxt_Address.Text}',{State},'{txt_Surname.Text}',{CategoryID})", sqlConnection);
-                Add.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
+                                if (cB_Author.Text!="")
+                                {
+                                    if (txt_Name.Text!="")
+                                    {
+                                        sqlConnection.Open();
+                                        SqlCommand BooksFind = new SqlCommand($"SELECT * FROM books where ShelfNumber='{txt_ShelfNumber.Text}'", sqlConnection);
+                                        SqlDataReader dr4 = BooksFind.ExecuteReader();
+                                        if (dr4.Read())
+                                        {
+                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.");
+                                            sqlConnection.Close();
+
+                                        }
+                                        else
+                                        {
+                                            sqlConnection.Close();
+                                            sqlConnection.Open();
+                                            SqlCommand Add = new SqlCommand($"insert into Books (Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values('{txt_Name.Text}',{AuthorID},{txt_PublishYear.Text},{txt_PageNumber.Text},{LanguageID},{PublisherID},'{rTxt_Description.Text}',{State},'{txt_ShelfNumber.Text}',{CategoryID})", sqlConnection);
+                                            Add.ExecuteNonQuery();
+                                            sqlConnection.Close();
+                                            TableReflesh();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez");
+                                    }
+                                   
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez");
+                                }
+                             
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez");
+                            }
+                            
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez");
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez");
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez");
+
+                }
+                
             }
             else
             {
                 MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
-                sqlConnection.Close();
+               
             }
            
             
@@ -390,7 +457,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button3_Click(object sender, EventArgs e)
         {
             int AuthorID = 0;
-            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{comboBox2.Text}'", sqlConnection);
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{cB_Author.Text}'", sqlConnection);
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
@@ -401,7 +468,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int LanguageID = 0;
-            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{comboBox1.Text}'", sqlConnection);
+            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{cB_Language.Text}'", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
@@ -412,7 +479,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int PublisherID = 0;
-            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{comboBox3.Text}'", sqlConnection);
+            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{cB_Publisher.Text}'", sqlConnection);
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
@@ -423,7 +490,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int CategoryID = 0;
-            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{comboBox4.Text}'", sqlConnection);
+            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{cB_Category.Text}'", sqlConnection);
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
@@ -434,7 +501,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int State = 0;
-            if (checkBox1.Checked == true)
+            if (checkB_State.Checked == true)
             {
                 State = 1;
             }
@@ -442,19 +509,103 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 State = 0;
             }
-            if (txt_Id.Text != "")
+
+            if (txt_PublishYear.Text != "")
             {
-                int IDD = Convert.ToInt32(txt_Id.Text);
-                sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UpdateFromBooks {IDD},'{txt_Name.Text}',{AuthorID},{textBox1.Text},{txt_Phone.Text},{LanguageID},{PublisherID},'{rTxt_Address.Text}',{State},'{txt_Surname.Text}',{CategoryID}", sqlConnection);
-                Update.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
+
+                if (txt_PageNumber.Text == "")
+                {
+                    txt_PageNumber.Text = "0";
+                }
+                if (cB_Language.Text != "")
+                {
+                    if (cB_Publisher.Text != "")
+                    {
+                        if (txt_ShelfNumber.Text != "")
+                        {
+                            if (rTxt_Description.Text == "")
+                            {
+                                rTxt_Description.Text = " ";
+                            }
+                            if (cB_Category.Text != "")
+                            {
+
+                                if (cB_Author.Text != "")
+                                {
+                                    if (txt_Name.Text != "")
+                                    {
+                                        sqlConnection.Open();
+                                        SqlCommand BooksFind = new SqlCommand($"SELECT * FROM books where ShelfNumber='{txt_ShelfNumber.Text}' and ID!={Convert.ToInt32(txt_Id.Text)}", sqlConnection);
+                                        SqlDataReader dr4 = BooksFind.ExecuteReader();
+                                        if (dr4.Read())
+                                        {
+                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.");
+                                            sqlConnection.Close();
+
+                                        }
+                                        else
+                                        {
+                                            sqlConnection.Close();
+                                            if (txt_Id.Text != "")
+                                            {
+                                                int IDD = Convert.ToInt32(txt_Id.Text);
+                                                sqlConnection.Open();
+                                                SqlCommand Update = new SqlCommand($"UpdateFromBooks {IDD},'{txt_Name.Text}',{AuthorID},{txt_PublishYear.Text},{txt_PageNumber.Text},{LanguageID},{PublisherID},{rTxt_Description.Text},{State},'{txt_ShelfNumber.Text}',{CategoryID}", sqlConnection);
+                                                Update.ExecuteNonQuery();
+                                                sqlConnection.Close();
+                                                TableReflesh();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Lütfen güncellenecek kitabı seçiniz");
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez");
+                                    }
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez");
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez");
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez");
+
+                }
+
             }
             else
             {
-                MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
+                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
+
             }
+
+
+         
         }
 
 
