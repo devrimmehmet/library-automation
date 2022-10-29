@@ -59,9 +59,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
 
         }
-        private void TableReflesh(decimal SearchTextTC)
+        private void TableSearchShelf(string SearchTextShelfNumber)
         {
-            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where a.NameSurname like '%{SearchTextTC}%'", sqlConnection);
+     
+            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.ShelfNumber like '%{SearchTextShelfNumber}%'", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
@@ -93,11 +94,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[22].Visible = false;
             dataGridView1.Columns[23].HeaderText = "Kategori";
 
-
         }
         private void TableReflesh(string SearchTextName)
         {
-            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where Name like '{SearchTextName}%'", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.Name like '{SearchTextName}%'", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
@@ -195,7 +195,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_PublishYear.MaxLength = 4;
             rTxt_Description.MaxLength = 200;
         
-            txt_Search_TC.MaxLength = 11;
+            txt_Search_Shelf.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
         }
 
@@ -620,16 +620,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void txt_Search_TC_TextChanged(object sender, EventArgs e)
         {
             txt_Search_Name.Text = "";
-            if (txt_Search_TC.Text != "")
-            {
-                TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
-            }
+          
+                TableSearchShelf(txt_Search_Shelf.Text);
+            
 
         }
 
         private void txt_Search_Name_TextChanged(object sender, EventArgs e)
         {
-            txt_Search_TC.Text = "";
+            txt_Search_Shelf.Text = "";
             TableReflesh(txt_Search_Name.Text);
 
 

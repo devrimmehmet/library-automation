@@ -40,3 +40,4 @@ C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Pane
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\bin\Debug\Kütüphane Yönetim Otomasyonu.pdb
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.RequestTypes.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.Books.resources
+C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.Transactions.resources

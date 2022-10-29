@@ -47,8 +47,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
 
 
-
-
         }
         private void TableReflesh(decimal SearchTextTC)
         {

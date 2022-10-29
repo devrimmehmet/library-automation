@@ -143,5 +143,17 @@ namespace Kütüphane_Yönetim_Otomasyonu
             frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
             frm2.BringToFront(); // formu panel içinde en öne getirdik
         }
+
+        private void pictureBox11_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
+            Transactions frm2 = new Transactions();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
+
+            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
+            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
+            frm2.BringToFront(); // formu panel içinde en öne getirdik
+        }
     }
 }

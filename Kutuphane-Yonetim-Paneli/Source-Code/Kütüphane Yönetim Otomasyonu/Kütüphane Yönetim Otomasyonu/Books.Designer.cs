@@ -48,7 +48,7 @@
             this.cB_Author = new System.Windows.Forms.ComboBox();
             this.rTxt_Description = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txt_Search_TC = new System.Windows.Forms.TextBox();
+            this.txt_Search_Shelf = new System.Windows.Forms.TextBox();
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.checkB_State = new System.Windows.Forms.CheckBox();
@@ -233,22 +233,21 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(874, 308);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 13);
+            this.label13.Size = new System.Drawing.Size(69, 13);
             this.label13.TabIndex = 34;
-            this.label13.Text = "IDENTITY NUMBER";
+            this.label13.Text = "RAFA GÖRE";
             // 
-            // txt_Search_TC
+            // txt_Search_Shelf
             // 
-            this.txt_Search_TC.Location = new System.Drawing.Point(987, 305);
-            this.txt_Search_TC.Name = "txt_Search_TC";
-            this.txt_Search_TC.Size = new System.Drawing.Size(133, 20);
-            this.txt_Search_TC.TabIndex = 35;
-            this.txt_Search_TC.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
-            this.txt_Search_TC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
+            this.txt_Search_Shelf.Location = new System.Drawing.Point(987, 305);
+            this.txt_Search_Shelf.Name = "txt_Search_Shelf";
+            this.txt_Search_Shelf.Size = new System.Drawing.Size(133, 20);
+            this.txt_Search_Shelf.TabIndex = 35;
+            this.txt_Search_Shelf.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
             // 
             // txt_Search_Name
             // 
-            this.txt_Search_Name.Location = new System.Drawing.Point(987, 331);
+            this.txt_Search_Name.Location = new System.Drawing.Point(987, 332);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Name.TabIndex = 36;
@@ -257,11 +256,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(943, 331);
+            this.label14.Location = new System.Drawing.Point(874, 331);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.Size = new System.Drawing.Size(74, 13);
             this.label14.TabIndex = 37;
-            this.label14.Text = "NAME";
+            this.label14.Text = "ADINA GÖRE";
             // 
             // checkB_State
             // 
@@ -331,7 +330,7 @@
             this.Controls.Add(this.checkB_State);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);
-            this.Controls.Add(this.txt_Search_TC);
+            this.Controls.Add(this.txt_Search_Shelf);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.rTxt_Description);
             this.Controls.Add(this.cB_Author);
@@ -385,7 +384,7 @@
         private System.Windows.Forms.ComboBox cB_Author;
         private System.Windows.Forms.RichTextBox rTxt_Description;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txt_Search_TC;
+        private System.Windows.Forms.TextBox txt_Search_Shelf;
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkB_State;
