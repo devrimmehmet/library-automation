@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Kütüphane_Yönetim_Otomasyonu
@@ -24,7 +25,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void TableReflesh()
         {
-            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where state=1 ", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID ", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
@@ -181,7 +182,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
 
             sqlConnection.Close();
-            //  comboBox2.SelectedIndex = 0;
+       
             dataGridView1.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView1.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
@@ -191,10 +192,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Name.MaxLength = 50;
             txt_Surname.MaxLength = 50;
             txt_Phone.MaxLength = 11;
-            txt_TC.MaxLength = 11;
-            txt_Mail.MaxLength = 50;
+            textBox1.MaxLength = 4;
             rTxt_Address.MaxLength = 200;
-            txt_Password.MaxLength = 50;
+        
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
         }
@@ -211,7 +211,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             txt_Id.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
             txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-            dateTimePicker1.Text = dataGridView1.CurrentRow.Cells["PublicationYear"].Value.ToString();
+            textBox1.Text =dataGridView1.CurrentRow.Cells["PublicationYear"].Value.ToString();
             txt_Phone.Text = dataGridView1.CurrentRow.Cells["NumberOfPages"].Value.ToString();
             rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
             txt_Surname.Text = dataGridView1.CurrentRow.Cells["ShelfNumber"].Value.ToString();
@@ -292,64 +292,79 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int AuthorID = 0;
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{comboBox2.Text}'", sqlConnection);
+            SqlDataReader dr1;
             sqlConnection.Open();
-            SqlCommand Member = new SqlCommand($"SELECT * FROM Members where IdentityNumber='{txt_TC.Text}'", sqlConnection);
-            SqlDataReader dr2 = Member.ExecuteReader();
-            if (dr2.Read())
+            dr1 = komut1.ExecuteReader();
+            while (dr1.Read())
             {
-                MessageBox.Show("Bu TC numarasına ait başka bir üye var !!!");
-                sqlConnection.Close();
+                AuthorID=Convert.ToInt32(dr1["ID"]);
+            }
+            sqlConnection.Close();
 
+            int LanguageID = 0;
+            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{comboBox1.Text}'", sqlConnection);
+            SqlDataReader dr;
+            sqlConnection.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+               LanguageID=Convert.ToInt32(dr["ID"]);
+            }
+            sqlConnection.Close();
+
+            int PublisherID = 0;
+            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{comboBox3.Text}'", sqlConnection);
+            SqlDataReader dr2;
+            sqlConnection.Open();
+            dr2 = komut2.ExecuteReader();
+            while (dr2.Read())
+            {
+                PublisherID = Convert.ToInt32(dr2["ID"]);
+            }
+            sqlConnection.Close();
+
+            int CategoryID = 0;
+            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{comboBox4.Text}'", sqlConnection);
+            SqlDataReader dr3;
+            sqlConnection.Open();
+            dr3 = komut3.ExecuteReader();
+            while (dr3.Read())
+            {
+                CategoryID = Convert.ToInt32(dr3["ID"]);
+            }
+            sqlConnection.Close();
+            int State = 0;
+            if (checkBox1.Checked==true)
+            {
+                State = 1;
             }
             else
             {
-                sqlConnection.Close();
-                if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
-                {
-                    MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    if (txt_Phone.TextLength > 10)
-                    {
-
-                        if (txt_TC.TextLength > 10)
-                        {
-                            int MemberState = comboBox2.SelectedIndex + 1;
-                            sqlConnection.Open();
-                            SqlCommand komut = new SqlCommand($"insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_TC.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}')");
-                            komut.Connection = sqlConnection;
-                            int eklenti = komut.ExecuteNonQuery();
-                            sqlConnection.Close();
-
-                            if (eklenti > 0)
-                            {
-                                MessageBox.Show("Kullanıcı Sisteme Eklendi.");
-                                TableReflesh();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Kullanıcı eklenemedi.");
-                            }
-                            sqlConnection.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-
-
-                }
+                State = 0;
             }
+            sqlConnection.Open();
+            if (textBox1.Text!="")
+            {
+                
+                if (txt_Phone.Text=="")
+                {
+                    txt_Phone.Text = "0";
+                }
 
-
+                SqlCommand Add = new SqlCommand($"insert into Books (Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values('{txt_Name.Text}',{AuthorID},{textBox1.Text},{txt_Phone.Text},{LanguageID},{PublisherID},'{rTxt_Address.Text}',{State},'{txt_Surname.Text}',{CategoryID})", sqlConnection);
+                Add.ExecuteNonQuery();
+                sqlConnection.Close();
+                TableReflesh();
+            }
+            else
+            {
+                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
+                sqlConnection.Close();
+            }
+           
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -359,7 +374,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 int IDD = Convert.ToInt32(txt_Id.Text);
                 sqlConnection.Open();
-                SqlCommand Sil = new SqlCommand($"DeleteFromMembers {IDD}", sqlConnection);
+                SqlCommand Sil = new SqlCommand($"DeleteFromBooks {IDD}", sqlConnection);
                 Sil.ExecuteNonQuery();
                 sqlConnection.Close();
                 TableReflesh();
@@ -374,39 +389,72 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            if (txt_Phone.TextLength > 10)
+            int AuthorID = 0;
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{comboBox2.Text}'", sqlConnection);
+            SqlDataReader dr1;
+            sqlConnection.Open();
+            dr1 = komut1.ExecuteReader();
+            while (dr1.Read())
             {
-                if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
-                {
-                    MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
+                AuthorID = Convert.ToInt32(dr1["ID"]);
+            }
+            sqlConnection.Close();
 
+            int LanguageID = 0;
+            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{comboBox1.Text}'", sqlConnection);
+            SqlDataReader dr;
+            sqlConnection.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                LanguageID = Convert.ToInt32(dr["ID"]);
+            }
+            sqlConnection.Close();
 
-                    int MemberState = comboBox2.SelectedIndex + 1;
-                    if (txt_Id.Text != "")
-                    {
-                        int IDD = Convert.ToInt32(txt_Id.Text);
-                        sqlConnection.Open();
-                        SqlCommand Update = new SqlCommand($"UpdateFromMembers {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{comboBox1.Text}','{dateTimePicker1.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{rTxt_Address.Text}','{MemberState}','{txt_Password.Text}'", sqlConnection);
-                        Update.ExecuteNonQuery();
-                        sqlConnection.Close();
-                        TableReflesh();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
-                    }
-                }
+            int PublisherID = 0;
+            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{comboBox3.Text}'", sqlConnection);
+            SqlDataReader dr2;
+            sqlConnection.Open();
+            dr2 = komut2.ExecuteReader();
+            while (dr2.Read())
+            {
+                PublisherID = Convert.ToInt32(dr2["ID"]);
+            }
+            sqlConnection.Close();
+
+            int CategoryID = 0;
+            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{comboBox4.Text}'", sqlConnection);
+            SqlDataReader dr3;
+            sqlConnection.Open();
+            dr3 = komut3.ExecuteReader();
+            while (dr3.Read())
+            {
+                CategoryID = Convert.ToInt32(dr3["ID"]);
+            }
+            sqlConnection.Close();
+
+            int State = 0;
+            if (checkBox1.Checked == true)
+            {
+                State = 1;
             }
             else
             {
-                MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                State = 0;
             }
-
-
+            if (txt_Id.Text != "")
+            {
+                int IDD = Convert.ToInt32(txt_Id.Text);
+                sqlConnection.Open();
+                SqlCommand Update = new SqlCommand($"UpdateFromBooks {IDD},'{txt_Name.Text}',{AuthorID},{textBox1.Text},{txt_Phone.Text},{LanguageID},{PublisherID},'{rTxt_Address.Text}',{State},'{txt_Surname.Text}',{CategoryID}", sqlConnection);
+                Update.ExecuteNonQuery();
+                sqlConnection.Close();
+                TableReflesh();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
+            }
         }
 
 
@@ -434,6 +482,21 @@ namespace Kütüphane_Yönetim_Otomasyonu
             TableReflesh(txt_Search_Name.Text);
 
 
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                if (dataGridView1.Rows[i].Cells["State"].Value.ToString() == "False")
+                {
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+                }
+
+                dataGridView1.Rows[i].DefaultCellStyle = renk;
+            }
         }
     }
 

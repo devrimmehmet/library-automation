@@ -134,7 +134,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Phone.MaxLength = 11;
             txt_TC.MaxLength = 11;
             txt_Mail.MaxLength = 50;
-            //rTxt_Address.MaxLength = 200;
+            
             txt_Password.MaxLength = 50;
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
@@ -308,15 +308,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                     renk.BackColor = Color.Red;
                     renk.ForeColor = Color.White;
                 }
-                //else if (dataGridView1.Rows[i].Cells["Permission"].Value.ToString() == "Pasif")
-                //{
-                //    renk.BackColor = Color.Orange;
-                //}
-                //else if (dataGridView1.Rows[i].Cells["Permission"].Value.ToString() == "Admin")
-                //{
-                //    renk.BackColor = Color.Red;
-                //    renk.ForeColor = Color.White;
-                //}
+              
                 dataGridView1.Rows[i].DefaultCellStyle = renk;
             }
         }
