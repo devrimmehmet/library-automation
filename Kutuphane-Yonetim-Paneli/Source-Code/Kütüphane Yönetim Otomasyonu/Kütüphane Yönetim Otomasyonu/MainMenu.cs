@@ -16,8 +16,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             InitializeComponent();
         }
+        public int ActiveEmployeeID;
 
-      
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
@@ -68,7 +68,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
@@ -150,7 +150,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             Transactions frm2 = new Transactions();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
+            frm2.ActiveEmployeeID = this.ActiveEmployeeID;
             frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
             frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
             frm2.BringToFront(); // formu panel içinde en öne getirdik

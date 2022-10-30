@@ -25,10 +25,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader  dr = Employee.ExecuteReader();
             if (dr.Read())
             {
-                sqlConnection.Close();
+               
                 this.Hide();
                 MainMenu admin = new MainMenu();
+                admin.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
+                sqlConnection.Close();
                 admin.ShowDialog();
+
+               
                 this.Close();
             }
             sqlConnection.Close();

@@ -99,8 +99,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            SqlCommand Member = new SqlCommand($"SELECT * FROM Authors where NameSurname='{txt_Name.Text}'", sqlConnection);
-            SqlDataReader dr2 = Member.ExecuteReader();
+            SqlCommand FindAuthor = new SqlCommand();
+            FindAuthor.Connection = sqlConnection;
+            FindAuthor.CommandText = "FindAuthor"; //stoured procedure'un saklandığı yer.
+            FindAuthor.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+            FindAuthor.Parameters.AddWithValue("@NameSurname", txt_Name.Text);
+            SqlDataReader dr2 = FindAuthor.ExecuteReader();
             if (dr2.Read())
             {
                 MessageBox.Show("Bu isme sahip başka bir yazar var !!!");
@@ -111,9 +115,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 sqlConnection.Close();
                 sqlConnection.Open();
-                SqlCommand komut = new SqlCommand($"insert into Authors (NameSurname,Information) values ('{txt_Name.Text}','{richTextBox1.Text}')",sqlConnection);
-              
-                    int eklenti = komut.ExecuteNonQuery();
+                    SqlCommand komut = new SqlCommand();
+                    komut.Connection = sqlConnection;
+                komut.CommandText = "AddAuthors"; //stoured procedure'un saklandığı yer.
+                komut.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+
+             
+                komut.Parameters.AddWithValue("@NameSurname", txt_Name.Text);
+                komut.Parameters.AddWithValue("@Information", richTextBox1.Text);
+                int eklenti = komut.ExecuteNonQuery();
                     sqlConnection.Close();
 
                     if (eklenti > 0)
@@ -155,10 +165,17 @@ namespace Kütüphane_Yönetim_Otomasyonu
            
             if (txt_Id.Text != "")
             {
-                int IDD = Convert.ToInt32(txt_Id.Text);
+                int IDD = Convert.ToInt32(txt_Id.Text);   
                 sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UpdateFromAuthors {IDD},'{txt_Name.Text}','{richTextBox1.Text}'", sqlConnection);
-                Update.ExecuteNonQuery();
+                SqlCommand UpdateCMD = new SqlCommand();
+                UpdateCMD.Connection = sqlConnection;
+                UpdateCMD.CommandText = "UpdateFromAuthors"; //stoured procedure'un saklandığı yer.
+                UpdateCMD.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+
+                UpdateCMD.Parameters.AddWithValue("@ID", IDD); //@Adi parametresi gösterldi.
+                UpdateCMD.Parameters.AddWithValue("@NameSurname", txt_Name.Text); //@SoyAdi paremetresi gönderildi.
+                UpdateCMD.Parameters.AddWithValue("@Information", richTextBox1.Text); //@SoyAdi paremetresi gönderildi.
+                UpdateCMD.ExecuteNonQuery(); // veriler veritabanında kaydedildi.
                 sqlConnection.Close();
                 TableReflesh();
             }
