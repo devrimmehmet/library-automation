@@ -31,8 +31,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 admin.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
                 sqlConnection.Close();
                 admin.ShowDialog();
-
-               
                 this.Close();
             }
             sqlConnection.Close();
@@ -41,10 +39,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr2 = Member.ExecuteReader();
             if (dr2.Read())
             {
-                MessageBox.Show("Tebrikler! Başarılı bir şekilde giriş yaptınız.");
-                sqlConnection.Close();
+               // MessageBox.Show("Tebrikler! Başarılı bir şekilde giriş yaptınız.");
+                
                 this.Hide();
                 UserMenu user = new UserMenu();
+                user.ActiveMemberID = Convert.ToInt32(dr2["ID"]);
+                sqlConnection.Close();
                 user.ShowDialog();
                 this.Close();
             }
