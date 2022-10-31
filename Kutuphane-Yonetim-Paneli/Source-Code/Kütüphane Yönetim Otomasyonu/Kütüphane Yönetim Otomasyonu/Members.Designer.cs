@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Members));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_ID = new System.Windows.Forms.TextBox();
             this.txt_Name = new System.Windows.Forms.TextBox();
@@ -60,7 +61,11 @@
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -288,9 +293,9 @@
             // 
             // btn_Add
             // 
-            this.btn_Add.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_Add.BackColor = System.Drawing.Color.Transparent;
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Add.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btn_Add.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btn_Add.Location = new System.Drawing.Point(865, 87);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(89, 50);
@@ -301,9 +306,9 @@
             // 
             // btn_Delete
             // 
-            this.btn_Delete.BackColor = System.Drawing.Color.Red;
+            this.btn_Delete.BackColor = System.Drawing.Color.Transparent;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Delete.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btn_Delete.ForeColor = System.Drawing.Color.Red;
             this.btn_Delete.Location = new System.Drawing.Point(960, 87);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(89, 50);
@@ -315,9 +320,9 @@
             // 
             // btn_Update
             // 
-            this.btn_Update.BackColor = System.Drawing.SystemColors.Info;
+            this.btn_Update.BackColor = System.Drawing.Color.Transparent;
             this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btn_Update.ForeColor = System.Drawing.Color.SpringGreen;
+            this.btn_Update.ForeColor = System.Drawing.Color.Green;
             this.btn_Update.Location = new System.Drawing.Point(1055, 87);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(89, 50);
@@ -328,6 +333,8 @@
             // 
             // cB_Gender
             // 
+            this.cB_Gender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Gender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Gender.FormattingEnabled = true;
@@ -342,6 +349,8 @@
             // 
             // cB_State
             // 
+            this.cB_State.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_State.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_State.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_State.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_State.FormattingEnabled = true;
@@ -364,7 +373,7 @@
             this.txt_Search_TC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Search_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_TC.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_TC.Location = new System.Drawing.Point(1009, 166);
+            this.txt_Search_TC.Location = new System.Drawing.Point(977, 166);
             this.txt_Search_TC.Name = "txt_Search_TC";
             this.txt_Search_TC.Size = new System.Drawing.Size(133, 26);
             this.txt_Search_TC.TabIndex = 15;
@@ -387,7 +396,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(935, 172);
+            this.label15.Location = new System.Drawing.Point(903, 172);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 38;
@@ -404,12 +413,34 @@
             this.label13.TabIndex = 39;
             this.label13.Text = "Adı";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(296, 169);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 51;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1116, 166);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 52;
+            this.pictureBox1.TabStop = false;
+            // 
             // Members
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txt_Search_Name);
@@ -448,6 +479,8 @@
             this.Text = "Members";
             this.Load += new System.EventHandler(this.Members_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,5 +520,7 @@
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

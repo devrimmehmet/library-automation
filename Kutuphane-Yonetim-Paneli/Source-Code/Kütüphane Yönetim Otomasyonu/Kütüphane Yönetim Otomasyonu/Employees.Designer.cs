@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employees));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.txt_Name = new System.Windows.Forms.TextBox();
@@ -56,7 +57,11 @@
             this.txt_Search_TC = new System.Windows.Forms.TextBox();
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -251,9 +256,9 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.button1.Location = new System.Drawing.Point(777, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 50);
@@ -264,27 +269,27 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button2.ForeColor = System.Drawing.Color.Red;
             this.button2.Location = new System.Drawing.Point(908, 96);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 50);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Delete";
+            this.button2.Text = "Sil";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.Info;
+            this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button3.ForeColor = System.Drawing.Color.Green;
             this.button3.Location = new System.Drawing.Point(1038, 95);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 50);
             this.button3.TabIndex = 29;
-            this.button3.Text = "Update";
+            this.button3.Text = "Güncelle";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -327,7 +332,7 @@
             // 
             this.txt_Search_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_TC.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_TC.Location = new System.Drawing.Point(81, 152);
+            this.txt_Search_TC.Location = new System.Drawing.Point(88, 152);
             this.txt_Search_TC.Name = "txt_Search_TC";
             this.txt_Search_TC.Size = new System.Drawing.Size(133, 26);
             this.txt_Search_TC.TabIndex = 35;
@@ -338,7 +343,7 @@
             // 
             this.txt_Search_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_Name.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_Name.Location = new System.Drawing.Point(970, 152);
+            this.txt_Search_Name.Location = new System.Drawing.Point(940, 152);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(168, 26);
             this.txt_Search_Name.TabIndex = 36;
@@ -349,11 +354,31 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(922, 152);
+            this.label14.Location = new System.Drawing.Point(892, 152);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(42, 20);
             this.label14.TabIndex = 37;
             this.label14.Text = "İsim";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1116, 152);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(227, 152);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 39;
+            this.pictureBox2.TabStop = false;
             // 
             // Employees
             // 
@@ -361,6 +386,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);
             this.Controls.Add(this.txt_Search_TC);
@@ -395,6 +422,8 @@
             this.Text = "Members";
             this.Load += new System.EventHandler(this.Members_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,5 +459,7 @@
         private System.Windows.Forms.TextBox txt_Search_TC;
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

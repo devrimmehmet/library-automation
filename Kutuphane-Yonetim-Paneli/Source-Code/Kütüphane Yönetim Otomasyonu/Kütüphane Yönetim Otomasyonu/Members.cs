@@ -41,7 +41,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void TableReflesh()
         {
-            SqlDataAdapter adp = new SqlDataAdapter("select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where DeletedState=0", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
@@ -59,6 +59,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[8].HeaderText = "Adres";
             dataGridView1.Columns[10].HeaderText = "Üyelik Tarihi";
             dataGridView1.Columns[11].HeaderText = "Şifre";
+            dataGridView1.Columns[12].Visible =false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
@@ -67,28 +68,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void TableReflesh(decimal SearchTextTC)
         {
-            //int IDD = Convert.ToInt32(txt_ID.Text);
-            //sqlConnection.Open();
-            //string MemberUpdateStr = $"UpdateFromMembers @ID,@Name,@Surname,@Gender,@BirthDate,@Phone,@Mail,@Address,@Member_State_ID,@Password";
-            //SqlCommand Update = new SqlCommand(MemberUpdateStr, sqlConnection);
-            //Update.Parameters.AddWithValue("@ID", IDD);
-            //Update.Parameters.AddWithValue("@Name", txt_Name.Text);
-            //Update.Parameters.AddWithValue("@Surname", txt_Surname.Text);
-            //Update.Parameters.AddWithValue("@Gender", cB_Gender.Text);
-            //string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
-            //Update.Parameters.AddWithValue("@BirthDate", BirthDate);
-            //Update.Parameters.AddWithValue("@Phone", txt_Phone.Text);
-
-            //Update.Parameters.AddWithValue("@Mail", txt_Mail.Text);
-            //Update.Parameters.AddWithValue("@Address", rTxt_Address.Text);
-            //Update.Parameters.AddWithValue("@Member_State_ID", MemberState);
-            //Update.Parameters.AddWithValue("@Password", txt_Password.Text);
-            //Update.ExecuteNonQuery();
-            //sqlConnection.Close();
-            //TableReflesh();
-            //Default();
-
-            string MemberUpdateStr = $"select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where IdentityNumber like '%'+@Text+'%'";
+            
+            string MemberUpdateStr = $"select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where IdentityNumber like '%'+@Text+'%' and DeletedState=0";
             SqlDataAdapter adp = new SqlDataAdapter();
             adp.SelectCommand = new SqlCommand(MemberUpdateStr, sqlConnection);
             adp.SelectCommand.Parameters.AddWithValue("@Text", SearchTextTC.ToString());
@@ -110,6 +91,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[10].HeaderText = "Üyelik Tarihi";
             dataGridView1.Columns[11].HeaderText = "Şifre";
             dataGridView1.Columns[11].HeaderText = "Şifre";
+            dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
@@ -142,6 +124,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[10].HeaderText = "Üyelik Tarihi";
             dataGridView1.Columns[11].HeaderText = "Şifre";
             dataGridView1.Columns[11].HeaderText = "Şifre";
+            dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
@@ -420,20 +403,32 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void txt_Search_TC_TextChanged(object sender, EventArgs e)
         {
-            Default();
+          
             txt_Search_Name.Text = "";
             if (txt_Search_TC.Text != "")
             {
                 TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
+            }
+            else
+            {
+                Default();
             }
 
         }
 
         private void txt_Search_Name_TextChanged(object sender, EventArgs e)
         {
-            Default();
+            
             txt_Search_TC.Text = "";
-            TableReflesh(txt_Search_Name.Text);
+            if (txt_Search_Name.Text != "")
+            {
+                TableReflesh(txt_Search_Name.Text);
+            }
+            else
+            {
+                Default();
+            }
+            
 
 
         }
