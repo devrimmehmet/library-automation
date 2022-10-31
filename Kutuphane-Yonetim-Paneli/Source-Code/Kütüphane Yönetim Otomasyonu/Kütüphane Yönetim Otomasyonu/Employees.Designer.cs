@@ -48,8 +48,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dTP_BirthDay = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.cB_Gender = new System.Windows.Forms.ComboBox();
             this.cB_Permission = new System.Windows.Forms.ComboBox();
@@ -73,7 +73,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1126, 429);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
             // txt_ID
             // 
@@ -112,7 +111,7 @@
             // txt_Mail
             // 
             this.txt_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txt_Mail.Location = new System.Drawing.Point(431, 108);
+            this.txt_Mail.Location = new System.Drawing.Point(647, 12);
             this.txt_Mail.Name = "txt_Mail";
             this.txt_Mail.Size = new System.Drawing.Size(133, 26);
             this.txt_Mail.TabIndex = 7;
@@ -183,7 +182,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.Color.Brown;
-            this.label5.Location = new System.Drawing.Point(368, 114);
+            this.label5.Location = new System.Drawing.Point(584, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 20);
             this.label5.TabIndex = 20;
@@ -238,7 +237,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label11.ForeColor = System.Drawing.Color.Brown;
-            this.label11.Location = new System.Drawing.Point(591, 14);
+            this.label11.Location = new System.Drawing.Point(375, 113);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(50, 20);
             this.label11.TabIndex = 22;
@@ -254,31 +253,31 @@
             this.dTP_BirthDay.Size = new System.Drawing.Size(133, 26);
             this.dTP_BirthDay.TabIndex = 4;
             // 
-            // button1
+            // btn_Add
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(728, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 50);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Personel Ekle";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Add.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Add.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btn_Add.Location = new System.Drawing.Point(728, 86);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(100, 50);
+            this.btn_Add.TabIndex = 10;
+            this.btn_Add.Text = "Personel Ekle";
+            this.btn_Add.UseVisualStyleBackColor = false;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // button2
+            // btn_Delete
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(834, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 50);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Sil";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Delete.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.Red;
+            this.btn_Delete.Location = new System.Drawing.Point(834, 86);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(100, 50);
+            this.btn_Delete.TabIndex = 12;
+            this.btn_Delete.Text = "Sil";
+            this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // button3
             // 
@@ -291,10 +290,12 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Güncelle";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // cB_Gender
             // 
+            this.cB_Gender.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Gender.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Gender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Gender.FormattingEnabled = true;
@@ -309,10 +310,12 @@
             // 
             // cB_Permission
             // 
+            this.cB_Permission.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Permission.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Permission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Permission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Permission.FormattingEnabled = true;
-            this.cB_Permission.Location = new System.Drawing.Point(647, 9);
+            this.cB_Permission.Location = new System.Drawing.Point(431, 108);
             this.cB_Permission.Name = "cB_Permission";
             this.cB_Permission.Size = new System.Drawing.Size(133, 28);
             this.cB_Permission.TabIndex = 8;
@@ -395,8 +398,8 @@
             this.Controls.Add(this.cB_Permission);
             this.Controls.Add(this.cB_Gender);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.dTP_BirthDay);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label11);
@@ -450,8 +453,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dTP_BirthDay;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox cB_Gender;
         private System.Windows.Forms.ComboBox cB_Permission;

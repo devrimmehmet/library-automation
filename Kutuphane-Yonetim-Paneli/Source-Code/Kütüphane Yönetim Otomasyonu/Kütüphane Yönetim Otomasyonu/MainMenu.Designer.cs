@@ -271,9 +271,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(3, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 20);
+            this.label8.Size = new System.Drawing.Size(95, 20);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Yayıncılar";
+            this.label8.Text = "Yayınevleri";
             this.label8.Click += new System.EventHandler(this.pnl_Publisher_Click);
             // 
             // pictureBox9

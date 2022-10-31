@@ -32,6 +32,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_IdentityNumber.Text = "";
             txt_Mail.Text = "";
             txt_Password.Text = "";
+            cB_Permission.SelectedIndex = 1;
         }
         private void TableReflesh()
         {
@@ -54,6 +55,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false;
+            dataGridView1.Columns["Mail"].Width = 150;
+            dataGridView1.Columns["Name"].Width = 120;
+            dataGridView1.Columns["Surname"].Width = 120;
         }
         private void TableReflesh(decimal SearchTextTC)
         {
@@ -79,6 +83,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false;
+            dataGridView1.Columns["Mail"].Width = 150;
+            dataGridView1.Columns["Name"].Width = 120;
+            dataGridView1.Columns["Surname"].Width = 120;
         }
         private void TableReflesh(string SearchTextName)
         {
@@ -103,10 +110,13 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[12].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
-            dataGridView1.Columns["DeletedState"].Visible = false;
+            dataGridView1.Columns["DeletedState"].Visible = false; 
+            dataGridView1.Columns["Mail"].Width = 150;
+            dataGridView1.Columns["Name"].Width = 120;
+            dataGridView1.Columns["Surname"].Width = 120;
         }
         private void Members_Load(object sender, EventArgs e)
-        { 
+        {
             SqlCommand komut = new SqlCommand("SELECT Permission FROM Permissions", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
@@ -131,7 +141,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Search_Name.MaxLength = 50;
             TableReflesh();
         }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_ID.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
@@ -142,29 +151,59 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Phone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
             txt_IdentityNumber.Text = (dataGridView1.CurrentRow.Cells["IdentityNumber"].Value).ToString();
             txt_Mail.Text = dataGridView1.CurrentRow.Cells["Mail"].Value.ToString();
-            int PermissionID= Convert.ToInt32(dataGridView1.CurrentRow.Cells["Permission_ID"].Value.ToString());
+            int PermissionID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Permission_ID"].Value.ToString());
             SqlCommand komut = new SqlCommand($"SELECT Permission FROM Permissions where ID={PermissionID}", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
             while (dr.Read())
             {
-                cB_Permission.Text=(dr["Permission"].ToString());
-            } 
+                cB_Permission.Text = (dr["Permission"].ToString());
+            }
             sqlConnection.Close();
-            txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
+            txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString(); 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
+        {
+            txt_Search_Name.Text = "";
+            if (txt_Search_TC.Text != "")
+            {
+                TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
+                Default();
+            }
+            else
+            {
+                TableReflesh();
+                Default();
+            }
+        }
+        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
+        {
+            txt_Search_TC.Text = "";
+            if (txt_Search_Name.Text!="")
+            {
+                TableReflesh(txt_Search_Name.Text);
+                Default();
+            }
+            else
+            {
+                TableReflesh();
+                Default();
+            }
+        }
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
             SqlCommand Member = new SqlCommand($"SELECT * FROM Employees where IdentityNumber='{txt_IdentityNumber.Text}'", sqlConnection);
             SqlDataReader dr2 = Member.ExecuteReader();
             if (dr2.Read())
             {
-                MessageBox.Show("Bu TC numarasına ait başka bir Personel var !!!");
+                MessageBox.Show("Bu TC numarasına ait başka bir Personel var !!!", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection.Close();
-
             }
             else
             {
@@ -175,155 +214,157 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 }
                 else
                 {
-                    if (txt_Phone.TextLength>10)
+                    if (txt_Name.Text != "")
                     {
-                        if (txt_IdentityNumber.TextLength>10)
+                        if (txt_Surname.Text != "")
                         {
-                            
-                            int PermissionID = 0;
-                            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{cB_Permission.Text}'", sqlConnection);
-                            SqlDataReader dr;
-                            sqlConnection.Open();
-                            dr = komut1.ExecuteReader();
-
-                            while (dr.Read())
+                            if (txt_Phone.TextLength > 10)
                             {
-                            PermissionID  = Convert.ToInt32(dr["ID"].ToString());
-                            }
-
-                            sqlConnection.Close();
-                            sqlConnection.Open();
-                            SqlCommand komut = new SqlCommand($"insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values ('{txt_Name.Text}','{txt_Surname.Text}','{cB_Gender.Text}','{dTP_BirthDay.Text}','{txt_Phone.Text}','{txt_IdentityNumber.Text}','{txt_Mail.Text}','{PermissionID}','{txt_Password.Text}')");
-                            komut.Connection = sqlConnection;
-                            int eklenti = komut.ExecuteNonQuery();
-                            sqlConnection.Close();
-
-                            if (eklenti > 0)
-                            {
-                                MessageBox.Show("Personel Sisteme Eklendi.");
-                                TableReflesh();
+                                if (txt_IdentityNumber.TextLength > 10)
+                                {
+                                    if (txt_Password.Text!="")
+                                    {
+                                        int PermissionID = 0;
+                                        SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{cB_Permission.Text}'", sqlConnection);
+                                        SqlDataReader dr;
+                                        sqlConnection.Open();
+                                        dr = komut1.ExecuteReader();
+                                        while (dr.Read())
+                                        {
+                                            PermissionID = Convert.ToInt32(dr["ID"].ToString());
+                                        }
+                                        sqlConnection.Close();
+                                        sqlConnection.Open();
+                                        string EmployeeAddStr = "insert into employees (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Permission_ID,Password) values (@Name,@Surname,@Gender,@BirthDate,@Phone,@IdentityNumber,@Mail,@Permission_ID,@Password)";
+                                        SqlCommand komut = new SqlCommand(EmployeeAddStr, sqlConnection);
+                                        komut.Parameters.AddWithValue("@Name", txt_Name.Text);
+                                        komut.Parameters.AddWithValue("@Surname", txt_Surname.Text);
+                                        komut.Parameters.AddWithValue("@Gender", cB_Gender.Text);
+                                        string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
+                                        komut.Parameters.AddWithValue("@BirthDate", BirthDate);
+                                        komut.Parameters.AddWithValue("@Phone", txt_Phone.Text);
+                                        komut.Parameters.AddWithValue("@IdentityNumber", txt_IdentityNumber.Text);
+                                        komut.Parameters.AddWithValue("@Mail", txt_Mail.Text);
+                                        komut.Parameters.AddWithValue("@Permission_ID", PermissionID);
+                                        komut.Parameters.AddWithValue("@Password", txt_Password.Text);
+                                        int eklenti = komut.ExecuteNonQuery();
+                                        sqlConnection.Close();
+                                        if (eklenti > 0)
+                                        {
+                                            MessageBox.Show("Personel Sisteme Eklendi.");
+                                            TableReflesh();
+                                            Default();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Personel eklenemedi.");
+                                        }
+                                        sqlConnection.Close();
+                                        
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lütfen Şifrenizi Yazınız!", "Şifre Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Personel eklenemedi.");
+                                MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            sqlConnection.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                            MessageBox.Show("Lütfen Soyadınızı Yazınız.", "Soyisim Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                     }
                     else
                     {
-                        MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lütfen adınızı yazınız.", "İsim Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                   
                 }
             }
-
-
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Delete_Click(object sender, EventArgs e)
         {
-
             if (txt_ID.Text != "")
             {
-                int IDD = Convert.ToInt32(txt_ID.Text);
-                sqlConnection.Open();
-                SqlCommand Sil = new SqlCommand($"DeleteFromEmployees {IDD}", sqlConnection);
-                Sil.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
-            }
-            else
-            {
-                MessageBox.Show("Lütfen silinecek kaydı seçiniz");
-            }
-
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-            int PermissionID = 0;
-            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{cB_Permission.Text}'", sqlConnection);
-            SqlDataReader dr;
-            sqlConnection.Open();
-            dr = komut1.ExecuteReader();
-
-            while (dr.Read())
-            {
-                PermissionID = Convert.ToInt32(dr["ID"].ToString());
-            }
-
-            sqlConnection.Close();
-            if (txt_ID.Text != "")
-            {
-                int IDD = Convert.ToInt32(txt_ID.Text);
-                sqlConnection.Open();
-                SqlCommand Update = new SqlCommand($"UpdateFromEmployees {IDD},'{txt_Name.Text}','{txt_Surname.Text}','{cB_Gender.Text}','{dTP_BirthDay.Text}','{txt_Phone.Text}','{txt_Mail.Text}','{PermissionID}','{txt_Password.Text}'", sqlConnection);
-                Update.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
-            }
-            else
-            {
-                MessageBox.Show("Lütfen güncellenecek kaydı seçiniz");
-            }
-
-        }
-
-
-
-        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                if (dataGridView1.Rows[i].Cells["Permission"].Value.ToString() == "Admin")
+                if (MessageBox.Show("Personel Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    renk.BackColor = Color.Red;
-                    renk.ForeColor = Color.White;
+                    int IDD = Convert.ToInt32(txt_ID.Text);
+                    sqlConnection.Open();
+                    SqlCommand Sil = new SqlCommand($"DeleteFromEmployees {IDD}", sqlConnection);
+                    Sil.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    TableReflesh();
                 }
-              
-                dataGridView1.Rows[i].DefaultCellStyle = renk;
-            }
-        }
-
-        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
-        {
-            txt_Search_Name.Text = "";
-            if (txt_Search_TC.Text!="")
-            {
-                TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
+                else
+                {
+                    MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Kayıt İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                TableReflesh();
+                MessageBox.Show("Lütfen Silinecek Personeli Seçiniz!", "Seçim Yapılmadı!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-           
         }
-
-        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
+        private void btn_Update_Click(object sender, EventArgs e)
         {
-            txt_Search_TC.Text = "";
-            TableReflesh(txt_Search_Name.Text);
-           
+            if (txt_ID.Text != "")
+            {
+                if (txt_Phone.TextLength > 10)
+                {
+                    if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
+                    {
+                        MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        int PermissionID = 0;
+                        SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Permissions where Permission='{cB_Permission.Text}'", sqlConnection);
+                        SqlDataReader dr;
+                        sqlConnection.Open();
+                        dr = komut1.ExecuteReader();
+                        while (dr.Read())
+                        {
+                            PermissionID = Convert.ToInt32(dr["ID"].ToString());
+                        }
+                        sqlConnection.Close();
+                        int IDD = Convert.ToInt32(txt_ID.Text);
+                        sqlConnection.Open();
+                        string MemberUpdateStr = $"UpdateFromEmployees @ID,@Name,@Surname,@Gender,@BirthDate,@Phone,@Mail,@Permission_ID,@Password";
+                        SqlCommand Update = new SqlCommand(MemberUpdateStr, sqlConnection);
+                        Update.Parameters.AddWithValue("@ID", IDD);
+                        Update.Parameters.AddWithValue("@Name", txt_Name.Text);
+                        Update.Parameters.AddWithValue("@Surname", txt_Surname.Text);
+                        Update.Parameters.AddWithValue("@Gender", cB_Gender.Text);
+                        string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
+                        Update.Parameters.AddWithValue("@BirthDate", BirthDate);
+                        Update.Parameters.AddWithValue("@Phone", txt_Phone.Text);
+                        Update.Parameters.AddWithValue("@Mail", txt_Mail.Text);
+                        Update.Parameters.AddWithValue("@Permission_ID", PermissionID);
+                        Update.Parameters.AddWithValue("@Password", txt_Password.Text);
+                        Update.ExecuteNonQuery();
+                        sqlConnection.Close();
+                        TableReflesh();
+                        Default();
 
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
-
-
 }
 
