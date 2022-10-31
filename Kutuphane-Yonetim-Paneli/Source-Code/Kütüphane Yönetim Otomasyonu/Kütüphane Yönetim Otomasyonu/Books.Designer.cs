@@ -62,8 +62,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 356);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 360);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1130, 273);
             this.dataGridView1.TabIndex = 0;
@@ -103,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 15);
+            this.label1.Location = new System.Drawing.Point(79, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 13;
@@ -112,16 +113,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 41);
+            this.label2.Location = new System.Drawing.Point(79, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "NAME";
+            this.label2.Text = "İsim";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 254);
+            this.label3.Location = new System.Drawing.Point(79, 259);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 13);
             this.label3.TabIndex = 16;
@@ -130,16 +131,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(106, 281);
+            this.label4.Location = new System.Drawing.Point(79, 281);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "RAF NO";
+            this.label4.Text = "Raf No.";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(74, 93);
+            this.label7.Location = new System.Drawing.Point(79, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 18;
@@ -157,7 +158,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(100, 232);
+            this.label11.Location = new System.Drawing.Point(79, 232);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(34, 13);
             this.label11.TabIndex = 22;
@@ -166,7 +167,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(117, 131);
+            this.label12.Location = new System.Drawing.Point(79, 147);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 21;
@@ -174,7 +175,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(434, 29);
+            this.button1.Location = new System.Drawing.Point(788, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 43);
             this.button1.TabIndex = 27;
@@ -184,7 +185,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(551, 29);
+            this.button2.Location = new System.Drawing.Point(905, 19);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 42);
             this.button2.TabIndex = 28;
@@ -194,7 +195,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(669, 28);
+            this.button3.Location = new System.Drawing.Point(1023, 18);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 43);
             this.button3.TabIndex = 29;
@@ -231,15 +232,15 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(874, 308);
+            this.label13.Location = new System.Drawing.Point(892, 304);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.Size = new System.Drawing.Size(56, 13);
             this.label13.TabIndex = 34;
-            this.label13.Text = "RAFA GÖRE";
+            this.label13.Text = "Rafa Göre";
             // 
             // txt_Search_Shelf
             // 
-            this.txt_Search_Shelf.Location = new System.Drawing.Point(987, 305);
+            this.txt_Search_Shelf.Location = new System.Drawing.Point(1005, 301);
             this.txt_Search_Shelf.Name = "txt_Search_Shelf";
             this.txt_Search_Shelf.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Shelf.TabIndex = 35;
@@ -247,7 +248,7 @@
             // 
             // txt_Search_Name
             // 
-            this.txt_Search_Name.Location = new System.Drawing.Point(987, 332);
+            this.txt_Search_Name.Location = new System.Drawing.Point(1005, 328);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Name.TabIndex = 36;
@@ -256,11 +257,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(874, 331);
+            this.label14.Location = new System.Drawing.Point(892, 327);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(74, 13);
+            this.label14.Size = new System.Drawing.Size(60, 13);
             this.label14.TabIndex = 37;
-            this.label14.Text = "ADINA GÖRE";
+            this.label14.Text = "Adına Göre";
             // 
             // checkB_State
             // 
@@ -275,7 +276,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(115, 307);
+            this.label15.Location = new System.Drawing.Point(79, 308);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(47, 13);
             this.label15.TabIndex = 39;
@@ -302,7 +303,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(115, 334);
+            this.label16.Location = new System.Drawing.Point(79, 334);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(46, 13);
             this.label16.TabIndex = 41;
@@ -320,7 +321,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
             this.Controls.Add(this.txt_PublishYear);
             this.Controls.Add(this.cB_Category);

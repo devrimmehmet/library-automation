@@ -49,6 +49,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 356);
             this.dataGridView1.Name = "dataGridView1";
@@ -59,14 +60,14 @@
             // txt_Id
             // 
             this.txt_Id.Enabled = false;
-            this.txt_Id.Location = new System.Drawing.Point(174, 12);
+            this.txt_Id.Location = new System.Drawing.Point(175, 76);
             this.txt_Id.Name = "txt_Id";
             this.txt_Id.Size = new System.Drawing.Size(133, 20);
             this.txt_Id.TabIndex = 1;
             // 
             // txt_Name
             // 
-            this.txt_Name.Location = new System.Drawing.Point(174, 38);
+            this.txt_Name.Location = new System.Drawing.Point(175, 102);
             this.txt_Name.Name = "txt_Name";
             this.txt_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Name.TabIndex = 2;
@@ -74,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 15);
+            this.label1.Location = new System.Drawing.Point(74, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 13;
@@ -83,15 +84,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 40);
+            this.label2.Location = new System.Drawing.Point(74, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "NAME";
+            this.label2.Text = "İsim";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(379, 11);
+            this.button1.Location = new System.Drawing.Point(788, 26);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 43);
             this.button1.TabIndex = 27;
@@ -101,7 +102,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(496, 11);
+            this.button2.Location = new System.Drawing.Point(905, 26);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 42);
             this.button2.TabIndex = 28;
@@ -111,7 +112,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(614, 10);
+            this.button3.Location = new System.Drawing.Point(1023, 25);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 43);
             this.button3.TabIndex = 29;
@@ -122,7 +123,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(112, 149);
+            this.label13.Location = new System.Drawing.Point(75, 212);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 13);
             this.label13.TabIndex = 34;
@@ -130,7 +131,7 @@
             // 
             // txt_Search_Name
             // 
-            this.txt_Search_Name.Location = new System.Drawing.Point(115, 322);
+            this.txt_Search_Name.Location = new System.Drawing.Point(987, 307);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Name.TabIndex = 36;
@@ -139,15 +140,15 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(71, 322);
+            this.label14.Location = new System.Drawing.Point(902, 310);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.Size = new System.Drawing.Size(64, 13);
             this.label14.TabIndex = 37;
-            this.label14.Text = "NAME";
+            this.label14.Text = "İsim-Tarama";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(174, 128);
+            this.richTextBox1.Location = new System.Drawing.Point(175, 192);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(200, 92);
             this.richTextBox1.TabIndex = 39;
@@ -156,15 +157,15 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(73, 67);
+            this.label7.Location = new System.Drawing.Point(74, 131);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 13);
+            this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 42;
-            this.label7.Text = "PHONE NUMBER";
+            this.label7.Text = "Telefon Numarası";
             // 
             // txt_Phone
             // 
-            this.txt_Phone.Location = new System.Drawing.Point(174, 64);
+            this.txt_Phone.Location = new System.Drawing.Point(175, 128);
             this.txt_Phone.Name = "txt_Phone";
             this.txt_Phone.Size = new System.Drawing.Size(133, 20);
             this.txt_Phone.TabIndex = 40;
@@ -172,15 +173,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(136, 93);
+            this.label5.Location = new System.Drawing.Point(75, 157);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 45;
-            this.label5.Text = "MAIL";
+            this.label5.Text = "e-Mail";
             // 
             // txt_Mail
             // 
-            this.txt_Mail.Location = new System.Drawing.Point(174, 90);
+            this.txt_Mail.Location = new System.Drawing.Point(175, 154);
             this.txt_Mail.Name = "txt_Mail";
             this.txt_Mail.Size = new System.Drawing.Size(133, 20);
             this.txt_Mail.TabIndex = 44;
@@ -189,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_Mail);

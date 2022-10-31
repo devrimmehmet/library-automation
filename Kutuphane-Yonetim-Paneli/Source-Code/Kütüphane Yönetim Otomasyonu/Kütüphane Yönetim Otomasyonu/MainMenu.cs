@@ -155,5 +155,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
             frm2.BringToFront(); // formu panel içinde en öne getirdik
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

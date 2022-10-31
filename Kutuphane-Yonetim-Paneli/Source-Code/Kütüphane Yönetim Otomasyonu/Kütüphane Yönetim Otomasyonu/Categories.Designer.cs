@@ -43,6 +43,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(21, 142);
             this.dataGridView1.Name = "dataGridView1";
@@ -53,14 +54,14 @@
             // txt_Id
             // 
             this.txt_Id.Enabled = false;
-            this.txt_Id.Location = new System.Drawing.Point(174, 12);
+            this.txt_Id.Location = new System.Drawing.Point(176, 56);
             this.txt_Id.Name = "txt_Id";
             this.txt_Id.Size = new System.Drawing.Size(133, 20);
             this.txt_Id.TabIndex = 1;
             // 
             // txt_Name
             // 
-            this.txt_Name.Location = new System.Drawing.Point(174, 38);
+            this.txt_Name.Location = new System.Drawing.Point(176, 82);
             this.txt_Name.Name = "txt_Name";
             this.txt_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Name.TabIndex = 2;
@@ -68,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 15);
+            this.label1.Location = new System.Drawing.Point(151, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 13;
@@ -77,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 40);
+            this.label2.Location = new System.Drawing.Point(147, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 13);
             this.label2.TabIndex = 14;
@@ -85,7 +86,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(379, 11);
+            this.button1.Location = new System.Drawing.Point(392, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 43);
             this.button1.TabIndex = 27;
@@ -95,7 +96,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(496, 11);
+            this.button2.Location = new System.Drawing.Point(509, 59);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 42);
             this.button2.TabIndex = 28;
@@ -105,7 +106,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(614, 10);
+            this.button3.Location = new System.Drawing.Point(627, 58);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 43);
             this.button3.TabIndex = 29;
@@ -115,7 +116,7 @@
             // 
             // txt_Search_Name
             // 
-            this.txt_Search_Name.Location = new System.Drawing.Point(784, 97);
+            this.txt_Search_Name.Location = new System.Drawing.Point(965, 70);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(133, 20);
             this.txt_Search_Name.TabIndex = 36;
@@ -124,7 +125,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(740, 97);
+            this.label14.Location = new System.Drawing.Point(921, 74);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(38, 13);
             this.label14.TabIndex = 37;
@@ -134,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);

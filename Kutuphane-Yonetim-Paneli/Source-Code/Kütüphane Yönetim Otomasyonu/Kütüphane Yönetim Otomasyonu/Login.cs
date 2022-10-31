@@ -21,8 +21,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            SqlCommand Employee = new SqlCommand($"SELECT * FROM Employees where IdentityNumber='{textBox1.Text}' AND Password='{textBox2.Text}'", sqlConnection);
-            SqlDataReader  dr = Employee.ExecuteReader();
+            string Employee = "SELECT * FROM Employees where IdentityNumber=@ID AND Password=@Password";
+            SqlCommand  EmployeeCmd = new SqlCommand(Employee, sqlConnection);
+            EmployeeCmd.Parameters.AddWithValue("@Password", txt_Password.Text);
+            EmployeeCmd.Parameters.AddWithValue("@ID", txt_ID.Text);
+            SqlDataReader  dr = EmployeeCmd.ExecuteReader();
             if (dr.Read())
             {
                
@@ -35,12 +38,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             sqlConnection.Close();
             sqlConnection.Open();
-            SqlCommand Member = new SqlCommand($"SELECT * FROM Members where IdentityNumber='{textBox1.Text}' AND Password='{textBox2.Text}'", sqlConnection);
-            SqlDataReader dr2 = Member.ExecuteReader();
+
+            string Member = "SELECT * FROM Members where IdentityNumber=@ID AND Password=@Password";
+            SqlCommand MemberCmd = new SqlCommand(Member, sqlConnection);
+            MemberCmd.Parameters.AddWithValue("@Password", txt_Password.Text);
+            MemberCmd.Parameters.AddWithValue("@ID", txt_ID.Text);
+            SqlDataReader dr2 = MemberCmd.ExecuteReader();
             if (dr2.Read())
             {
-               // MessageBox.Show("Tebrikler! Başarılı bir şekilde giriş yaptınız.");
-                
+
+
                 this.Hide();
                 UserMenu user = new UserMenu();
                 user.ActiveMemberID = Convert.ToInt32(dr2["ID"]);
@@ -53,6 +60,17 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 MessageBox.Show("Kullanıcı adınızı ve şifrenizi kontrol ediniz.", "Giriş Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             sqlConnection.Close();
+        }
+
+       
+        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txt_ID.MaxLength = 11;
+            txt_Password.MaxLength = 50;
         }
     }
 }

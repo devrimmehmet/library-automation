@@ -47,124 +47,151 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 356);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 288);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 273);
+            this.dataGridView1.Size = new System.Drawing.Size(1130, 341);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // txt_Id
             // 
             this.txt_Id.Enabled = false;
-            this.txt_Id.Location = new System.Drawing.Point(174, 12);
+            this.txt_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txt_Id.Location = new System.Drawing.Point(115, 6);
             this.txt_Id.Name = "txt_Id";
-            this.txt_Id.Size = new System.Drawing.Size(133, 20);
+            this.txt_Id.Size = new System.Drawing.Size(161, 26);
             this.txt_Id.TabIndex = 1;
             // 
             // txt_Name
             // 
-            this.txt_Name.Location = new System.Drawing.Point(174, 38);
+            this.txt_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txt_Name.Location = new System.Drawing.Point(115, 35);
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(133, 20);
+            this.txt_Name.Size = new System.Drawing.Size(161, 26);
             this.txt_Name.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(149, 15);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.Brown;
+            this.label1.Location = new System.Drawing.Point(81, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.Size = new System.Drawing.Size(28, 20);
             this.label1.TabIndex = 13;
             this.label1.Text = "ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(92, 40);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.Brown;
+            this.label2.Location = new System.Drawing.Point(14, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 14;
-            this.label2.Text = "NAMESurname";
+            this.label2.Text = "Adı-Soyadı";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(379, 11);
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button1.Location = new System.Drawing.Point(833, 136);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 43);
+            this.button1.Size = new System.Drawing.Size(100, 50);
             this.button1.TabIndex = 27;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Yazar Ekle";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(496, 11);
+            this.button2.BackColor = System.Drawing.Color.Red;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button2.Location = new System.Drawing.Point(939, 136);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 42);
+            this.button2.Size = new System.Drawing.Size(100, 50);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Text = "Sil";
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(614, 10);
+            this.button3.BackColor = System.Drawing.SystemColors.Info;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.ForeColor = System.Drawing.Color.SpringGreen;
+            this.button3.Location = new System.Drawing.Point(1045, 136);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 43);
+            this.button3.Size = new System.Drawing.Size(100, 50);
             this.button3.TabIndex = 29;
-            this.button3.Text = "Update";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Text = "Güncelle";
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(112, 85);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.ForeColor = System.Drawing.Color.Brown;
+            this.label13.Location = new System.Drawing.Point(25, 151);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.Size = new System.Drawing.Size(84, 20);
             this.label13.TabIndex = 34;
-            this.label13.Text = "Description";
+            this.label13.Text = "Hakkında";
             // 
             // txt_Search_Information
             // 
-            this.txt_Search_Information.Location = new System.Drawing.Point(749, 322);
+            this.txt_Search_Information.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txt_Search_Information.ForeColor = System.Drawing.Color.Red;
+            this.txt_Search_Information.Location = new System.Drawing.Point(789, 256);
             this.txt_Search_Information.Name = "txt_Search_Information";
-            this.txt_Search_Information.Size = new System.Drawing.Size(133, 20);
+            this.txt_Search_Information.Size = new System.Drawing.Size(353, 26);
             this.txt_Search_Information.TabIndex = 35;
             this.txt_Search_Information.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
             // 
             // txt_Search_Name
             // 
-            this.txt_Search_Name.Location = new System.Drawing.Point(115, 322);
+            this.txt_Search_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txt_Search_Name.ForeColor = System.Drawing.Color.Red;
+            this.txt_Search_Name.Location = new System.Drawing.Point(56, 256);
             this.txt_Search_Name.Name = "txt_Search_Name";
-            this.txt_Search_Name.Size = new System.Drawing.Size(133, 20);
+            this.txt_Search_Name.Size = new System.Drawing.Size(170, 26);
             this.txt_Search_Name.TabIndex = 36;
             this.txt_Search_Name.TextChanged += new System.EventHandler(this.txt_Search_Name_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(71, 322);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(8, 259);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.Size = new System.Drawing.Size(42, 20);
             this.label14.TabIndex = 37;
-            this.label14.Text = "NAME";
+            this.label14.Text = "İsim";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(666, 329);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(702, 259);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(81, 20);
             this.label3.TabIndex = 38;
-            this.label3.Text = "Description";
+            this.label3.Text = "Açıklama";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(174, 64);
+            this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.richTextBox1.Location = new System.Drawing.Point(115, 67);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(753, 225);
+            this.richTextBox1.Size = new System.Drawing.Size(712, 180);
             this.richTextBox1.TabIndex = 39;
             this.richTextBox1.Text = "";
             // 
@@ -172,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 650);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label3);
