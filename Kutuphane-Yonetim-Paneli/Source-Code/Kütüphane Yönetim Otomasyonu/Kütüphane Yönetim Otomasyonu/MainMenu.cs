@@ -29,136 +29,115 @@ namespace Kütüphane_Yönetim_Otomasyonu
             frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
             frm2.BringToFront(); // formu panel içinde en öne getirdik
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void SelectedFormPanelBackColor()
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
+            pnl_Members.BackColor = Color.DarkSlateGray;
+            pnl_Employees.BackColor = Color.DarkSlateGray;
+            pnl_Languages.BackColor = Color.DarkSlateGray;
+            pnl_Categories.BackColor = Color.DarkSlateGray;
+            pnl_Authors.BackColor = Color.DarkSlateGray;
+            pnl_Books.BackColor = Color.DarkSlateGray;
+            pnl_Publisher.BackColor = Color.DarkSlateGray;
+            pnl_Transactions.BackColor = Color.DarkSlateGray;
+            panel11.BackColor = Color.DarkSlateGray;
+            panel12.BackColor = Color.DarkSlateGray;
+        }
+        private void pnl_Members_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Members.BackColor = Color.DarkGreen;
+            Members frm2 = new Members();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
+        }
+        private void pnl_Employees_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Employees.BackColor = Color.DarkGreen;
             Employees frm2 = new Employees();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void pnl_Languages_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            Authors frm2 = new Authors();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            Categories frm2 = new Categories();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
-        }
-
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Languages.BackColor = Color.DarkGreen;
             Languages frm2 = new Languages();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
+        private void pnl_Authors_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            MemberStates frm2 = new MemberStates();
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Authors.BackColor = Color.DarkGreen;
+            Authors frm2 = new Authors();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
+        private void pnl_Categories_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            Permissions frm2 = new Permissions();
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Categories.BackColor = Color.DarkGreen;
+            Categories frm2 = new Categories();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
-
-        private void pictureBox8_Click(object sender, EventArgs e)
+        private void pnl_Books_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            Publishers frm2 = new Publishers();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
-        }
-
-        private void pictureBox9_Click(object sender, EventArgs e)
-        {
-            
-                 panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            RequestTypes frm2 = new RequestTypes();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
-        }
-
-        private void pictureBox10_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Books.BackColor = Color.DarkGreen;
             Books frm2 = new Books();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
-
-        private void pictureBox11_Click(object sender, EventArgs e)
+        private void pnl_Publisher_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Publisher.BackColor = Color.DarkGreen;
+            Publishers frm2 = new Publishers();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2);
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
+        }
+        private void pnl_Transactions_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_Transactions.BackColor = Color.DarkGreen;
             Transactions frm2 = new Transactions();
             frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
+            panel1.Controls.Add(frm2);
             frm2.ActiveEmployeeID = this.ActiveEmployeeID;
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
         }
     }
 }

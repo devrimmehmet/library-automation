@@ -70,29 +70,11 @@
     <Compile Include="Books.Designer.cs">
       <DependentUpon>Books.cs</DependentUpon>
     </Compile>
-    <Compile Include="RequestTypes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RequestTypes.Designer.cs">
-      <DependentUpon>RequestTypes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Publishers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Publishers.Designer.cs">
       <DependentUpon>Publishers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Permissions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Permissions.Designer.cs">
-      <DependentUpon>Permissions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MemberStates.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemberStates.Designer.cs">
-      <DependentUpon>MemberStates.cs</DependentUpon>
     </Compile>
     <Compile Include="Languages.cs">
       <SubType>Form</SubType>
@@ -151,17 +133,8 @@
     <EmbeddedResource Include="Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RequestTypes.resx">
-      <DependentUpon>RequestTypes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Publishers.resx">
       <DependentUpon>Publishers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Permissions.resx">
-      <DependentUpon>Permissions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemberStates.resx">
-      <DependentUpon>MemberStates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Languages.resx">
       <DependentUpon>Languages.cs</DependentUpon>

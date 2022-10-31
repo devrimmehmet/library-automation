@@ -85,26 +85,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            MemberStates frm2 = new MemberStates();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+          
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            Permissions frm2 = new Permissions();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+        
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
@@ -122,14 +108,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void pictureBox9_Click(object sender, EventArgs e)
         {
             
-                 panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
-            RequestTypes frm2 = new RequestTypes();
-            frm2.TopLevel = false;
-            panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
-            frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
-            frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
-            frm2.BringToFront(); // formu panel içinde en öne getirdik
+        
         }
 
         private void pictureBox10_Click(object sender, EventArgs e)

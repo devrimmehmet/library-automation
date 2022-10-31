@@ -101,7 +101,12 @@
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_ID);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(378, 311);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(378, 311);
             this.Name = "Login";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kütüphane Otomasyonu";
             this.Load += new System.EventHandler(this.Login_Load);

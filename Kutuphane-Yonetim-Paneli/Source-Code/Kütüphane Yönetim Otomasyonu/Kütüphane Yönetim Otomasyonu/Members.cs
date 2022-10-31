@@ -59,7 +59,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[8].HeaderText = "Adres";
             dataGridView1.Columns[10].HeaderText = "Üyelik Tarihi";
             dataGridView1.Columns[11].HeaderText = "Şifre";
-            dataGridView1.Columns[12].Visible =false;
+            dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
@@ -68,7 +68,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void TableReflesh(decimal SearchTextTC)
         {
-            
+
             string MemberUpdateStr = $"select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where IdentityNumber like '%'+@Text+'%' and DeletedState=0";
             SqlDataAdapter adp = new SqlDataAdapter();
             adp.SelectCommand = new SqlCommand(MemberUpdateStr, sqlConnection);
@@ -135,7 +135,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void Members_Load(object sender, EventArgs e)
         {
-           
+
             cB_Gender.SelectedIndex = 2;
 
             SqlCommand komut = new SqlCommand("SELECT MemberState FROM MemberStates", sqlConnection);
@@ -205,78 +205,86 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr2 = Member.ExecuteReader();
             if (dr2.Read())
             {
-                MessageBox.Show("Bu TC numarasına ait başka bir üye var !!!","HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Bu TC numarasına ait başka bir üye var !!!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sqlConnection.Close();
 
             }
             else
             {
                 sqlConnection.Close();
-                if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
+                if (txt_Name.Text != "")
                 {
-                    MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    if (txt_Phone.TextLength > 10)
+                    sqlConnection.Close();
+                    if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
                     {
-
-                        if (txt_IdentityNumber.TextLength > 10)
-                        {
-                            int MemberState = 1;
-                            sqlConnection.Open();
-                            SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{cB_State.Text}'", sqlConnection);
-                            SqlDataReader dr3 = MemberStateFind.ExecuteReader();
-                            if (dr3.Read())
-                            {
-
-                                MemberState = Convert.ToInt32(dr3["ID"].ToString());
-                                sqlConnection.Close();
-
-                            }
-                            sqlConnection.Open();
-                            string MemberAddStr = "insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values (@Name,@Surname,@Gender,@BirthDate,@Phone,@IdentityNumber,@Mail,@Address,@Member_State_ID,@Password)";
-                            SqlCommand komut = new SqlCommand(MemberAddStr, sqlConnection);
-                            komut.Parameters.AddWithValue("@Name", txt_Name.Text);
-                            komut.Parameters.AddWithValue("@Surname", txt_Surname.Text);
-                            komut.Parameters.AddWithValue("@Gender", cB_Gender.Text);
-                            string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
-                            komut.Parameters.AddWithValue("@BirthDate", BirthDate);
-                            komut.Parameters.AddWithValue("@Phone", txt_Phone.Text);
-                            komut.Parameters.AddWithValue("@IdentityNumber", txt_IdentityNumber.Text);
-                            komut.Parameters.AddWithValue("@Mail", txt_Mail.Text);
-                            komut.Parameters.AddWithValue("@Address", rTxt_Address.Text);
-                            komut.Parameters.AddWithValue("@Member_State_ID", MemberState);
-                            komut.Parameters.AddWithValue("@Password", txt_Password.Text);
-                            int eklenti = komut.ExecuteNonQuery();
-                            sqlConnection.Close();
-
-                            if (eklenti > 0)
-                            {
-                                MessageBox.Show("Üye Sisteme Eklendi.");
-                                TableReflesh();
-                                Default();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Üye eklenemedi.");
-                            }
-                            sqlConnection.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
+                        MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (txt_Phone.TextLength > 10)
+                        {
+
+                            if (txt_IdentityNumber.TextLength > 10)
+                            {
+                                int MemberState = 1;
+                                sqlConnection.Open();
+                                SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{cB_State.Text}'", sqlConnection);
+                                SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+                                if (dr3.Read())
+                                {
+
+                                    MemberState = Convert.ToInt32(dr3["ID"].ToString());
+                                    sqlConnection.Close();
+
+                                }
+                                sqlConnection.Open();
+                                string MemberAddStr = "insert into members (Name,Surname,Gender,BirthDate,Phone,IdentityNumber,Mail,Address,Member_State_ID,Password) values (@Name,@Surname,@Gender,@BirthDate,@Phone,@IdentityNumber,@Mail,@Address,@Member_State_ID,@Password)";
+                                SqlCommand komut = new SqlCommand(MemberAddStr, sqlConnection);
+                                komut.Parameters.AddWithValue("@Name", txt_Name.Text);
+                                komut.Parameters.AddWithValue("@Surname", txt_Surname.Text);
+                                komut.Parameters.AddWithValue("@Gender", cB_Gender.Text);
+                                string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
+                                komut.Parameters.AddWithValue("@BirthDate", BirthDate);
+                                komut.Parameters.AddWithValue("@Phone", txt_Phone.Text);
+                                komut.Parameters.AddWithValue("@IdentityNumber", txt_IdentityNumber.Text);
+                                komut.Parameters.AddWithValue("@Mail", txt_Mail.Text);
+                                komut.Parameters.AddWithValue("@Address", rTxt_Address.Text);
+                                komut.Parameters.AddWithValue("@Member_State_ID", MemberState);
+                                komut.Parameters.AddWithValue("@Password", txt_Password.Text);
+                                int eklenti = komut.ExecuteNonQuery();
+                                sqlConnection.Close();
+
+                                if (eklenti > 0)
+                                {
+                                    MessageBox.Show("Üye Sisteme Eklendi.");
+                                    TableReflesh();
+                                    Default();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Üye eklenemedi.");
+                                }
+                                sqlConnection.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lütfen Geçerli Bir TC Numarası giriniz.", "Geçersiz TC", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
 
                     }
-
-
+                }else
+                {
+                    MessageBox.Show("Lütfen adınızı giriniz", "Adınız boş olamaz.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
 
 
@@ -284,7 +292,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+
             if (txt_ID.Text != "")
             {
                 if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
@@ -305,7 +313,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             else
             {
-                MessageBox.Show("Lütfen silinecek kaydı seçiniz");
+                MessageBox.Show("Lütfen silinecek kaydı seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -313,30 +321,30 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            if (txt_Phone.TextLength > 10)
+            if (txt_ID.Text != "")
             {
-                if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
+                if (txt_Phone.TextLength > 10)
                 {
-                    MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-
-
-                    int MemberState = 1;
-                    sqlConnection.Open();
-                    SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{cB_State.Text}'", sqlConnection);
-                    SqlDataReader dr3 = MemberStateFind.ExecuteReader();
-                    if (dr3.Read())
+                    if (!this.txt_Mail.Text.Contains('@') || !this.txt_Mail.Text.Contains('.'))
                     {
-
-                        MemberState = Convert.ToInt32(dr3["ID"].ToString());
-                        sqlConnection.Close();
-
+                        MessageBox.Show("Lütfen Geçerli Bir Mail Adresi giriniz.", "Geçersiz Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    if (txt_ID.Text != "")
+                    else
                     {
+
+
+                        int MemberState = 1;
+                        sqlConnection.Open();
+                        SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{cB_State.Text}'", sqlConnection);
+                        SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+                        if (dr3.Read())
+                        {
+
+                            MemberState = Convert.ToInt32(dr3["ID"].ToString());
+                            sqlConnection.Close();
+
+                        }
+
                         int IDD = Convert.ToInt32(txt_ID.Text);
                         sqlConnection.Open();
                         string MemberUpdateStr = $"UpdateFromMembers @ID,@Name,@Surname,@Gender,@BirthDate,@Phone,@Mail,@Address,@Member_State_ID,@Password";
@@ -357,18 +365,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
                         sqlConnection.Close();
                         TableReflesh();
                         Default();
+
                     }
-                    else
-                    {
-                        MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz");
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Lütfen Geçerli Bir Telefon Numarası giriniz.", "Geçersiz Telefon", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz","Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
 
         }
 
@@ -403,7 +411,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void txt_Search_TC_TextChanged(object sender, EventArgs e)
         {
-          
+
             txt_Search_Name.Text = "";
             if (txt_Search_TC.Text != "")
             {
@@ -418,7 +426,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void txt_Search_Name_TextChanged(object sender, EventArgs e)
         {
-            
+
             txt_Search_TC.Text = "";
             if (txt_Search_Name.Text != "")
             {
@@ -428,12 +436,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 Default();
             }
-            
+
 
 
         }
 
-     
+
     }
 
 

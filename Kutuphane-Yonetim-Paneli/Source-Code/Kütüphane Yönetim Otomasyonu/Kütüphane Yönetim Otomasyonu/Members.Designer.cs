@@ -75,7 +75,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 198);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 424);
+            this.dataGridView1.Size = new System.Drawing.Size(1126, 415);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -155,7 +155,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(54, 175);
+            this.label2.Location = new System.Drawing.Point(12, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 20);
             this.label2.TabIndex = 14;
@@ -373,7 +373,7 @@
             this.txt_Search_TC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Search_TC.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_TC.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_TC.Location = new System.Drawing.Point(977, 166);
+            this.txt_Search_TC.Location = new System.Drawing.Point(973, 166);
             this.txt_Search_TC.Name = "txt_Search_TC";
             this.txt_Search_TC.Size = new System.Drawing.Size(133, 26);
             this.txt_Search_TC.TabIndex = 15;
@@ -385,7 +385,7 @@
             this.txt_Search_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Search_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_Name.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_Name.Location = new System.Drawing.Point(95, 169);
+            this.txt_Search_Name.Location = new System.Drawing.Point(53, 169);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(195, 26);
             this.txt_Search_Name.TabIndex = 14;
@@ -396,7 +396,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(903, 172);
+            this.label15.Location = new System.Drawing.Point(899, 172);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 38;
@@ -416,7 +416,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(296, 169);
+            this.pictureBox2.Location = new System.Drawing.Point(254, 169);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(26, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -426,7 +426,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1116, 166);
+            this.pictureBox1.Location = new System.Drawing.Point(1112, 166);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -438,7 +438,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.ClientSize = new System.Drawing.Size(1150, 625);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label13);
