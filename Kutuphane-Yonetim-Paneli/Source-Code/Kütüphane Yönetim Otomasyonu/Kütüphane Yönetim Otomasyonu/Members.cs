@@ -46,7 +46,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Open();
             adp.Fill(dt);
             dataGridView1.DataSource = dt;
-
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Ad";
@@ -63,12 +62,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
-
-
         }
         private void TableReflesh(decimal SearchTextTC)
         {
-
             string MemberUpdateStr = $"select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where IdentityNumber like '%'+@Text+'%' and DeletedState=0";
             SqlDataAdapter adp = new SqlDataAdapter();
             adp.SelectCommand = new SqlCommand(MemberUpdateStr, sqlConnection);
@@ -77,7 +73,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Open();
             adp.Fill(dt);
             dataGridView1.DataSource = dt;
-
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Ad";
@@ -95,10 +90,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
-
-
-
-
         }
         private void TableReflesh(string SearchTextName)
         {
@@ -135,9 +126,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void Members_Load(object sender, EventArgs e)
         {
-
-            cB_Gender.SelectedIndex = 2;
-
             SqlCommand komut = new SqlCommand("SELECT MemberState FROM MemberStates", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
@@ -148,13 +136,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 cB_State.Items.Add(dr["MemberState"]);
             }
             sqlConnection.Close();
-            cB_State.SelectedIndex = 0;
+            Default();
             dataGridView1.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView1.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
-
-            TableReflesh();
-
             txt_Name.MaxLength = 50;
             txt_Surname.MaxLength = 50;
             txt_Phone.MaxLength = 11;
@@ -164,9 +149,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Password.MaxLength = 50;
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
+            TableReflesh();
             dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[11].Width = 70;
-            Default();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -196,7 +181,69 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+
+        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Aktif")
+                {
+                    renk.BackColor = Color.YellowGreen;
+                }
+                else if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Pasif")
+                {
+                    renk.BackColor = Color.Orange;
+                }
+                else if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Cezalı")
+                {
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+                }
+                dataGridView1.Rows[i].DefaultCellStyle = renk;
+            }
+        }
+
+        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
+        {
+
+            txt_Search_Name.Text = "";
+            if (txt_Search_TC.Text != "")
+            {
+                TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
+            }
+            else
+            {
+                Default();
+            }
+
+        }
+
+        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
+        {
+
+            txt_Search_TC.Text = "";
+            if (txt_Search_Name.Text != "")
+            {
+                TableReflesh(txt_Search_Name.Text);
+            }
+            else
+            {
+                Default();
+            }
+
+
+
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
             string MemberStr = "SELECT * FROM Members where IdentityNumber=@ID";
@@ -280,19 +327,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
 
                     }
-                }else
+                }
+                else
                 {
                     MessageBox.Show("Lütfen adınızı giriniz", "Adınız boş olamaz.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-            }
 
+            }
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Delete_Click(object sender, EventArgs e)
         {
-
             if (txt_ID.Text != "")
             {
                 if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
@@ -316,10 +362,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 MessageBox.Show("Lütfen silinecek kaydı seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Update_Click(object sender, EventArgs e)
         {
             if (txt_ID.Text != "")
             {
@@ -375,73 +420,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             else
             {
-                MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz","Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-
-
-        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Aktif")
-                {
-                    renk.BackColor = Color.YellowGreen;
-                }
-                else if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Pasif")
-                {
-                    renk.BackColor = Color.Orange;
-                }
-                else if (dataGridView1.Rows[i].Cells["MemberState"].Value.ToString() == "Cezalı")
-                {
-                    renk.BackColor = Color.Red;
-                    renk.ForeColor = Color.White;
-                }
-                dataGridView1.Rows[i].DefaultCellStyle = renk;
+                MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
-        {
-
-            txt_Search_Name.Text = "";
-            if (txt_Search_TC.Text != "")
-            {
-                TableReflesh(Convert.ToDecimal(txt_Search_TC.Text));
-            }
-            else
-            {
-                Default();
-            }
-
-        }
-
-        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
-        {
-
-            txt_Search_TC.Text = "";
-            if (txt_Search_Name.Text != "")
-            {
-                TableReflesh(txt_Search_Name.Text);
-            }
-            else
-            {
-                Default();
-            }
-
-
-
-        }
-
-
     }
 
 

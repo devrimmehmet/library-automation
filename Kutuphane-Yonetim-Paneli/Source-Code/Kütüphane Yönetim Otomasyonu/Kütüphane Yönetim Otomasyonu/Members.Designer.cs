@@ -166,11 +166,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.Brown;
-            this.label3.Location = new System.Drawing.Point(13, 116);
+            this.label3.Location = new System.Drawing.Point(17, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 20);
+            this.label3.Size = new System.Drawing.Size(72, 20);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Cinsiyeti";
+            this.label3.Text = "Cinsiyet";
             // 
             // label4
             // 
@@ -302,7 +302,7 @@
             this.btn_Add.TabIndex = 12;
             this.btn_Add.Text = "Üye Ekle";
             this.btn_Add.UseVisualStyleBackColor = false;
-            this.btn_Add.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // btn_Delete
             // 
@@ -316,7 +316,7 @@
             this.btn_Delete.TabStop = false;
             this.btn_Delete.Text = "Sil";
             this.btn_Delete.UseVisualStyleBackColor = false;
-            this.btn_Delete.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Update
             // 
@@ -329,7 +329,7 @@
             this.btn_Update.TabIndex = 13;
             this.btn_Update.Text = "Güncelle";
             this.btn_Update.UseVisualStyleBackColor = false;
-            this.btn_Update.Click += new System.EventHandler(this.button3_Click);
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // cB_Gender
             // 
