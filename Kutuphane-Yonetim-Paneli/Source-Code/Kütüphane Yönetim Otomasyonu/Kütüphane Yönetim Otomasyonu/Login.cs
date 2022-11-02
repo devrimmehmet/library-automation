@@ -28,7 +28,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader  dr = EmployeeCmd.ExecuteReader();
             if (dr.Read())
             {
-               
                 this.Hide();
                 MainMenu admin = new MainMenu();
                 admin.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
@@ -46,8 +45,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SqlDataReader dr2 = MemberCmd.ExecuteReader();
             if (dr2.Read())
             {
-
-
                 this.Hide();
                 UserMenu user = new UserMenu();
                 user.ActiveMemberID = Convert.ToInt32(dr2["ID"]);

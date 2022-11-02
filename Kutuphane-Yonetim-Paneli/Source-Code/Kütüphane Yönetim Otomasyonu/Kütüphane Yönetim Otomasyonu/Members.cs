@@ -147,42 +147,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[11].Width = 70;
         }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txt_ID.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
-            txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-            txt_Surname.Text = dataGridView1.CurrentRow.Cells["Surname"].Value.ToString();
-            cB_Gender.Text = (dataGridView1.CurrentRow.Cells["Gender"].Value).ToString();
-            dTP_BirthDay.Text = dataGridView1.CurrentRow.Cells["BirthDate"].Value.ToString();
-            txt_Phone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
-            txt_IdentityNumber.Text = (dataGridView1.CurrentRow.Cells["IdentityNumber"].Value).ToString();
-            txt_Mail.Text = dataGridView1.CurrentRow.Cells["Mail"].Value.ToString();
-            rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Address"].Value.ToString();
-            int MemberState = Convert.ToInt32((dataGridView1.CurrentRow.Cells["Member_State_ID"].Value).ToString());
-            sqlConnection.Open();
-            SqlCommand MemberStateFind = new SqlCommand($"SELECT MemberState FROM MemberStates where ID='{MemberState}'", sqlConnection);
-            SqlDataReader dr3 = MemberStateFind.ExecuteReader();
-            if (dr3.Read())
-            {
-
-                cB_State.Text = (dr3["MemberState"].ToString());
-                sqlConnection.Close();
-
-            }
-
-            dTP_MemberDate.Text = dataGridView1.CurrentRow.Cells["MemberDate"].Value.ToString();
-            txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
-        }
-
-
-
-
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -204,7 +172,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 dataGridView1.Rows[i].DefaultCellStyle = renk;
             }
         }
-
         private void txt_Search_TC_TextChanged(object sender, EventArgs e)
         {
 
@@ -350,14 +317,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 else
                 {
                     MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Kayıt İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
             else
             {
                 MessageBox.Show("Lütfen silinecek kaydı seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btn_Update_Click(object sender, EventArgs e)
@@ -418,6 +383,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

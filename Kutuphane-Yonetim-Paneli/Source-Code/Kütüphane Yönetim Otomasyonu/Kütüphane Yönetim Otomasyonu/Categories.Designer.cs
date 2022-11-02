@@ -34,9 +34,9 @@
             this.txt_Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
+            this.btn_Update = new System.Windows.Forms.Button();
             this.txt_Search_Name = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -93,41 +93,41 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Adı";
             // 
-            // button1
+            // btn_Add
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(341, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 43);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Ekle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Add.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btn_Add.Location = new System.Drawing.Point(341, 50);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(102, 43);
+            this.btn_Add.TabIndex = 27;
+            this.btn_Add.Text = "Ekle";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // button2
+            // btn_Delete
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(458, 50);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 42);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Sil";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.Red;
+            this.btn_Delete.Location = new System.Drawing.Point(458, 50);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(102, 42);
+            this.btn_Delete.TabIndex = 28;
+            this.btn_Delete.Text = "Sil";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
-            // button3
+            // btn_Update
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.Green;
-            this.button3.Location = new System.Drawing.Point(576, 49);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 43);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Güncelle";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Update.ForeColor = System.Drawing.Color.Green;
+            this.btn_Update.Location = new System.Drawing.Point(576, 49);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(102, 43);
+            this.btn_Update.TabIndex = 29;
+            this.btn_Update.Text = "Güncelle";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // txt_Search_Name
             // 
@@ -169,9 +169,9 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txt_Search_Name);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Update);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Name);
@@ -196,9 +196,9 @@
         private System.Windows.Forms.TextBox txt_Name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.TextBox txt_Search_Name;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox2;

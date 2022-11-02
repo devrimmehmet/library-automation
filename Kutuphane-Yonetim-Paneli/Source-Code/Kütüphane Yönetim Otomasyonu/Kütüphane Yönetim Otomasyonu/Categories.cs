@@ -21,15 +21,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
-
+        private void Default()
+        {
+            txt_Id.Text = "";
+            txt_Name.Text = "";
+        }
         private void TableReflesh()
         {
-            SqlDataAdapter adp = new SqlDataAdapter("select * from Categories", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("select * from Categories where DeletedState=0", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
             dataGridView1.DataSource = dt;
-
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
@@ -38,60 +41,64 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void TableReflesh(string SearchTextName)
         {
-            SqlDataAdapter adp = new SqlDataAdapter($"select * from Categories where Name like  '%{SearchTextName}%'", sqlConnection);
+            string CategorySearchStr = "select * from Categories where Name like '%'+@Text+'%' and DeletedState=0";
+            SqlDataAdapter CategoryCmd = new SqlDataAdapter();
+            CategoryCmd.SelectCommand = new SqlCommand(CategorySearchStr, sqlConnection);
+            CategoryCmd.SelectCommand.Parameters.AddWithValue("@Text", SearchTextName.ToString());
             DataTable dt = new DataTable();
             sqlConnection.Open();
-            adp.Fill(dt);
+            CategoryCmd.Fill(dt);
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
             dataGridView1.Columns[1].Width = 1000;
-
-
-
         }
         private void Members_Load(object sender, EventArgs e)
         {
-
-
             dataGridView1.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView1.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
-
             TableReflesh();
-
             txt_Name.MaxLength = 50;
-
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_Id.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
             txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      
+
+        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
+        {
+
+            TableReflesh(txt_Search_Name.Text);
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            SqlCommand Member = new SqlCommand($"select * from Categories where Name='{txt_Name.Text}'", sqlConnection);
-            SqlDataReader dr2 = Member.ExecuteReader();
+            string CategoryAddStr = "select * from Categories where Name=@Text and DeleteState=0";
+            SqlDataAdapter adp = new SqlDataAdapter();
+            adp.SelectCommand = new SqlCommand(CategoryAddStr, sqlConnection);
+            adp.SelectCommand.Parameters.AddWithValue("@Text", txt_Name.Text);
+            SqlDataReader dr2 = adp.SelectCommand.ExecuteReader();
             if (dr2.Read())
             {
-                MessageBox.Show("Bu isme sahip başka bir kategori var !!!");
+                MessageBox.Show("Bu isme sahip başka bir kategori var !!!","Kategori Zaten Mevcut", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 sqlConnection.Close();
-
             }
             else
             {
                 sqlConnection.Close();
                 sqlConnection.Open();
-                SqlCommand komut = new SqlCommand($"insert into Categories (Name) values ('{txt_Name.Text}')", sqlConnection);
-
+                string CategoryAdd = "insert into Categories (Name) values (@Name)";
+                SqlCommand komut = new SqlCommand(CategoryAdd, sqlConnection);
+                komut.Parameters.AddWithValue("@Name", txt_Name.Text);
                 int eklenti = komut.ExecuteNonQuery();
                 sqlConnection.Close();
-
                 if (eklenti > 0)
                 {
                     MessageBox.Show("Kategori Sisteme Eklendi.");
@@ -102,22 +109,29 @@ namespace Kütüphane_Yönetim_Otomasyonu
                     MessageBox.Show("Kategori eklenemedi.");
                 }
                 sqlConnection.Close();
-
+                Default();
             }
-
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Delete_Click(object sender, EventArgs e)
         {
             if (txt_Id.Text != "")
             {
-                int IDD = Convert.ToInt32(txt_Id.Text);
-                sqlConnection.Open();
-                SqlCommand Sil = new SqlCommand($"DeleteFromCategories {IDD}", sqlConnection);
-                Sil.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
+                if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    int IDD = Convert.ToInt32(txt_Id.Text);
+                    sqlConnection.Open();
+                    SqlCommand Sil = new SqlCommand($"DeleteFromCategories {IDD}", sqlConnection);
+                    Sil.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    TableReflesh();
+                    Default();
+                }
+                else
+                {
+                    MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Kayıt İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+               
             }
             else
             {
@@ -125,14 +139,17 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Update_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            SqlCommand Member = new SqlCommand($"select * from Categories where Name='{txt_Name.Text}'", sqlConnection);
-            SqlDataReader dr2 = Member.ExecuteReader();
+            string CategoryAddStr = "select * from Categories where Name=@Text and DeleteState=0";
+            SqlDataAdapter adp = new SqlDataAdapter();
+            adp.SelectCommand = new SqlCommand(CategoryAddStr, sqlConnection);
+            adp.SelectCommand.Parameters.AddWithValue("@Text", txt_Name.Text);
+            SqlDataReader dr2 = adp.SelectCommand.ExecuteReader();
             if (dr2.Read())
             {
-                MessageBox.Show("Bu isme sahip başka bir kategori var bu güncelleme işlemini yapamazsınız !!!");
+                MessageBox.Show("Bu isme sahip başka bir kategori var bu güncelleme işlemini yapamazsınız !!!","Kategori Zaten Mevcut", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 sqlConnection.Close();
 
             }
@@ -144,23 +161,19 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 if (txt_Id.Text != "")
                 {
                     int IDD = Convert.ToInt32(txt_Id.Text);
-
-                    SqlCommand Update = new SqlCommand($"UpdateFromCategories {IDD},'{txt_Name.Text}'", sqlConnection);
+                    SqlCommand Update = new SqlCommand($"UpdateFromCategories {IDD},@Name", sqlConnection);
+                    Update.Parameters.AddWithValue("@Name", txt_Name.Text);
                     Update.ExecuteNonQuery();
                     sqlConnection.Close();
                     TableReflesh();
+                    Default();
                 }
                 else
                 {
                     MessageBox.Show("Lütfen güncellenecek kategoriyi seçiniz");
                 }
+                sqlConnection.Close();
             }
-        }
-
-
-        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
-        {
-            TableReflesh(txt_Search_Name.Text);
         }
     }
 
