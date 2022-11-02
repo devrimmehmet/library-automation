@@ -37,8 +37,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
             dataGridView1.Columns[1].Width = 1000;
+            dataGridView1.Columns[2].Visible = false;
         }
-
         private void TableReflesh(string SearchTextName)
         {
             string CategorySearchStr = "select * from Categories where Name like '%'+@Text+'%' and DeletedState=0";
@@ -53,6 +53,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Name";
             dataGridView1.Columns[1].Width = 1000;
+            dataGridView1.Columns[2].Visible = false;
         }
         private void Members_Load(object sender, EventArgs e)
         {
@@ -62,29 +63,25 @@ namespace Kütüphane_Yönetim_Otomasyonu
             TableReflesh();
             txt_Name.MaxLength = 50;
         }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_Id.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
             txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
         }
-
-      
-
         private void txt_Search_Name_TextChanged(object sender, EventArgs e)
         {
 
             TableReflesh(txt_Search_Name.Text);
         }
-
         private void btn_Add_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            string CategoryAddStr = "select * from Categories where Name=@Text and DeleteState=0";
-            SqlDataAdapter adp = new SqlDataAdapter();
-            adp.SelectCommand = new SqlCommand(CategoryAddStr, sqlConnection);
-            adp.SelectCommand.Parameters.AddWithValue("@Text", txt_Name.Text);
-            SqlDataReader dr2 = adp.SelectCommand.ExecuteReader();
+            SqlCommand FindCategory = new SqlCommand();
+            FindCategory.Connection = sqlConnection;
+            FindCategory.CommandText = "FindCategory"; //stoured procedure'un saklandığı yer.
+            FindCategory.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+            FindCategory.Parameters.AddWithValue("@Name", txt_Name.Text);
+            SqlDataReader dr2 = FindCategory.ExecuteReader();
             if (dr2.Read())
             {
                 MessageBox.Show("Bu isme sahip başka bir kategori var !!!","Kategori Zaten Mevcut", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
@@ -112,7 +109,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 Default();
             }
         }
-
         private void btn_Delete_Click(object sender, EventArgs e)
         {
             if (txt_Id.Text != "")
@@ -138,15 +134,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 MessageBox.Show("Lütfen silinecek kategoriyi seçiniz");
             }
         }
-
         private void btn_Update_Click(object sender, EventArgs e)
         {
             sqlConnection.Open();
-            string CategoryAddStr = "select * from Categories where Name=@Text and DeleteState=0";
-            SqlDataAdapter adp = new SqlDataAdapter();
-            adp.SelectCommand = new SqlCommand(CategoryAddStr, sqlConnection);
-            adp.SelectCommand.Parameters.AddWithValue("@Text", txt_Name.Text);
-            SqlDataReader dr2 = adp.SelectCommand.ExecuteReader();
+            SqlCommand FindCategory = new SqlCommand();
+            FindCategory.Connection = sqlConnection;
+            FindCategory.CommandText = "FindCategory"; //stoured procedure'un saklandığı yer.
+            FindCategory.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+            FindCategory.Parameters.AddWithValue("@Name", txt_Name.Text);
+            SqlDataReader dr2 = FindCategory.ExecuteReader();
             if (dr2.Read())
             {
                 MessageBox.Show("Bu isme sahip başka bir kategori var bu güncelleme işlemini yapamazsınız !!!","Kategori Zaten Mevcut", MessageBoxButtons.YesNo, MessageBoxIcon.Error);

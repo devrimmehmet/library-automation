@@ -311,11 +311,11 @@
             // checkB_State
             // 
             this.checkB_State.AutoSize = true;
-            this.checkB_State.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkB_State.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkB_State.ForeColor = System.Drawing.Color.Brown;
             this.checkB_State.Location = new System.Drawing.Point(440, 207);
             this.checkB_State.Name = "checkB_State";
-            this.checkB_State.Size = new System.Drawing.Size(88, 20);
+            this.checkB_State.Size = new System.Drawing.Size(101, 24);
             this.checkB_State.TabIndex = 38;
             this.checkB_State.Text = "Mevcutta";
             this.checkB_State.UseVisualStyleBackColor = true;
