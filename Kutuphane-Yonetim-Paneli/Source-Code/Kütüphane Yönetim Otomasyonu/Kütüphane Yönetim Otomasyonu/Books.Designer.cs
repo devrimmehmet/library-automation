@@ -271,7 +271,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(12, 236);
+            this.label13.Location = new System.Drawing.Point(12, 231);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(93, 20);
             this.label13.TabIndex = 34;
@@ -281,7 +281,7 @@
             // 
             this.txt_Search_Shelf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Search_Shelf.ForeColor = System.Drawing.Color.Red;
-            this.txt_Search_Shelf.Location = new System.Drawing.Point(118, 233);
+            this.txt_Search_Shelf.Location = new System.Drawing.Point(118, 231);
             this.txt_Search_Shelf.Name = "txt_Search_Shelf";
             this.txt_Search_Shelf.Size = new System.Drawing.Size(133, 26);
             this.txt_Search_Shelf.TabIndex = 35;
@@ -338,7 +338,7 @@
             this.cB_Publisher.FormattingEnabled = true;
             this.cB_Publisher.Location = new System.Drawing.Point(440, 5);
             this.cB_Publisher.Name = "cB_Publisher";
-            this.cB_Publisher.Size = new System.Drawing.Size(133, 28);
+            this.cB_Publisher.Size = new System.Drawing.Size(215, 28);
             this.cB_Publisher.TabIndex = 40;
             // 
             // cB_Category
@@ -348,7 +348,7 @@
             this.cB_Category.FormattingEnabled = true;
             this.cB_Category.Location = new System.Drawing.Point(440, 39);
             this.cB_Category.Name = "cB_Category";
-            this.cB_Category.Size = new System.Drawing.Size(133, 28);
+            this.cB_Category.Size = new System.Drawing.Size(215, 28);
             this.cB_Category.TabIndex = 42;
             // 
             // label16
@@ -374,7 +374,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(257, 236);
+            this.pictureBox2.Location = new System.Drawing.Point(257, 231);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(26, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

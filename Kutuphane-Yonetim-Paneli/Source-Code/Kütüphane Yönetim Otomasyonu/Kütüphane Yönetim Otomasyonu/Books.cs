@@ -25,7 +25,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void TableReflesh()
         {
-            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID ", sqlConnection);
+            SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.DeletedState=0", sqlConnection);
             DataTable dt = new DataTable();
             sqlConnection.Open();
             adp.Fill(dt);
@@ -33,101 +33,150 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Ad";
+            dataGridView1.Columns[0].Width = 60;
+            dataGridView1.Columns[1].HeaderText = "Kitap Adı";
+            dataGridView1.Columns[1].Width = 250;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Yayın Tarihi";
+            dataGridView1.Columns[3].Width = 90;
             dataGridView1.Columns[4].HeaderText = "Sayfa Sayısı";
+            dataGridView1.Columns[4].Width = 90;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible =false;
             dataGridView1.Columns[7].HeaderText = "Açıklama";
-            dataGridView1.Columns[8].HeaderText = "Durum";
-            dataGridView1.Columns[9].HeaderText = "Raf Numarası";
+            dataGridView1.Columns[8].HeaderText = "Mevcut";
+            dataGridView1.Columns[8].Width = 50;
+            dataGridView1.Columns[9].HeaderText = "Raf";
+            dataGridView1.Columns[9].Width = 50;
             dataGridView1.Columns[10].Visible = false;
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].HeaderText = "Yazar";
-            dataGridView1.Columns[14].Visible = false;
+            dataGridView1.Columns[13].Visible = false;
+            dataGridView1.Columns[14].HeaderText = "Yazar";
+            dataGridView1.Columns[14].Width = 120;
             dataGridView1.Columns[15].Visible = false;
-            dataGridView1.Columns[16].HeaderText = "Dili";
+            dataGridView1.Columns[16].Visible = false;
             dataGridView1.Columns[17].Visible = false;
-            dataGridView1.Columns[18].HeaderText = "Yayınevi";
+            dataGridView1.Columns[18].HeaderText = "Dili";
+            dataGridView1.Columns[18].Width = 60;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
-            dataGridView1.Columns[21].Visible = false;
+            dataGridView1.Columns[21].HeaderText = "Yayınevi";
+            dataGridView1.Columns[21].Width = 150;
             dataGridView1.Columns[22].Visible = false;
-            dataGridView1.Columns[23].HeaderText = "Kategori";
-
-
+            dataGridView1.Columns[23].Visible = false;
+            dataGridView1.Columns[24].Visible = false;
+            dataGridView1.Columns[25].Visible = false;
+            dataGridView1.Columns[26].Visible = false;
+            dataGridView1.Columns[27].HeaderText = "Kategori";
+            dataGridView1.Columns[27].Width = 80;
+            dataGridView1.Columns[28].Visible = false;
         }
         private void TableSearchShelf(string SearchTextShelfNumber)
         {
-     
-            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.ShelfNumber like '%{SearchTextShelfNumber}%'", sqlConnection);
+            string BookSearchStr = "select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.ShelfNumber like '%'+@Text+'%' and b.DeletedState=0";
+            SqlDataAdapter BookCmd = new SqlDataAdapter();
+            BookCmd.SelectCommand = new SqlCommand(BookSearchStr, sqlConnection);
+            BookCmd.SelectCommand.Parameters.AddWithValue("@Text", SearchTextShelfNumber.ToString());
             DataTable dt = new DataTable();
             sqlConnection.Open();
-            adp.Fill(dt);
+            BookCmd.Fill(dt);
             dataGridView1.DataSource = dt;
 
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Ad";
+            dataGridView1.Columns[0].Width = 60;
+            dataGridView1.Columns[1].HeaderText = "Kitap Adı";
+            dataGridView1.Columns[1].Width = 250;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Yayın Tarihi";
+            dataGridView1.Columns[3].Width = 90;
             dataGridView1.Columns[4].HeaderText = "Sayfa Sayısı";
+            dataGridView1.Columns[4].Width = 90;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[7].HeaderText = "Açıklama";
-            dataGridView1.Columns[8].HeaderText = "Durum";
-            dataGridView1.Columns[9].HeaderText = "Raf Numarası";
+            dataGridView1.Columns[8].HeaderText = "Mevcut";
+            dataGridView1.Columns[8].Width = 50;
+            dataGridView1.Columns[9].HeaderText = "Raf";
+            dataGridView1.Columns[9].Width = 50;
             dataGridView1.Columns[10].Visible = false;
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].HeaderText = "Yazar";
-            dataGridView1.Columns[14].Visible = false;
+            dataGridView1.Columns[13].Visible = false;
+            dataGridView1.Columns[14].HeaderText = "Yazar";
+            dataGridView1.Columns[14].Width = 120;
             dataGridView1.Columns[15].Visible = false;
-            dataGridView1.Columns[16].HeaderText = "Dili";
+            dataGridView1.Columns[16].Visible = false;
             dataGridView1.Columns[17].Visible = false;
-            dataGridView1.Columns[18].HeaderText = "Yayınevi";
+            dataGridView1.Columns[18].HeaderText = "Dili";
+            dataGridView1.Columns[18].Width = 60;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
-            dataGridView1.Columns[21].Visible = false;
+            dataGridView1.Columns[21].HeaderText = "Yayınevi";
+            dataGridView1.Columns[21].Width = 150;
             dataGridView1.Columns[22].Visible = false;
-            dataGridView1.Columns[23].HeaderText = "Kategori";
+            dataGridView1.Columns[23].Visible = false;
+            dataGridView1.Columns[24].Visible = false;
+            dataGridView1.Columns[25].Visible = false;
+            dataGridView1.Columns[26].Visible = false;
+            dataGridView1.Columns[27].HeaderText = "Kategori";
+            dataGridView1.Columns[27].Width = 80;
+            dataGridView1.Columns[28].Visible = false;
 
         }
         private void TableReflesh(string SearchTextName)
         {
-            SqlDataAdapter adp = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.Name like '{SearchTextName}%'", sqlConnection);
+      
+            string BookSearchStr = "select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.Name like '%'+@Text+'%' and b.DeletedState=0";
+            SqlDataAdapter BookCmd = new SqlDataAdapter();
+            BookCmd.SelectCommand = new SqlCommand(BookSearchStr, sqlConnection);
+            BookCmd.SelectCommand.Parameters.AddWithValue("@Text", SearchTextName.ToString());
             DataTable dt = new DataTable();
             sqlConnection.Open();
-            adp.Fill(dt);
+            BookCmd.Fill(dt);
             dataGridView1.DataSource = dt;
 
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Ad";
+            dataGridView1.Columns[0].Width = 60;
+            dataGridView1.Columns[1].HeaderText = "Kitap Adı";
+            dataGridView1.Columns[1].Width = 250;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Yayın Tarihi";
+            dataGridView1.Columns[3].Width = 90;
             dataGridView1.Columns[4].HeaderText = "Sayfa Sayısı";
+            dataGridView1.Columns[4].Width = 90;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible = false;
             dataGridView1.Columns[7].HeaderText = "Açıklama";
-            dataGridView1.Columns[8].HeaderText = "Durum";
-            dataGridView1.Columns[9].HeaderText = "Raf Numarası";
+            dataGridView1.Columns[8].HeaderText = "Mevcut";
+            dataGridView1.Columns[8].Width = 50;
+            dataGridView1.Columns[9].HeaderText = "Raf";
+            dataGridView1.Columns[9].Width = 50;
             dataGridView1.Columns[10].Visible = false;
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
-            dataGridView1.Columns[13].HeaderText = "Yazar";
-            dataGridView1.Columns[14].Visible = false;
+            dataGridView1.Columns[13].Visible = false;
+            dataGridView1.Columns[14].HeaderText = "Yazar";
+            dataGridView1.Columns[14].Width = 120;
             dataGridView1.Columns[15].Visible = false;
-            dataGridView1.Columns[16].HeaderText = "Dili";
+            dataGridView1.Columns[16].Visible = false;
             dataGridView1.Columns[17].Visible = false;
-            dataGridView1.Columns[18].HeaderText = "Yayınevi";
+            dataGridView1.Columns[18].HeaderText = "Dili";
+            dataGridView1.Columns[18].Width = 60;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
-            dataGridView1.Columns[21].Visible = false;
+            dataGridView1.Columns[21].HeaderText = "Yayınevi";
+            dataGridView1.Columns[21].Width = 150;
             dataGridView1.Columns[22].Visible = false;
-            dataGridView1.Columns[23].HeaderText = "Kategori";
+            dataGridView1.Columns[23].Visible = false;
+            dataGridView1.Columns[24].Visible = false;
+            dataGridView1.Columns[25].Visible = false;
+            dataGridView1.Columns[26].Visible = false;
+            dataGridView1.Columns[27].HeaderText = "Kategori";
+            dataGridView1.Columns[27].Width = 80;
+            dataGridView1.Columns[28].Visible = false;
 
 
         }
@@ -194,7 +243,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_PageNumber.MaxLength = 11;
             txt_PublishYear.MaxLength = 4;
             rTxt_Description.MaxLength = 200;
-        
             txt_Search_Shelf.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
         }
