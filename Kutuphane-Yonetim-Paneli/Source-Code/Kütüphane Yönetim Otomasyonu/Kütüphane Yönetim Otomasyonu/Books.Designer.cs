@@ -42,9 +42,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Add = new System.Windows.Forms.Button();
+            this.btn_Delete = new System.Windows.Forms.Button();
+            this.btn_Update = new System.Windows.Forms.Button();
             this.cB_Language = new System.Windows.Forms.ComboBox();
             this.cB_Author = new System.Windows.Forms.ComboBox();
             this.rTxt_Description = new System.Windows.Forms.RichTextBox();
@@ -198,44 +198,46 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "Açıklama";
             // 
-            // button1
+            // btn_Add
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(796, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 43);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Ekle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Add.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btn_Add.Location = new System.Drawing.Point(796, 78);
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.Size = new System.Drawing.Size(102, 43);
+            this.btn_Add.TabIndex = 27;
+            this.btn_Add.Text = "Ekle";
+            this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
-            // button2
+            // btn_Delete
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(913, 78);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 42);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "Sil";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Delete.ForeColor = System.Drawing.Color.Red;
+            this.btn_Delete.Location = new System.Drawing.Point(913, 78);
+            this.btn_Delete.Name = "btn_Delete";
+            this.btn_Delete.Size = new System.Drawing.Size(102, 42);
+            this.btn_Delete.TabIndex = 28;
+            this.btn_Delete.Text = "Sil";
+            this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
-            // button3
+            // btn_Update
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.ForeColor = System.Drawing.Color.Green;
-            this.button3.Location = new System.Drawing.Point(1031, 77);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 43);
-            this.button3.TabIndex = 29;
-            this.button3.Text = "Güncelle";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_Update.ForeColor = System.Drawing.Color.Green;
+            this.btn_Update.Location = new System.Drawing.Point(1031, 77);
+            this.btn_Update.Name = "btn_Update";
+            this.btn_Update.Size = new System.Drawing.Size(102, 43);
+            this.btn_Update.TabIndex = 29;
+            this.btn_Update.Text = "Güncelle";
+            this.btn_Update.UseVisualStyleBackColor = true;
+            this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
             // 
             // cB_Language
             // 
+            this.cB_Language.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Language.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Language.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Language.FormattingEnabled = true;
@@ -333,6 +335,8 @@
             // 
             // cB_Publisher
             // 
+            this.cB_Publisher.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Publisher.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Publisher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Publisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Publisher.FormattingEnabled = true;
@@ -343,6 +347,8 @@
             // 
             // cB_Category
             // 
+            this.cB_Category.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_Category.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cB_Category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cB_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cB_Category.FormattingEnabled = true;
@@ -412,9 +418,9 @@
             this.Controls.Add(this.rTxt_Description);
             this.Controls.Add(this.cB_Author);
             this.Controls.Add(this.cB_Language);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Update);
+            this.Controls.Add(this.btn_Delete);
+            this.Controls.Add(this.btn_Add);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label7);
@@ -456,9 +462,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Add;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.ComboBox cB_Language;
         private System.Windows.Forms.ComboBox cB_Author;
         private System.Windows.Forms.RichTextBox rTxt_Description;

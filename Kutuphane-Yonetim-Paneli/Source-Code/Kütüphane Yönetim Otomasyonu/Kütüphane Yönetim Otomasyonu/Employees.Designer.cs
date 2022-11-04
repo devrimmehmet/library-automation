@@ -114,7 +114,7 @@
             this.txt_Mail.Location = new System.Drawing.Point(647, 12);
             this.txt_Mail.Name = "txt_Mail";
             this.txt_Mail.Size = new System.Drawing.Size(133, 26);
-            this.txt_Mail.TabIndex = 7;
+            this.txt_Mail.TabIndex = 8;
             // 
             // txt_IdentityNumber
             // 
@@ -274,7 +274,7 @@
             this.btn_Delete.Location = new System.Drawing.Point(834, 86);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(100, 50);
-            this.btn_Delete.TabIndex = 12;
+            this.btn_Delete.TabIndex = 20;
             this.btn_Delete.Text = "Sil";
             this.btn_Delete.UseVisualStyleBackColor = false;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
@@ -318,7 +318,7 @@
             this.cB_Permission.Location = new System.Drawing.Point(431, 108);
             this.cB_Permission.Name = "cB_Permission";
             this.cB_Permission.Size = new System.Drawing.Size(133, 28);
-            this.cB_Permission.TabIndex = 8;
+            this.cB_Permission.TabIndex = 7;
             // 
             // label13
             // 
@@ -338,7 +338,7 @@
             this.txt_Search_TC.Location = new System.Drawing.Point(82, 152);
             this.txt_Search_TC.Name = "txt_Search_TC";
             this.txt_Search_TC.Size = new System.Drawing.Size(133, 26);
-            this.txt_Search_TC.TabIndex = 35;
+            this.txt_Search_TC.TabIndex = 12;
             this.txt_Search_TC.TextChanged += new System.EventHandler(this.txt_Search_TC_TextChanged);
             this.txt_Search_TC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
             // 
@@ -349,7 +349,7 @@
             this.txt_Search_Name.Location = new System.Drawing.Point(936, 152);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(168, 26);
-            this.txt_Search_Name.TabIndex = 36;
+            this.txt_Search_Name.TabIndex = 13;
             this.txt_Search_Name.TextChanged += new System.EventHandler(this.txt_Search_Name_TextChanged);
             // 
             // label14

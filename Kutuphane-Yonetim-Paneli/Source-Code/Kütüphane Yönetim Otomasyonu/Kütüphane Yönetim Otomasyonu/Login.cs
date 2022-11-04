@@ -24,7 +24,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             string Employee = "SELECT * FROM Employees where IdentityNumber=@ID AND Password=@Password";
             SqlCommand  EmployeeCmd = new SqlCommand(Employee, sqlConnection);
             EmployeeCmd.Parameters.AddWithValue("@Password", txt_Password.Text);
-            EmployeeCmd.Parameters.AddWithValue("@ID", txt_ID.Text);
+            EmployeeCmd.Parameters.AddWithValue("@ID",txt_ID.Text);
             SqlDataReader  dr = EmployeeCmd.ExecuteReader();
             if (dr.Read())
             {

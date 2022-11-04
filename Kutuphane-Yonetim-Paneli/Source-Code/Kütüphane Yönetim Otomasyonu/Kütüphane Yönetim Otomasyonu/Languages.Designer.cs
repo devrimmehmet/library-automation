@@ -101,7 +101,7 @@
             this.btn_Add.Location = new System.Drawing.Point(238, 45);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(102, 43);
-            this.btn_Add.TabIndex = 27;
+            this.btn_Add.TabIndex = 3;
             this.btn_Add.Text = "Ekle";
             this.btn_Add.UseVisualStyleBackColor = true;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -125,7 +125,7 @@
             this.btn_Update.Location = new System.Drawing.Point(473, 44);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(102, 43);
-            this.btn_Update.TabIndex = 29;
+            this.btn_Update.TabIndex = 4;
             this.btn_Update.Text = "Güncelle";
             this.btn_Update.UseVisualStyleBackColor = true;
             this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
@@ -137,7 +137,7 @@
             this.txt_Search_Name.Location = new System.Drawing.Point(959, 61);
             this.txt_Search_Name.Name = "txt_Search_Name";
             this.txt_Search_Name.Size = new System.Drawing.Size(133, 26);
-            this.txt_Search_Name.TabIndex = 36;
+            this.txt_Search_Name.TabIndex = 5;
             this.txt_Search_Name.TextChanged += new System.EventHandler(this.txt_Search_Name_TextChanged);
             // 
             // label14

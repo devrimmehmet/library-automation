@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -22,7 +23,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
-
+        private void Default()
+        {
+            txt_Id.Text = "";
+            txt_Name.Text = "";
+            txt_PageNumber.Text = "";
+            txt_PublishYear.Text = "";
+            txt_Search_Name.Text = "";
+            txt_Search_Shelf.Text = "";
+            rTxt_Description.Text = "";
+            cB_Author.Text = "";
+            cB_Category.Text = "";
+            cB_Language.Text = "Türkçe";
+            cB_Publisher.Text = "";
+        }
         private void TableReflesh()
         {
             SqlDataAdapter adp = new SqlDataAdapter("select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.DeletedState=0", sqlConnection);
@@ -185,7 +199,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
             checkB_State.Checked = true;
 
-            SqlCommand komut = new SqlCommand("SELECT Language FROM Languages", sqlConnection);
+            SqlCommand komut = new SqlCommand("SELECT Language FROM Languages Where DeletedState=0", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
@@ -196,7 +210,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             sqlConnection.Close();
 
-            SqlCommand komut1 = new SqlCommand("SELECT NameSurname FROM Authors", sqlConnection);
+            SqlCommand komut1 = new SqlCommand("SELECT NameSurname FROM Authors Where DeletedState=0", sqlConnection);
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
@@ -207,7 +221,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             
             sqlConnection.Close();
-            SqlCommand komut2 = new SqlCommand("SELECT Name FROM Publishers", sqlConnection);
+            SqlCommand komut2 = new SqlCommand("SELECT Name FROM Publishers Where DeletedState=0", sqlConnection);
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
@@ -220,7 +234,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
 
-            SqlCommand komut3 = new SqlCommand("SELECT Name FROM Categories", sqlConnection);
+            SqlCommand komut3 = new SqlCommand("SELECT Name FROM Categories Where DeletedState=0", sqlConnection);
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
@@ -237,6 +251,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
 
             TableReflesh();
+            Default();
             cB_Language.SelectedIndex = 0;
             txt_Name.MaxLength = 50;
             txt_ShelfNumber.MaxLength = 50;
@@ -246,7 +261,6 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Search_Shelf.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
         }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Convert.ToInt32(dataGridView1.CurrentRow.Cells["State"].Value)==1)
@@ -263,107 +277,117 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_PageNumber.Text = dataGridView1.CurrentRow.Cells["NumberOfPages"].Value.ToString();
             rTxt_Description.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
             txt_ShelfNumber.Text = dataGridView1.CurrentRow.Cells["ShelfNumber"].Value.ToString();
-            SqlCommand komut = new SqlCommand("SELECT Language FROM Languages", sqlConnection);
-            SqlDataReader dr;
-            sqlConnection.Open();
-            dr = komut.ExecuteReader();
-            cB_Language.Items.Clear();
-            while (dr.Read())
-            {
-                cB_Language.Items.Add(dr["Language"]);
-            }
-            try
-            {
-                cB_Language.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Language_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
-            sqlConnection.Close();
-           
-            SqlCommand komut1 = new SqlCommand("SELECT NameSurname FROM Authors", sqlConnection);
-            SqlDataReader dr1;
-            sqlConnection.Open();
-            dr1 = komut1.ExecuteReader();
-            cB_Author.Items.Clear();
-            while (dr1.Read())
-            {
-                cB_Author.Items.Add(dr1["NameSurname"]);
-            }
-            try
-            {
-                cB_Author.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Author_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
-
-            sqlConnection.Close();
-            SqlCommand komut2 = new SqlCommand("SELECT Name FROM Publishers", sqlConnection);
-            SqlDataReader dr2;
-            sqlConnection.Open();
-            dr2 = komut2.ExecuteReader();
-            cB_Publisher.Items.Clear();
-            while (dr2.Read())
-            {
-                cB_Publisher.Items.Add(dr2["Name"]);
-            }
-            try
-            {
-                cB_Publisher.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Publisher_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
-            sqlConnection.Close();
 
 
-            SqlCommand komut3 = new SqlCommand("SELECT Name FROM Categories", sqlConnection);
-            SqlDataReader dr3;
-            sqlConnection.Open();
-            dr3 = komut3.ExecuteReader();
-            cB_Category.Items.Clear();
-            while (dr3.Read())
-            {
-                cB_Category.Items.Add(dr3["Name"]);
-            }
-            try
-            {
-                cB_Category.SelectedIndex = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Category_ID"].Value) - 1;
-            }
-            catch (Exception)
-            {
-            }
-            sqlConnection.Close();
+
+
 
         }
+        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
+        {
+            txt_Search_Name.Text = "";
+            if (txt_Search_Shelf.Text != "")
+            {
+                TableSearchShelf(txt_Search_Shelf.Text);
+                Default();
+            }
+            else
+            {
+                TableReflesh();
+                Default();
+            }
+        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
+        {
+            txt_Search_Shelf.Text = "";
+            if (txt_Search_Name.Text != "")
+            {
+                TableReflesh(txt_Search_Name.Text);
+                Default();
+            }
+            else
+            {
+                TableReflesh();
+                Default();
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                if (dataGridView1.Rows[i].Cells["State"].Value.ToString() == "False")
+                {
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+                }
+                if (dataGridView1.Rows[i].Cells["State"].Value.ToString() == "True")
+                {
+                    renk.BackColor = Color.Green;
+                    renk.ForeColor = Color.White;
+                }
+                dataGridView1.Rows[i].DefaultCellStyle = renk;
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            if (txt_Id.Text != "")
+            {
+                if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                {
+                    int IDD = Convert.ToInt32(txt_Id.Text);
+                    sqlConnection.Open();
+                    SqlCommand Sil = new SqlCommand($"DeleteFromBooks {IDD}", sqlConnection);
+                    Sil.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    TableReflesh();
+                    Default();
+                }
+                else
+                {
+                    MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Silme İşlemi İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Lütfen silinecek kaydı seçiniz");
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
         {
             int AuthorID = 0;
-            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{cB_Author.Text}'", sqlConnection);
+            SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{cB_Author.Text}' and DeletedState=0", sqlConnection);
             SqlDataReader dr1;
             sqlConnection.Open();
             dr1 = komut1.ExecuteReader();
             while (dr1.Read())
             {
-                AuthorID=Convert.ToInt32(dr1["ID"]);
+                AuthorID = Convert.ToInt32(dr1["ID"]);
             }
             sqlConnection.Close();
 
             int LanguageID = 0;
-            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{cB_Language.Text}'", sqlConnection);
+            SqlCommand komut = new SqlCommand($"SELECT ID FROM Languages where Language='{cB_Language.Text}' and DeletedState=0", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
             dr = komut.ExecuteReader();
             while (dr.Read())
             {
-               LanguageID=Convert.ToInt32(dr["ID"]);
+                LanguageID = Convert.ToInt32(dr["ID"]);
             }
             sqlConnection.Close();
 
             int PublisherID = 0;
-            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{cB_Publisher.Text}'", sqlConnection);
+            SqlCommand komut2 = new SqlCommand($"SELECT ID FROM Publishers where Name='{cB_Publisher.Text}' and DeletedState=0", sqlConnection);
             SqlDataReader dr2;
             sqlConnection.Open();
             dr2 = komut2.ExecuteReader();
@@ -374,7 +398,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
 
             int CategoryID = 0;
-            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{cB_Category.Text}'", sqlConnection);
+            SqlCommand komut3 = new SqlCommand($"SELECT ID FROM Categories where Name='{cB_Category.Text}' and DeletedState=0", sqlConnection);
             SqlDataReader dr3;
             sqlConnection.Open();
             dr3 = komut3.ExecuteReader();
@@ -384,7 +408,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             sqlConnection.Close();
             int State = 0;
-            if (checkB_State.Checked==true)
+            if (checkB_State.Checked == true)
             {
                 State = 1;
             }
@@ -392,33 +416,35 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 State = 0;
             }
-           
-            if (txt_PublishYear.Text!="")
+
+            if (txt_PublishYear.Text != "")
             {
-                
-                if (txt_PageNumber.Text=="")
+
+                if (txt_PageNumber.Text == "")
                 {
                     txt_PageNumber.Text = "0";
                 }
-                if (cB_Language.Text!="")
+                if (cB_Language.Text != "")
                 {
-                    if (cB_Publisher.Text!="")
+                    if (cB_Publisher.Text != "")
                     {
-                        if (txt_ShelfNumber.Text!="")
+                        if (txt_ShelfNumber.Text != "")
                         {
-                            if (rTxt_Description.Text=="")
+                            if (rTxt_Description.Text == "")
                             {
                                 rTxt_Description.Text = " ";
                             }
-                            if (cB_Category.Text!="")
+                            if (cB_Category.Text != "")
                             {
 
-                                if (cB_Author.Text!="")
+                                if (cB_Author.Text != "")
                                 {
-                                    if (txt_Name.Text!="")
+                                    if (txt_Name.Text != "")
                                     {
                                         sqlConnection.Open();
-                                        SqlCommand BooksFind = new SqlCommand($"SELECT * FROM books where ShelfNumber='{txt_ShelfNumber.Text}'", sqlConnection);
+                                        string BooksFindStr = "SELECT * FROM books where ShelfNumber=@ShelfNumber";
+                                        SqlCommand BooksFind = new SqlCommand(BooksFindStr, sqlConnection);
+                                        BooksFind.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
                                         SqlDataReader dr4 = BooksFind.ExecuteReader();
                                         if (dr4.Read())
                                         {
@@ -430,7 +456,18 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                         {
                                             sqlConnection.Close();
                                             sqlConnection.Open();
-                                            SqlCommand Add = new SqlCommand($"insert into Books (Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values('{txt_Name.Text}',{AuthorID},{txt_PublishYear.Text},{txt_PageNumber.Text},{LanguageID},{PublisherID},'{rTxt_Description.Text}',{State},'{txt_ShelfNumber.Text}',{CategoryID})", sqlConnection);
+                                            string BooksAddStr = "insert into Books(Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values(@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID)";
+                                            SqlCommand Add = new SqlCommand(BooksAddStr, sqlConnection);
+                                            Add.Parameters.AddWithValue("@Name", txt_Name.Text);
+                                            Add.Parameters.AddWithValue("@Author_ID", AuthorID);
+                                            Add.Parameters.AddWithValue("@PublicationYear", txt_PublishYear.Text);
+                                            Add.Parameters.AddWithValue("@NumberOfPages", txt_PageNumber.Text);
+                                            Add.Parameters.AddWithValue("@Language_ID", cB_Language.Text);
+                                            Add.Parameters.AddWithValue("@Publisher_ID", cB_Publisher.Text);
+                                            Add.Parameters.AddWithValue("@Description", rTxt_Description.Text);
+                                            Add.Parameters.AddWithValue("@State", State);
+                                            Add.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
+                                            Add.Parameters.AddWithValue("@Category_ID", cB_Category.Text);
                                             Add.ExecuteNonQuery();
                                             sqlConnection.Close();
                                             TableReflesh();
@@ -440,69 +477,47 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                     {
                                         MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez");
                                     }
-                                   
+
                                 }
                                 else
                                 {
                                     MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez");
                                 }
-                             
+
                             }
                             else
                             {
                                 MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez");
                             }
-                            
+
                         }
                         else
                         {
                             MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez");
                         }
-                        
+
                     }
                     else
                     {
                         MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez");
                     }
-                   
+
                 }
                 else
                 {
                     MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez");
 
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
-               
+
             }
-           
-            
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            if (txt_Id.Text != "")
-            {
-                int IDD = Convert.ToInt32(txt_Id.Text);
-                sqlConnection.Open();
-                SqlCommand Sil = new SqlCommand($"DeleteFromBooks {IDD}", sqlConnection);
-                Sil.ExecuteNonQuery();
-                sqlConnection.Close();
-                TableReflesh();
-            }
-            else
-            {
-                MessageBox.Show("Lütfen silinecek kaydı seçiniz");
-            }
-
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Update_Click(object sender, EventArgs e)
         {
             int AuthorID = 0;
             SqlCommand komut1 = new SqlCommand($"SELECT ID FROM Authors where NameSurname='{cB_Author.Text}'", sqlConnection);
@@ -583,7 +598,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                     if (txt_Name.Text != "")
                                     {
                                         sqlConnection.Open();
-                                        SqlCommand BooksFind = new SqlCommand($"SELECT * FROM books where ShelfNumber='{txt_ShelfNumber.Text}' and ID!={Convert.ToInt32(txt_Id.Text)}", sqlConnection);
+                                        string BooksFindStr = "SELECT * FROM books where ShelfNumber=@ShelfNumber and ID!=@ID";
+                                        SqlCommand BooksFind = new SqlCommand(BooksFindStr, sqlConnection);
+                                        BooksFind.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
+                                        BooksFind.Parameters.AddWithValue("@ID", Convert.ToInt32(txt_Id.Text));
                                         SqlDataReader dr4 = BooksFind.ExecuteReader();
                                         if (dr4.Read())
                                         {
@@ -598,10 +616,22 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             {
                                                 int IDD = Convert.ToInt32(txt_Id.Text);
                                                 sqlConnection.Open();
-                                                SqlCommand Update = new SqlCommand($"UpdateFromBooks {IDD},'{txt_Name.Text}',{AuthorID},{txt_PublishYear.Text},{txt_PageNumber.Text},{LanguageID},{PublisherID},{rTxt_Description.Text},{State},'{txt_ShelfNumber.Text}',{CategoryID}", sqlConnection);
-                                                Update.ExecuteNonQuery();
+                                                SqlCommand BooksUpdate = new SqlCommand($"UpdateFromBooks @ID,@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID", sqlConnection);
+                                                BooksUpdate.Parameters.AddWithValue("@ID", IDD);
+                                                BooksUpdate.Parameters.AddWithValue("@Name", txt_Name.Text);
+                                                BooksUpdate.Parameters.AddWithValue("@Author_ID", AuthorID);
+                                                BooksUpdate.Parameters.AddWithValue("@PublicationYear", txt_PublishYear.Text);
+                                                BooksUpdate.Parameters.AddWithValue("@NumberOfPages", txt_PageNumber.Text);
+                                                BooksUpdate.Parameters.AddWithValue("@Language_ID", LanguageID);
+                                                BooksUpdate.Parameters.AddWithValue("@Publisher_ID", PublisherID);
+                                                BooksUpdate.Parameters.AddWithValue("@Description", rTxt_Description.Text);
+                                                BooksUpdate.Parameters.AddWithValue("@State", State);
+                                                BooksUpdate.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
+                                                BooksUpdate.Parameters.AddWithValue("@Category_ID", CategoryID);
+                                                BooksUpdate.ExecuteNonQuery();
                                                 sqlConnection.Close();
                                                 TableReflesh();
+                                                Default();
                                             }
                                             else
                                             {
@@ -653,48 +683,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
 
 
-         
-        }
 
-
-
-        private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        }
-
-      
-
-        private void txt_Search_TC_TextChanged(object sender, EventArgs e)
-        {
-            txt_Search_Name.Text = "";
-          
-                TableSearchShelf(txt_Search_Shelf.Text);
-            
-
-        }
-
-        private void txt_Search_Name_TextChanged(object sender, EventArgs e)
-        {
-            txt_Search_Shelf.Text = "";
-            TableReflesh(txt_Search_Name.Text);
-
-
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                if (dataGridView1.Rows[i].Cells["State"].Value.ToString() == "False")
-                {
-                    renk.BackColor = Color.Red;
-                    renk.ForeColor = Color.White;
-                }
-
-                dataGridView1.Rows[i].DefaultCellStyle = renk;
-            }
         }
     }
 

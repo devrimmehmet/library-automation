@@ -385,9 +385,30 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+      
 
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_ID.Text = (dataGridView1.CurrentRow.Cells["ID"].Value).ToString();
+            txt_Name.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+            txt_Surname.Text = dataGridView1.CurrentRow.Cells["Surname"].Value.ToString();
+            cB_Gender.Text = (dataGridView1.CurrentRow.Cells["Gender"].Value).ToString();
+            dTP_BirthDay.Text = dataGridView1.CurrentRow.Cells["BirthDate"].Value.ToString();
+            txt_Phone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
+            txt_IdentityNumber.Text = (dataGridView1.CurrentRow.Cells["IdentityNumber"].Value).ToString();
+            txt_Mail.Text = dataGridView1.CurrentRow.Cells["Mail"].Value.ToString();
+            rTxt_Address.Text = dataGridView1.CurrentRow.Cells["Address"].Value.ToString();
+            int MemberState = Convert.ToInt32((dataGridView1.CurrentRow.Cells["Member_State_ID"].Value).ToString());
+            sqlConnection.Open();
+            SqlCommand MemberStateFind = new SqlCommand($"SELECT MemberState FROM MemberStates where ID='{MemberState}'", sqlConnection);
+            SqlDataReader dr3 = MemberStateFind.ExecuteReader();
+            if (dr3.Read())
+            {
+                cB_State.Text = (dr3["MemberState"].ToString());
+                sqlConnection.Close();
+            }
+            dTP_MemberDate.Text = dataGridView1.CurrentRow.Cells["MemberDate"].Value.ToString();
+            txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
         }
     }
 
