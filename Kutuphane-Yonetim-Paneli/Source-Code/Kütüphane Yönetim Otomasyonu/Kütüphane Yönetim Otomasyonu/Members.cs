@@ -29,16 +29,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Name.Text = "";
             txt_Surname.Text = "";
             cB_Gender.SelectedIndex = 2;
-            dTP_BirthDay.Value = DateTime.Now;
             txt_Phone.Text = "";
             txt_IdentityNumber.Text = "";
             cB_State.SelectedIndex = 0;
             rTxt_Address.Text = "";
             txt_Mail.Text = "";
+            dTP_BirthDay.Value = DateTime.Now.AddYears(-15).AddDays(-1);
             dTP_MemberDate.Value = DateTime.Now;
             txt_Password.Text = "";
         }
-        private void TableReflesh()
+        public void TableReflesh()
         {
             SqlDataAdapter adp = new SqlDataAdapter("select * from Members m inner join MemberStates mS on mS.ID=m.Member_State_ID where DeletedState=0", sqlConnection);
             DataTable dt = new DataTable();
@@ -60,6 +60,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
         }
         private void TableReflesh(decimal SearchTextTC)
@@ -88,6 +91,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
         }
         private void TableReflesh(string SearchTextName)
@@ -116,10 +122,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
             dataGridView1.Columns["MemberState"].HeaderText = "Durum";
         }
         private void Members_Load(object sender, EventArgs e)
         {
+            dTP_BirthDay.MaxDate = DateTime.Now.AddYears(-15);
             SqlCommand komut = new SqlCommand("SELECT MemberState FROM MemberStates", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
@@ -206,6 +216,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            
+
             sqlConnection.Open();
             string MemberStr = "SELECT * FROM Members where IdentityNumber=@ID";
             SqlCommand Member = new SqlCommand(MemberStr, sqlConnection);
@@ -233,9 +245,13 @@ namespace Kütüphane_Yönetim_Otomasyonu
                             {
                                 if (txt_IdentityNumber.TextLength > 10)
                                 {
-                                    if (txt_Password.Text!="")
+                                    if (txt_Password.Text=="")
                                     {
-                                        int MemberState = 1;
+                                        txt_Password.Text = dTP_BirthDay.Value.ToString("yyyy");
+                                    }
+                                   
+                                    
+                                    int MemberState = 1;
                                         sqlConnection.Open();
                                         SqlCommand MemberStateFind = new SqlCommand($"SELECT ID FROM MemberStates where MemberState='{cB_State.Text}'", sqlConnection);
                                         SqlDataReader dr3 = MemberStateFind.ExecuteReader();
@@ -271,11 +287,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             MessageBox.Show("Üye eklenemedi.");
                                         }
                                         sqlConnection.Close();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Lütfen Şifrenizi Giriniz!", "Şifreniz boş olamaz!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
+                                   
                                 }
                                 else
                                 {
@@ -304,15 +316,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             if (txt_ID.Text != "")
             {
+               
                 if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    int IDD = Convert.ToInt32(txt_ID.Text);
-                    sqlConnection.Open();
-                    SqlCommand Sil = new SqlCommand($"DeleteFromMembers {IDD}", sqlConnection);
-                    Sil.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    TableReflesh();
+                    DeleteWithDescriptionMembers deleteWithDescriptionMembers = new DeleteWithDescriptionMembers();
+                    deleteWithDescriptionMembers.DeletedID = Convert.ToInt32(txt_ID.Text);
+                    deleteWithDescriptionMembers.ShowDialog();
                     Default();
+                    TableReflesh();
+
                 }
                 else
                 {
@@ -322,6 +334,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             else
             {
                 MessageBox.Show("Lütfen silinecek kaydı seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             
+                
+               
             }
         }
 
@@ -409,6 +424,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
             dTP_MemberDate.Text = dataGridView1.CurrentRow.Cells["MemberDate"].Value.ToString();
             txt_Password.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
+        }
+
+        private void txt_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar==32)
+            {
+                e.Handled = true;
+                MessageBox.Show("Şifrede boşluk karakteri kullanılamaz.", "Paralo'da Boşluk Kullanılamaz!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 

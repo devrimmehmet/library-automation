@@ -138,6 +138,7 @@
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.Size = new System.Drawing.Size(134, 26);
             this.txt_Password.TabIndex = 11;
+            this.txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Password_KeyPress);
             // 
             // label1
             // 
@@ -277,6 +278,7 @@
             this.dTP_BirthDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.dTP_BirthDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dTP_BirthDay.Location = new System.Drawing.Point(431, 12);
+            this.dTP_BirthDay.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dTP_BirthDay.Name = "dTP_BirthDay";
             this.dTP_BirthDay.Size = new System.Drawing.Size(133, 26);
             this.dTP_BirthDay.TabIndex = 5;

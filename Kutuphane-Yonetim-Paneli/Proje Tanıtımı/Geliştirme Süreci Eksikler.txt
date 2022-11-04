@@ -1,0 +1,21 @@
+1 - Admin, gönüllü ve üye modülleri.
+
+2 - Üyelerin tercih ettikleri kitap türlerine göre sıradaki kitabı program önersin.
+
+3 - Ceza sistemi olacak. 
+
+4 - Kitap geliri 3 kısıma bölünecek. Vakıflar, personellere prim olarak dağıtılacak (müdür hariç). Yeni kitap alınacak.
+
+5 - Silinen objenin, ne sebeple sildiğinin sebebi belirtilicek.
+
+6 - Kullanıcı ihbar süresini dikkate alırsa tekrar üyeliği aktifleştirilsin. Dikkate almaz ise bir daha üye olması engellensin. 
+
+7 - Yaş sınırı. Üyeler 15 yaş üzerinde olsun. 
+
+8 - Kategoriye göre kitap listeleme.
+
+9 - Kitap için yorum yapma eklenecek.
+
+10 - Emanet - iade paneli düzenlenecek.
+
+11 - Şifrede boşluk kabul edilmesin.

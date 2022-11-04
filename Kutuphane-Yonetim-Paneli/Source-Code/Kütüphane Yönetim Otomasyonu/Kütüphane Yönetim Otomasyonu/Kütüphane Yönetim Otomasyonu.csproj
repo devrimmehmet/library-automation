@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeleteWithDescriptionEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteWithDescriptionEmployee.Designer.cs">
+      <DependentUpon>DeleteWithDescriptionEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteWithDescriptionMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteWithDescriptionMembers.Designer.cs">
+      <DependentUpon>DeleteWithDescriptionMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberProfile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MemberProfile.Designer.cs">
       <DependentUpon>MemberProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entrust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Entrust.Designer.cs">
+      <DependentUpon>Entrust.cs</DependentUpon>
     </Compile>
     <Compile Include="UserMenu.cs">
       <SubType>Form</SubType>
@@ -121,8 +139,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConnectionString.cs" />
+    <EmbeddedResource Include="DeleteWithDescriptionEmployee.resx">
+      <DependentUpon>DeleteWithDescriptionEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteWithDescriptionMembers.resx">
+      <DependentUpon>DeleteWithDescriptionMembers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemberProfile.resx">
       <DependentUpon>MemberProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entrust.resx">
+      <DependentUpon>Entrust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMenu.resx">
       <DependentUpon>UserMenu.cs</DependentUpon>

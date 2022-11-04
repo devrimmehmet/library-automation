@@ -42,8 +42,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[1].HeaderText = "Ad";
             dataGridView1.Columns[1].Width = 300;
             dataGridView1.Columns[2].HeaderText = "Telefon";
+            dataGridView1.Columns[2].Width = 80;
             dataGridView1.Columns[3].HeaderText = "Mail";
-            dataGridView1.Columns[3].Width = 120;
+            dataGridView1.Columns[3].Width = 150;
             dataGridView1.Columns[4].HeaderText = "Adres";
             dataGridView1.Columns[4].Width = 480;
             dataGridView1.Columns[5].Visible = false;
@@ -196,9 +197,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Open();
             SqlCommand FindPublisher = new SqlCommand();
             FindPublisher.Connection = sqlConnection;
-            FindPublisher.CommandText = "FindPublisher"; //stoured procedure'un saklandığı yer.
+            FindPublisher.CommandText = "FindPublisherForUpdate"; //stoured procedure'un saklandığı yer.
             FindPublisher.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
             FindPublisher.Parameters.AddWithValue("@Name", txt_Name.Text);
+            FindPublisher.Parameters.AddWithValue("@ID", txt_Id.Text);
             SqlDataReader dr2 = FindPublisher.ExecuteReader();
             if (dr2.Read())
             {
@@ -219,6 +221,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                     {
                         if (txt_Id.Text != "")
                         {
+                            sqlConnection.Close();
                             int IDD = Convert.ToInt32(txt_Id.Text);
                             sqlConnection.Open();
                             SqlCommand Update = new SqlCommand($"UpdateFromPublishers {IDD},@Name,@Phone,@Mail,@Address", sqlConnection);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            
             panel1.Controls.Clear(); // Panel'in içini temizliyoruz..
             Members frm2 = new Members();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2); // panel1 içerisinde formu ekledik
-
             frm2.Show(); // formu gösterdik. Ancak buraya dikakt. ShowDialog(); olarak değil Show(); olarak açıyoruz.
             frm2.Dock = DockStyle.Fill; // Açılan formun paneli doldurmasını sağladık.
             frm2.BringToFront(); // formu panel içinde en öne getirdik
@@ -38,7 +39,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             pnl_Authors.BackColor = Color.DarkSlateGray;
             pnl_Books.BackColor = Color.DarkSlateGray;
             pnl_Publisher.BackColor = Color.DarkSlateGray;
-            pnl_Transactions.BackColor = Color.DarkSlateGray;
+            pnl_Entrust.BackColor = Color.DarkSlateGray;
             panel11.BackColor = Color.DarkSlateGray;
             panel12.BackColor = Color.DarkSlateGray;
         }
@@ -62,6 +63,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             Employees frm2 = new Employees();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2);
+            frm2.ActiveEmployeeID = this.ActiveEmployeeID;
             frm2.Show();
             frm2.Dock = DockStyle.Fill;
             frm2.BringToFront();
@@ -126,12 +128,13 @@ namespace Kütüphane_Yönetim_Otomasyonu
             frm2.Dock = DockStyle.Fill;
             frm2.BringToFront();
         }
-        private void pnl_Transactions_Click(object sender, EventArgs e)
+
+        private void pnl_Entrusts_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
             SelectedFormPanelBackColor();
-            pnl_Transactions.BackColor = Color.DarkGreen;
-            Transactions frm2 = new Transactions();
+            pnl_Entrust.BackColor = Color.DarkGreen;
+            Entrust frm2 = new Entrust();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2);
             frm2.ActiveEmployeeID = this.ActiveEmployeeID;

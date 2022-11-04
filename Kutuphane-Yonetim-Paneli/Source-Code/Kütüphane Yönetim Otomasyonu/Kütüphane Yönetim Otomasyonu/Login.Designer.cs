@@ -43,7 +43,7 @@
             this.txt_ID.Name = "txt_ID";
             this.txt_ID.Size = new System.Drawing.Size(121, 26);
             this.txt_ID.TabIndex = 0;
-            this.txt_ID.Text = "11111122233";
+            this.txt_ID.Text = "11111111111";
             this.txt_ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Just_Numeric_KeyPress);
             // 
             // txt_Password

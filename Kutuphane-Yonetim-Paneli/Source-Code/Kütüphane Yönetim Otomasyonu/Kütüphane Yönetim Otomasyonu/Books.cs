@@ -66,12 +66,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
-            dataGridView1.Columns[14].HeaderText = "Yazar";
+           dataGridView1.Columns[14].HeaderText = "Yazar";
             dataGridView1.Columns[14].Width = 120;
             dataGridView1.Columns[15].Visible = false;
             dataGridView1.Columns[16].Visible = false;
             dataGridView1.Columns[17].Visible = false;
-            dataGridView1.Columns[18].HeaderText = "Dili";
+           dataGridView1.Columns[18].HeaderText = "Dili";
             dataGridView1.Columns[18].Width = 60;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
@@ -257,7 +257,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_ShelfNumber.MaxLength = 50;
             txt_PageNumber.MaxLength = 11;
             txt_PublishYear.MaxLength = 4;
-            rTxt_Description.MaxLength = 200;
+            rTxt_Description.MaxLength = 1000;
             txt_Search_Shelf.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
         }
@@ -277,11 +277,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_PageNumber.Text = dataGridView1.CurrentRow.Cells["NumberOfPages"].Value.ToString();
             rTxt_Description.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
             txt_ShelfNumber.Text = dataGridView1.CurrentRow.Cells["ShelfNumber"].Value.ToString();
-
-
-
-
-
+            cB_Author.Text=dataGridView1.CurrentRow.Cells["NameSurname"].Value.ToString();
+            cB_Category.Text = dataGridView1.CurrentRow.Cells["Name2"].Value.ToString();
+            cB_Language.Text = dataGridView1.CurrentRow.Cells["Language"].Value.ToString();
+            cB_Publisher.Text = dataGridView1.CurrentRow.Cells["Name1"].Value.ToString();
         }
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -340,7 +339,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             if (txt_Id.Text != "")
             {
-                if (MessageBox.Show("Üyeyi Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                if (MessageBox.Show("Kitap Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     int IDD = Convert.ToInt32(txt_Id.Text);
                     sqlConnection.Open();
@@ -462,12 +461,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             Add.Parameters.AddWithValue("@Author_ID", AuthorID);
                                             Add.Parameters.AddWithValue("@PublicationYear", txt_PublishYear.Text);
                                             Add.Parameters.AddWithValue("@NumberOfPages", txt_PageNumber.Text);
-                                            Add.Parameters.AddWithValue("@Language_ID", cB_Language.Text);
-                                            Add.Parameters.AddWithValue("@Publisher_ID", cB_Publisher.Text);
+                                            Add.Parameters.AddWithValue("@Language_ID", LanguageID);
+                                            Add.Parameters.AddWithValue("@Publisher_ID", PublisherID);
                                             Add.Parameters.AddWithValue("@Description", rTxt_Description.Text);
                                             Add.Parameters.AddWithValue("@State", State);
                                             Add.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
-                                            Add.Parameters.AddWithValue("@Category_ID", cB_Category.Text);
+                                            Add.Parameters.AddWithValue("@Category_ID", CategoryID);
                                             Add.ExecuteNonQuery();
                                             sqlConnection.Close();
                                             TableReflesh();

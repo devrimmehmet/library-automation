@@ -66,7 +66,7 @@
             this.txt_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Id.Location = new System.Drawing.Point(95, 12);
             this.txt_Id.Name = "txt_Id";
-            this.txt_Id.Size = new System.Drawing.Size(165, 26);
+            this.txt_Id.Size = new System.Drawing.Size(243, 26);
             this.txt_Id.TabIndex = 1;
             // 
             // txt_Name
@@ -74,7 +74,7 @@
             this.txt_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Name.Location = new System.Drawing.Point(95, 44);
             this.txt_Name.Name = "txt_Name";
-            this.txt_Name.Size = new System.Drawing.Size(165, 26);
+            this.txt_Name.Size = new System.Drawing.Size(243, 26);
             this.txt_Name.TabIndex = 2;
             // 
             // label1
@@ -103,7 +103,7 @@
             // 
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Add.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.btn_Add.Location = new System.Drawing.Point(649, 42);
+            this.btn_Add.Location = new System.Drawing.Point(727, 42);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(102, 43);
             this.btn_Add.TabIndex = 27;
@@ -115,7 +115,7 @@
             // 
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Delete.ForeColor = System.Drawing.Color.Red;
-            this.btn_Delete.Location = new System.Drawing.Point(766, 42);
+            this.btn_Delete.Location = new System.Drawing.Point(844, 42);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(102, 42);
             this.btn_Delete.TabIndex = 28;
@@ -127,7 +127,7 @@
             // 
             this.btn_Update.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btn_Update.ForeColor = System.Drawing.Color.Green;
-            this.btn_Update.Location = new System.Drawing.Point(884, 41);
+            this.btn_Update.Location = new System.Drawing.Point(962, 41);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(102, 43);
             this.btn_Update.TabIndex = 29;
@@ -140,7 +140,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label13.ForeColor = System.Drawing.Color.Brown;
-            this.label13.Location = new System.Drawing.Point(265, 51);
+            this.label13.Location = new System.Drawing.Point(343, 51);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 20);
             this.label13.TabIndex = 34;
@@ -170,7 +170,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.richTextBox1.Location = new System.Drawing.Point(327, 6);
+            this.richTextBox1.Location = new System.Drawing.Point(405, 6);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(270, 122);
             this.richTextBox1.TabIndex = 39;
@@ -192,7 +192,7 @@
             this.txt_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Phone.Location = new System.Drawing.Point(95, 76);
             this.txt_Phone.Name = "txt_Phone";
-            this.txt_Phone.Size = new System.Drawing.Size(165, 26);
+            this.txt_Phone.Size = new System.Drawing.Size(243, 26);
             this.txt_Phone.TabIndex = 40;
             // 
             // label5
@@ -211,7 +211,7 @@
             this.txt_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Mail.Location = new System.Drawing.Point(95, 108);
             this.txt_Mail.Name = "txt_Mail";
-            this.txt_Mail.Size = new System.Drawing.Size(165, 26);
+            this.txt_Mail.Size = new System.Drawing.Size(243, 26);
             this.txt_Mail.TabIndex = 44;
             // 
             // pictureBox2

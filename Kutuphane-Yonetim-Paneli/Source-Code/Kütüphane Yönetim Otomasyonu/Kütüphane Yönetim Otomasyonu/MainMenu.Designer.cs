@@ -59,7 +59,7 @@
             this.pnl_Categories = new System.Windows.Forms.Panel();
             this.pnl_Books = new System.Windows.Forms.Panel();
             this.pnl_Publisher = new System.Windows.Forms.Panel();
-            this.pnl_Transactions = new System.Windows.Forms.Panel();
+            this.pnl_Entrust = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
@@ -82,7 +82,7 @@
             this.pnl_Categories.SuspendLayout();
             this.pnl_Books.SuspendLayout();
             this.pnl_Publisher.SuspendLayout();
-            this.pnl_Transactions.SuspendLayout();
+            this.pnl_Entrust.SuspendLayout();
             this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -285,7 +285,7 @@
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox9.TabIndex = 21;
             this.pictureBox9.TabStop = false;
-            this.pictureBox9.Click += new System.EventHandler(this.pnl_Transactions_Click);
+            this.pictureBox9.Click += new System.EventHandler(this.pnl_Entrusts_Click);
             // 
             // pictureBox10
             // 
@@ -327,10 +327,10 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(3, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 20);
+            this.label11.Size = new System.Drawing.Size(104, 20);
             this.label11.TabIndex = 24;
-            this.label11.Text = "Emanet-İade";
-            this.label11.Click += new System.EventHandler(this.pnl_Transactions_Click);
+            this.label11.Text = "Emanet Ver";
+            this.label11.Click += new System.EventHandler(this.pnl_Entrusts_Click);
             // 
             // pictureBox12
             // 
@@ -414,15 +414,15 @@
             this.pnl_Publisher.TabIndex = 30;
             this.pnl_Publisher.Click += new System.EventHandler(this.pnl_Publisher_Click);
             // 
-            // pnl_Transactions
+            // pnl_Entrust
             // 
-            this.pnl_Transactions.Controls.Add(this.label11);
-            this.pnl_Transactions.Controls.Add(this.pictureBox9);
-            this.pnl_Transactions.Location = new System.Drawing.Point(12, 566);
-            this.pnl_Transactions.Name = "pnl_Transactions";
-            this.pnl_Transactions.Size = new System.Drawing.Size(170, 49);
-            this.pnl_Transactions.TabIndex = 30;
-            this.pnl_Transactions.Click += new System.EventHandler(this.pnl_Transactions_Click);
+            this.pnl_Entrust.Controls.Add(this.label11);
+            this.pnl_Entrust.Controls.Add(this.pictureBox9);
+            this.pnl_Entrust.Location = new System.Drawing.Point(12, 566);
+            this.pnl_Entrust.Name = "pnl_Entrust";
+            this.pnl_Entrust.Size = new System.Drawing.Size(170, 49);
+            this.pnl_Entrust.TabIndex = 30;
+            this.pnl_Entrust.Click += new System.EventHandler(this.pnl_Entrusts_Click);
             // 
             // panel11
             // 
@@ -449,7 +449,7 @@
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.panel12);
             this.Controls.Add(this.panel11);
-            this.Controls.Add(this.pnl_Transactions);
+            this.Controls.Add(this.pnl_Entrust);
             this.Controls.Add(this.pnl_Publisher);
             this.Controls.Add(this.pnl_Books);
             this.Controls.Add(this.pnl_Categories);
@@ -496,8 +496,8 @@
             this.pnl_Books.PerformLayout();
             this.pnl_Publisher.ResumeLayout(false);
             this.pnl_Publisher.PerformLayout();
-            this.pnl_Transactions.ResumeLayout(false);
-            this.pnl_Transactions.PerformLayout();
+            this.pnl_Entrust.ResumeLayout(false);
+            this.pnl_Entrust.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -535,7 +535,7 @@
         private System.Windows.Forms.Panel pnl_Categories;
         private System.Windows.Forms.Panel pnl_Books;
         private System.Windows.Forms.Panel pnl_Publisher;
-        private System.Windows.Forms.Panel pnl_Transactions;
+        private System.Windows.Forms.Panel pnl_Entrust;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
     }

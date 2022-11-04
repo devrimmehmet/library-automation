@@ -21,18 +21,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
+        public int ActiveEmployeeID;
         private void Default()
         {
             txt_ID.Text = "";
             txt_Name.Text = "";
             txt_Surname.Text = "";
             cB_Gender.SelectedIndex = 2;
-            dTP_BirthDay.Value = DateTime.Now;
             txt_Phone.Text = "";
             txt_IdentityNumber.Text = "";
             txt_Mail.Text = "";
             txt_Password.Text = "";
             cB_Permission.SelectedIndex = 1;
+            dTP_BirthDay.Value = DateTime.Now.AddYears(-18).AddDays(-1);
+            
         }
         private void TableReflesh()
         {
@@ -51,12 +53,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[6].HeaderText = "Doğum Tarihi";
             dataGridView1.Columns[8].HeaderText = "Mail";
             dataGridView1.Columns[9].HeaderText = "Şifre";
-            dataGridView1.Columns[12].HeaderText = "Yetki";
+            dataGridView1.Columns[15].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false;
             dataGridView1.Columns["Mail"].Width = 150;
             dataGridView1.Columns["Name"].Width = 120;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
             dataGridView1.Columns["Surname"].Width = 120;
         }
         private void TableReflesh(decimal SearchTextTC)
@@ -79,13 +84,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[6].HeaderText = "Doğum Tarihi";
             dataGridView1.Columns[8].HeaderText = "Mail";
             dataGridView1.Columns[9].HeaderText = "Şifre";
-            dataGridView1.Columns[12].HeaderText = "Yetki";
+            dataGridView1.Columns[15].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false;
             dataGridView1.Columns["Mail"].Width = 150;
             dataGridView1.Columns["Name"].Width = 120;
             dataGridView1.Columns["Surname"].Width = 120;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
         }
         private void TableReflesh(string SearchTextName)
         {
@@ -107,16 +115,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[6].HeaderText = "Doğum Tarihi";
             dataGridView1.Columns[8].HeaderText = "Mail";
             dataGridView1.Columns[9].HeaderText = "Şifre";
-            dataGridView1.Columns[12].HeaderText = "Yetki";
+            dataGridView1.Columns[15].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false; 
             dataGridView1.Columns["Mail"].Width = 150;
             dataGridView1.Columns["Name"].Width = 120;
             dataGridView1.Columns["Surname"].Width = 120;
+            dataGridView1.Columns["DeletedInfo"].Visible = false;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
         }
         private void Members_Load(object sender, EventArgs e)
         {
+            dTP_BirthDay.MaxDate = DateTime.Now.AddYears(-18);
             SqlCommand komut = new SqlCommand("SELECT Permission FROM Permissions", sqlConnection);
             SqlDataReader dr;
             sqlConnection.Open();
@@ -295,12 +307,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 if (MessageBox.Show("Personel Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    int IDD = Convert.ToInt32(txt_ID.Text);
-                    sqlConnection.Open();
-                    SqlCommand Sil = new SqlCommand($"DeleteFromEmployees {IDD}", sqlConnection);
-                    Sil.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    TableReflesh();
+                    if (txt_ID.Text==this.ActiveEmployeeID.ToString())
+                    {
+                        MessageBox.Show("Kendi Kendinizi Silemezsiniz!", "Kendi Kaydını Silme İşlemi Yapılamaz!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        DeleteWithDescriptionEmployee deleteWithDescriptionEmployee = new DeleteWithDescriptionEmployee();
+                        deleteWithDescriptionEmployee.DeletedID = Convert.ToInt32(txt_ID.Text);
+                        deleteWithDescriptionEmployee.ActiveEmployeeID = this.ActiveEmployeeID;
+                        deleteWithDescriptionEmployee.ShowDialog();
+                        Default();
+                        TableReflesh();
+                    }
+                    
                 }
                 else
                 {
@@ -363,6 +383,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             else
             {
                 MessageBox.Show("Lütfen güncellenecek üyeyi seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txt_Password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 32)
+            {
+                e.Handled = true;
+                MessageBox.Show("Şifrede boşluk karakteri kullanılamaz.", "Paralo'da Boşluk Kullanılamaz!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
