@@ -196,9 +196,10 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 sqlConnection.Open();
                 SqlCommand FindAuthor = new SqlCommand();
                 FindAuthor.Connection = sqlConnection;
-                FindAuthor.CommandText = "FindAuthor"; //stoured procedure'un saklandığı yer.
+                FindAuthor.CommandText = "FindAuthorUpdate"; //stoured procedure'un saklandığı yer.
                 FindAuthor.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
                 FindAuthor.Parameters.AddWithValue("@NameSurname", txt_NameSurname.Text);
+                FindAuthor.Parameters.AddWithValue("@ID", txt_Id.Text);
                 SqlDataReader dr2 = FindAuthor.ExecuteReader();
                 if (dr2.Read())
                 {

@@ -19,7 +19,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 {
     public partial class Entrust : Form
     {
-        public int ActiveEmployeeID=2;
+        public int ActiveEmployeeID = 2;
         public Entrust()
         {
             InitializeComponent();
@@ -36,9 +36,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
             dataGridView2.Columns[0].HeaderText = "ID";
             dataGridView2.Columns[1].HeaderText = "Ad";
-            //dataGridView2.Columns[1].Width = 300;
             dataGridView2.Columns[2].HeaderText = "Soyad";
-        //    dataGridView2.Columns[2].Width = 300;
             dataGridView2.Columns[3].Visible = false;
             dataGridView2.Columns[4].Visible = false;
             dataGridView2.Columns[5].Visible = false;
@@ -122,29 +120,32 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Open();
             adpBooks.Fill(dtBooks);
             dataGridView3.DataSource = dtBooks;
-
             sqlConnection.Close();
             dataGridView3.Columns[0].HeaderText = "ID";
             dataGridView3.Columns[1].HeaderText = "Ad";
-            dataGridView3.Columns[2].Visible = false;
-            dataGridView3.Columns[3].Visible = false;
-            dataGridView3.Columns[4].Visible = false;
-            dataGridView3.Columns[5].Visible = false;
-            dataGridView3.Columns[6].Visible = false;
-            dataGridView3.Columns[7].Visible = false;
-            dataGridView3.Columns[8].Visible = false;
+            dataGridView3.Columns["Author_ID"].Visible = false;
+            dataGridView3.Columns["PublicationYear"].Visible = false;
+            dataGridView3.Columns["NumberOfPages"].Visible = false;
+            dataGridView3.Columns["Language_ID"].Visible = false;
+            dataGridView3.Columns["Description"].HeaderText = "Açıklama";
+            dataGridView3.Columns["Publisher_ID"].Visible = false;
+            dataGridView3.Columns["State"].Visible = false;
             dataGridView3.Columns[9].HeaderText = "Raf Numarası";
-            dataGridView3.Columns[10].Visible = false;
-            dataGridView3.Columns[11].Visible = false;
-            dataGridView3.Columns[12].Visible = false;
-            dataGridView3.Columns[13].HeaderText = "Yazar";
-            dataGridView3.Columns[14].Visible = false;
+            dataGridView3.Columns["Category_ID"].Visible = false;
+            dataGridView3.Columns["DeletedState"].Visible = false;
+            dataGridView3.Columns["NameSurname"].HeaderText = "Yazar";
+            dataGridView3.Columns["Information"].Visible = false;
+            dataGridView3.Columns["DeletedState1"].Visible = false;
+            dataGridView3.Columns["Photo"].Visible = false;
+            dataGridView3.Columns["ID1"].Visible = false;
+
 
         }
-        private void BooksTable(string Raf)
+        private void BooksTable(string ShelfNumber)
         {
-            SqlDataAdapter adpBooks = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID where State=1 and b.ShelfNumber like '%{Raf}%'", sqlConnection);
-            /// BURADA İFADEYE ' gibi özel karakter koyarsa hata verecek ÇÖZMEYİ UNUTMA
+            string BooksFindWithShelfNumber = "select * from Books b inner join Authors a on a.ID=b.Author_ID where State=1 and b.ShelfNumber like '%'+@ShelfNumber+'%'";
+            SqlDataAdapter adpBooks = new SqlDataAdapter(BooksFindWithShelfNumber, sqlConnection);
+            adpBooks.SelectCommand.Parameters.AddWithValue("@ShelfNumber", ShelfNumber);
             DataTable dtBooks = new DataTable();
             sqlConnection.Open();
             adpBooks.Fill(dtBooks);
@@ -153,69 +154,64 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
             dataGridView3.Columns[0].HeaderText = "ID";
             dataGridView3.Columns[1].HeaderText = "Ad";
-            dataGridView3.Columns[2].Visible = false;
-            dataGridView3.Columns[3].Visible = false;
-            dataGridView3.Columns[4].Visible = false;
-            dataGridView3.Columns[5].Visible = false;
-            dataGridView3.Columns[6].Visible = false;
-            dataGridView3.Columns[7].Visible = false;
-            dataGridView3.Columns[8].Visible = false;
+            dataGridView3.Columns["Author_ID"].Visible = false;
+            dataGridView3.Columns["PublicationYear"].Visible = false;
+            dataGridView3.Columns["NumberOfPages"].Visible = false;
+            dataGridView3.Columns["Language_ID"].Visible = false;
+            dataGridView3.Columns["Publisher_ID"].Visible = false;
+            dataGridView3.Columns["State"].Visible = false;
             dataGridView3.Columns[9].HeaderText = "Raf Numarası";
-            dataGridView3.Columns[10].Visible = false;
-            dataGridView3.Columns[11].Visible = false;
-            dataGridView3.Columns[12].Visible = false;
-            dataGridView3.Columns[13].HeaderText = "Yazar";
-            dataGridView3.Columns[14].Visible = false;
+            dataGridView3.Columns["Category_ID"].Visible = false;
+            dataGridView3.Columns["DeletedState"].Visible = false;
+            dataGridView3.Columns["NameSurname"].HeaderText = "Yazar";
+            dataGridView3.Columns["Information"].Visible = false;
+            dataGridView3.Columns["DeletedState1"].Visible = false;
+            dataGridView3.Columns["Photo"].Visible = false;
+            dataGridView3.Columns["ID1"].Visible = false;
 
         }
         private void FindBooksTableWithName(string Name)
         {
-            SqlDataAdapter adpBooks = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID where State=1 and b.Name like '%{Name}%'", sqlConnection);
-            /// BURADA İFADEYE ' gibi özel karakter koyarsa hata verecek ÇÖZMEYİ UNUTMA
+            string BooksFindWithName = "select * from Books b inner join Authors a on a.ID=b.Author_ID where State=1 and b.Name like '%'+@Name+'%'";
+            SqlDataAdapter adpBooks = new SqlDataAdapter(BooksFindWithName, sqlConnection);
+            adpBooks.SelectCommand.Parameters.AddWithValue("@Name", Name);
             DataTable dtBooks = new DataTable();
             sqlConnection.Open();
             adpBooks.Fill(dtBooks);
             dataGridView3.DataSource = dtBooks;
-
             sqlConnection.Close();
             dataGridView3.Columns[0].HeaderText = "ID";
             dataGridView3.Columns[1].HeaderText = "Ad";
-            dataGridView3.Columns[2].Visible = false;
-            dataGridView3.Columns[3].Visible = false;
-            dataGridView3.Columns[4].Visible = false;
-            dataGridView3.Columns[5].Visible = false;
-            dataGridView3.Columns[6].Visible = false;
-            dataGridView3.Columns[7].Visible = false;
-            dataGridView3.Columns[8].Visible = false;
+            dataGridView3.Columns["Author_ID"].Visible = false;
+            dataGridView3.Columns["PublicationYear"].Visible = false;
+            dataGridView3.Columns["NumberOfPages"].Visible = false;
+            dataGridView3.Columns["Language_ID"].Visible = false;
+            dataGridView3.Columns["Publisher_ID"].Visible = false;
+            dataGridView3.Columns["State"].Visible = false;
             dataGridView3.Columns[9].HeaderText = "Raf Numarası";
-            dataGridView3.Columns[10].Visible = false;
-            dataGridView3.Columns[11].Visible = false;
-            dataGridView3.Columns[12].Visible = false;
-            dataGridView3.Columns[13].HeaderText = "Yazar";
-            dataGridView3.Columns[14].Visible = false;
-
+            dataGridView3.Columns["Category_ID"].Visible = false;
+            dataGridView3.Columns["DeletedState"].Visible = false;
+            dataGridView3.Columns["NameSurname"].HeaderText = "Yazar";
+            dataGridView3.Columns["Information"].Visible = false;
+            dataGridView3.Columns["DeletedState1"].Visible = false;
+            dataGridView3.Columns["Photo"].Visible = false;
+            dataGridView3.Columns["ID1"].Visible = false;
         }
-       
+
         private void Members_Load(object sender, EventArgs e)
         {
             MembersTable();
             BooksTable();
-           
+
             dataGridView2.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView2.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView2.AllowUserToAddRows = false; // satır ekleme iptal
             dataGridView3.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView3.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView3.AllowUserToAddRows = false; // satır ekleme iptal
-          
-            dataGridView3.Columns[1].Width = 150;
-            dataGridView3.Columns[13].Width = 150;
-            textBox2.MaxLength = 11;
-            textBox1.MaxLength = 50;
+
+
         }
-
-    
-
 
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -232,37 +228,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Book_ID.Text = (dataGridView3.CurrentRow.Cells["ID"].Value).ToString();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            string TransactionsDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
-
-            sqlConnection.Open();
-            string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@ActiveEmployeeID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
-            SqlCommand komut = new SqlCommand(EntrustAddStr, sqlConnection);
-            komut.Parameters.AddWithValue("@Member_ID", txt_Member_ID.Text);
-            komut.Parameters.AddWithValue("@EntrustedEmployee_ID", ActiveEmployeeID);
-            komut.Parameters.AddWithValue("@Book_ID", txt_Book_ID.Text);
-            komut.Parameters.AddWithValue("@TransactionsDate", TransactionsDate);
-            komut.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
-            int eklenti = komut.ExecuteNonQuery();
-            sqlConnection.Close();
-            sqlConnection.Open();
-            SqlCommand Update = new SqlCommand($"Update Books set State=0 where ID={txt_Book_ID.Text}", sqlConnection);
-            Update.ExecuteNonQuery();
-            sqlConnection.Close();
-         
-            MembersTable();
-            BooksTable();
-
-
-        }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-              textBox1.Text = "";
+            textBox1.Text = "";
             txt_Member_ID.Text = "";
-            if (textBox2.Text!="")
+            if (textBox2.Text != "")
             {
                 MembersTable(Convert.ToDecimal(textBox2.Text));
             }
@@ -270,7 +240,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 MembersTable();
             }
-            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -303,8 +273,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
-            
-                textBox6.Text = "";
+
+            textBox6.Text = "";
             txt_Book_ID.Text = "";
             if (textBox5.Text != "")
             {
@@ -316,7 +286,29 @@ namespace Kütüphane_Yönetim_Otomasyonu
             }
         }
 
-      
+        private void Entrust_Click(object sender, EventArgs e)
+        {
+            string TransactionsDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
+
+            sqlConnection.Open();
+            string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@ActiveEmployeeID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
+            SqlCommand komut = new SqlCommand(EntrustAddStr, sqlConnection);
+            komut.Parameters.AddWithValue("@Member_ID", txt_Member_ID.Text);
+            komut.Parameters.AddWithValue("@EntrustedEmployee_ID", ActiveEmployeeID);
+            komut.Parameters.AddWithValue("@Book_ID", txt_Book_ID.Text);
+            komut.Parameters.AddWithValue("@TransactionsDate", TransactionsDate);
+            komut.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
+            int eklenti = komut.ExecuteNonQuery();
+            sqlConnection.Close();
+            sqlConnection.Open();
+            SqlCommand Update = new SqlCommand($"Update Books set State=0 where ID={txt_Book_ID.Text}", sqlConnection);
+            Update.ExecuteNonQuery();
+            sqlConnection.Close();
+
+            MembersTable();
+            BooksTable();
+        }
     }
 
 

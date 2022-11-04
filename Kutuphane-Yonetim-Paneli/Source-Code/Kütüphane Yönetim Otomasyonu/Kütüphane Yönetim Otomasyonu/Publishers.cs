@@ -39,14 +39,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[0].Width = 40;
             dataGridView1.Columns[1].HeaderText = "Ad";
             dataGridView1.Columns[1].Width = 300;
             dataGridView1.Columns[2].HeaderText = "Telefon";
-            dataGridView1.Columns[2].Width = 80;
+            dataGridView1.Columns[2].Width = 120;
             dataGridView1.Columns[3].HeaderText = "Mail";
-            dataGridView1.Columns[3].Width = 150;
+            dataGridView1.Columns[3].Width = 220;
             dataGridView1.Columns[4].HeaderText = "Adres";
-            dataGridView1.Columns[4].Width = 480;
+            dataGridView1.Columns[4].Width = 400;
             dataGridView1.Columns[5].Visible = false;
         }
 

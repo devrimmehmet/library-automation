@@ -47,23 +47,31 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
+            dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[1].HeaderText = "Ad";
+            dataGridView1.Columns[1].Width = 150;
             dataGridView1.Columns[2].HeaderText = "Soyad";
-            dataGridView1.Columns[3].HeaderText = "Cinsiyet";
-            dataGridView1.Columns[4].HeaderText = "Doğum Tarihi";
-            dataGridView1.Columns[5].HeaderText = "Telefon";
+            dataGridView1.Columns[2].Width = 150;
+            dataGridView1.Columns[3].Visible =false;// "Cinsiyet"
+            dataGridView1.Columns[4].Visible =false;// "Doğum Tarihi"
+            dataGridView1.Columns[5].Visible = false;//"Telefon"
+            dataGridView1.Columns[5].Width = 120;
             dataGridView1.Columns[6].HeaderText = "TC";
+            dataGridView1.Columns[6].Width = 130;
             dataGridView1.Columns[7].HeaderText = "Mail";
+            dataGridView1.Columns[7].Width = 240;
             dataGridView1.Columns[8].HeaderText = "Adres";
+            dataGridView1.Columns[8].Width = 220;
             dataGridView1.Columns[10].HeaderText = "Üyelik Tarihi";
-            dataGridView1.Columns[11].HeaderText = "Şifre";
+            dataGridView1.Columns[10].Width =150;
+            dataGridView1.Columns[11].Visible = false;//"Şifre"
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns["Member_State_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedInfo"].Visible = false;
             dataGridView1.Columns["DeletedDate"].Visible = false;
             dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
-            dataGridView1.Columns["MemberState"].HeaderText = "Durum";
+            dataGridView1.Columns["MemberState"].Visible = false;//"Durum"
         }
         private void TableReflesh(decimal SearchTextTC)
         {
@@ -154,8 +162,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
             TableReflesh();
-            dataGridView1.Columns[0].Width = 50;
-            dataGridView1.Columns[11].Width = 70;
+            
         }
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {

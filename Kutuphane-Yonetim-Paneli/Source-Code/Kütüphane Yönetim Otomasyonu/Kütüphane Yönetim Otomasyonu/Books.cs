@@ -49,33 +49,33 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[0].Width = 60;
             dataGridView1.Columns[1].HeaderText = "Kitap Adı";
-            dataGridView1.Columns[1].Width = 250;
+            dataGridView1.Columns[1].Width = 330;
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[3].HeaderText = "Yayın Tarihi";
-            dataGridView1.Columns[3].Width = 90;
+            dataGridView1.Columns[3].Width = 120;
             dataGridView1.Columns[4].HeaderText = "Sayfa Sayısı";
-            dataGridView1.Columns[4].Width = 90;
+            dataGridView1.Columns[4].Width = 120;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[6].Visible =false;
-            dataGridView1.Columns[7].HeaderText = "Açıklama";
-            dataGridView1.Columns[8].HeaderText = "Mevcut";
+            dataGridView1.Columns[7].Visible = false;//açıklama
+            dataGridView1.Columns[8].Visible =false;//mevcut
             dataGridView1.Columns[8].Width = 50;
             dataGridView1.Columns[9].HeaderText = "Raf";
-            dataGridView1.Columns[9].Width = 50;
+            dataGridView1.Columns[9].Width = 70;
             dataGridView1.Columns[10].Visible = false;
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
            dataGridView1.Columns[14].HeaderText = "Yazar";
-            dataGridView1.Columns[14].Width = 120;
+            dataGridView1.Columns[14].Width = 230;
             dataGridView1.Columns[15].Visible = false;
             dataGridView1.Columns[16].Visible = false;
             dataGridView1.Columns[17].Visible = false;
-           dataGridView1.Columns[18].HeaderText = "Dili";
-            dataGridView1.Columns[18].Width = 60;
+           dataGridView1.Columns[18].Visible = false;//dili
+            dataGridView1.Columns[18].Width = 70;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
-            dataGridView1.Columns[21].HeaderText = "Yayınevi";
+            dataGridView1.Columns[21].Visible = false;//Yayınevi
             dataGridView1.Columns[21].Width = 150;
             dataGridView1.Columns[22].Visible = false;
             dataGridView1.Columns[23].Visible = false;
@@ -83,7 +83,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[25].Visible = false;
             dataGridView1.Columns[26].Visible = false;
             dataGridView1.Columns[27].HeaderText = "Kategori";
-            dataGridView1.Columns[27].Width = 80;
+            dataGridView1.Columns[27].Width = 160;
             dataGridView1.Columns[28].Visible = false;
         }
         private void TableSearchShelf(string SearchTextShelfNumber)
@@ -447,7 +447,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                         SqlDataReader dr4 = BooksFind.ExecuteReader();
                                         if (dr4.Read())
                                         {
-                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.");
+                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.", "Raf Numarası Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             sqlConnection.Close();
 
                                         }
@@ -474,44 +474,44 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez");
+                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
 
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez");
+                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
 
                             }
                             else
                             {
-                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez");
+                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                         }
                         else
                         {
-                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez");
+                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez");
+                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez");
+                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
             }
             else
             {
-                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
+                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -604,7 +604,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                         SqlDataReader dr4 = BooksFind.ExecuteReader();
                                         if (dr4.Read())
                                         {
-                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.");
+                                            MessageBox.Show("Bu Raf numarasına ait başka bir kitap var !!! Başka bir raf numarası giriniz.", "Raf Numarası Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             sqlConnection.Close();
 
                                         }
@@ -634,50 +634,50 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             }
                                             else
                                             {
-                                                MessageBox.Show("Lütfen güncellenecek kitabı seçiniz");
+                                                MessageBox.Show("Lütfen güncellenecek kitabı seçiniz", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez");
+                                        MessageBox.Show("Kitabın adını giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
 
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez");
+                                    MessageBox.Show("Kitabın Yazarını Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
 
                             }
                             else
                             {
-                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez");
+                                MessageBox.Show("Kitabın Kategorisini Giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                         }
                         else
                         {
-                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez");
+                            MessageBox.Show("Kitabın Raf Numarasını Giriniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez");
+                        MessageBox.Show("Kitabın Yayınevini Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez");
+                    MessageBox.Show("Kitabın Yayım Dilini Seçiniz! Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
             }
             else
             {
-                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez");
+                MessageBox.Show("Yayınlanma Tarihi Boş Geçilemez", "Boş Geçilemez", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
 

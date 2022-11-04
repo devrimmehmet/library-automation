@@ -46,23 +46,28 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Ad";
+            dataGridView1.Columns["Name"].Width = 200;
             dataGridView1.Columns[2].HeaderText = "Soyad";
+            dataGridView1.Columns["Surname"].Width = 150;
             dataGridView1.Columns[3].HeaderText = "Telefon";
+            dataGridView1.Columns[3].Width = 120;
             dataGridView1.Columns[4].HeaderText = "TC";
-            dataGridView1.Columns[5].HeaderText = "Cinsiyet";
-            dataGridView1.Columns[6].HeaderText = "Doğum Tarihi";
+            dataGridView1.Columns[4].Width = 120;
+            dataGridView1.Columns[5].Visible = false;//"Cinsiyet"
+            dataGridView1.Columns[6].Visible = false;//"Doğum Tarihi"
             dataGridView1.Columns[8].HeaderText = "Mail";
+            dataGridView1.Columns["Mail"].Width = 220;
             dataGridView1.Columns[9].HeaderText = "Şifre";
             dataGridView1.Columns[15].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;
             dataGridView1.Columns["ID1"].Visible = false;
             dataGridView1.Columns["DeletedState"].Visible = false;
-            dataGridView1.Columns["Mail"].Width = 150;
-            dataGridView1.Columns["Name"].Width = 120;
+           
+         
             dataGridView1.Columns["DeletedInfo"].Visible = false;
             dataGridView1.Columns["DeletedDate"].Visible = false;
             dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
-            dataGridView1.Columns["Surname"].Width = 120;
+            
         }
         private void TableReflesh(decimal SearchTextTC)
         {
