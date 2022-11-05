@@ -30,7 +30,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Language";
+            dataGridView1.Columns["Language"].HeaderText = "Diller";
             dataGridView1.Columns[2].Visible = false;
             dataGridView1.Columns[1].Width = 1000;
         }
@@ -52,7 +52,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Language";
+            dataGridView1.Columns["Language"].HeaderText = "Diller";
             dataGridView1.Columns[1].Width = 1000;
             dataGridView1.Columns[1].Width = 1000;
             Default();

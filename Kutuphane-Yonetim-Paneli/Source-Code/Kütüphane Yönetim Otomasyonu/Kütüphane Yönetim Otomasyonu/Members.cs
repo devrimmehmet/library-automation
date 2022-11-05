@@ -22,7 +22,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
-
+        public int ActiveEmployeeID=0;
+        public int ActiveEmployeePermission = 0;
         private void Default()
         {
             txt_ID.Text = "";
@@ -137,6 +138,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void Members_Load(object sender, EventArgs e)
         {
+           
             dTP_BirthDay.MaxDate = DateTime.Now.AddYears(-15);
             SqlCommand komut = new SqlCommand("SELECT MemberState FROM MemberStates", sqlConnection);
             SqlDataReader dr;
@@ -162,7 +164,13 @@ namespace Kütüphane_Yönetim_Otomasyonu
             txt_Search_TC.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
             TableReflesh();
-            
+            if (ActiveEmployeePermission == 3)
+            {
+             
+                cB_State.Enabled = false;
+                btn_Delete.Enabled = false;
+                txt_Password.UseSystemPasswordChar = true;
+            }
         }
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -138,6 +138,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView3.Columns["DeletedState1"].Visible = false;
             dataGridView3.Columns["Photo"].Visible = false;
             dataGridView3.Columns["ID1"].Visible = false;
+            dataGridView3.Columns["DeletedInfo"].Visible = false;
+            dataGridView3.Columns["DeletedDate"].Visible = false;
+            dataGridView3.Columns["DeletedEmployeeID"].Visible = false;
 
 
         }
@@ -168,6 +171,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView3.Columns["DeletedState1"].Visible = false;
             dataGridView3.Columns["Photo"].Visible = false;
             dataGridView3.Columns["ID1"].Visible = false;
+            dataGridView3.Columns["DeletedInfo"].Visible = false;
+            dataGridView3.Columns["DeletedDate"].Visible = false;
+            dataGridView3.Columns["DeletedEmployeeID"].Visible = false;
 
         }
         private void FindBooksTableWithName(string Name)
@@ -196,6 +202,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView3.Columns["DeletedState1"].Visible = false;
             dataGridView3.Columns["Photo"].Visible = false;
             dataGridView3.Columns["ID1"].Visible = false;
+            dataGridView3.Columns["DeletedInfo"].Visible = false;
+            dataGridView3.Columns["DeletedDate"].Visible = false;
+            dataGridView3.Columns["DeletedEmployeeID"].Visible = false;
         }
 
         private void Members_Load(object sender, EventArgs e)
@@ -288,26 +297,34 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void Entrust_Click(object sender, EventArgs e)
         {
-            string TransactionsDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
+            if (txt_Book_ID.Text =="" || txt_Member_ID.Text == "")
+            {
+                MessageBox.Show("Kitap Yada Üye Seçmediniz.","Seçim Yapılmadı",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                string TransactionsDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
 
-            sqlConnection.Open();
-            string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@EntrustedEmployee_ID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
-            SqlCommand komut = new SqlCommand(EntrustAddStr, sqlConnection);
-            komut.Parameters.AddWithValue("@Member_ID", txt_Member_ID.Text);
-            komut.Parameters.AddWithValue("@EntrustedEmployee_ID", ActiveEmployeeID);
-            komut.Parameters.AddWithValue("@Book_ID", txt_Book_ID.Text);
-            komut.Parameters.AddWithValue("@TransactionsDate", TransactionsDate);
-            komut.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
-            int eklenti = komut.ExecuteNonQuery();
-            sqlConnection.Close();
-            sqlConnection.Open();
-            SqlCommand Update = new SqlCommand($"Update Books set State=0 where ID={txt_Book_ID.Text}", sqlConnection);
-            Update.ExecuteNonQuery();
-            sqlConnection.Close();
+                sqlConnection.Open();
+                string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@EntrustedEmployee_ID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
+                SqlCommand komut = new SqlCommand(EntrustAddStr, sqlConnection);
+                komut.Parameters.AddWithValue("@Member_ID", txt_Member_ID.Text);
+                komut.Parameters.AddWithValue("@EntrustedEmployee_ID", ActiveEmployeeID);
+                komut.Parameters.AddWithValue("@Book_ID", txt_Book_ID.Text);
+                komut.Parameters.AddWithValue("@TransactionsDate", TransactionsDate);
+                komut.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
+                int eklenti = komut.ExecuteNonQuery();
+                sqlConnection.Close();
+                sqlConnection.Open();
+                SqlCommand Update = new SqlCommand($"Update Books set State=0 where ID={txt_Book_ID.Text}", sqlConnection);
+                Update.ExecuteNonQuery();
+                sqlConnection.Close();
 
-            MembersTable();
-            BooksTable();
+                MembersTable();
+                BooksTable();
+            }
+          
         }
     }
 

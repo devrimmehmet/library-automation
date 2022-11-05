@@ -66,13 +66,15 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[11].Visible = false;
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
-           dataGridView1.Columns[14].HeaderText = "Yazar";
-            dataGridView1.Columns[14].Width = 230;
+            dataGridView1.Columns["DeletedDate"].Visible = false;
+            dataGridView1.Columns["DeletedState4"].Visible = false;
+            dataGridView1.Columns["Address"].Visible = false;
+            dataGridView1.Columns["ID4"].Visible = false;
+            dataGridView1.Columns["NameSurname"].HeaderText = "Yazar";
+            dataGridView1.Columns["NameSurname"].Width = 230;
             dataGridView1.Columns[15].Visible = false;
             dataGridView1.Columns[16].Visible = false;
-            dataGridView1.Columns[17].Visible = false;
-           dataGridView1.Columns[18].Visible = false;//dili
-            dataGridView1.Columns[18].Width = 70;
+            dataGridView1.Columns[18].Visible = false;
             dataGridView1.Columns[19].Visible = false;
             dataGridView1.Columns[20].Visible = false;
             dataGridView1.Columns[21].Visible = false;//Yayınevi
@@ -82,7 +84,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[24].Visible = false;
             dataGridView1.Columns[25].Visible = false;
             dataGridView1.Columns[26].Visible = false;
-            dataGridView1.Columns[27].HeaderText = "Kategori";
+            dataGridView1.Columns["Name2"].HeaderText = "Kategori";
+            dataGridView1.Columns["Name2"].Width = 160;
             dataGridView1.Columns[27].Width = 160;
             dataGridView1.Columns[28].Visible = false;
         }
@@ -339,25 +342,26 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             if (txt_Id.Text != "")
             {
+
                 if (MessageBox.Show("Kitap Silmeyi Onaylıyormusunuz?", "Onay Verin", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
-                    int IDD = Convert.ToInt32(txt_Id.Text);
-                    sqlConnection.Open();
-                    SqlCommand Sil = new SqlCommand($"DeleteFromBooks {IDD}", sqlConnection);
-                    Sil.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    TableReflesh();
+                    DeleteWithDescriptionBooks deleteWithDescriptionBooks = new DeleteWithDescriptionBooks();
+                    deleteWithDescriptionBooks.DeletedID = Convert.ToInt32(txt_Id.Text);
+                    deleteWithDescriptionBooks.ShowDialog();
                     Default();
+                    TableReflesh();
                 }
                 else
                 {
-                    MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Silme İşlemi İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Silme işlemi tarafınızca iptal edilmiştir.", "Kayıt İptal", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
             else
             {
-                MessageBox.Show("Lütfen silinecek kaydı seçiniz");
+                MessageBox.Show("Lütfen silinecek kaydı seçiniz", "Seçim Yapmadınız", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+
             }
         }
 

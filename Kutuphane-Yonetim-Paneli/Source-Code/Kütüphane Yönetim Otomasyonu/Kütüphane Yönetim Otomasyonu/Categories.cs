@@ -35,7 +35,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Name";
+            dataGridView1.Columns["Name"].HeaderText = "Kategori";
             dataGridView1.Columns[1].Width = 1000;
             dataGridView1.Columns[2].Visible = false;
         }
@@ -51,7 +51,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.DataSource = dt;
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[1].HeaderText = "Name";
+            dataGridView1.Columns["Name"].HeaderText = "Kategori";
             dataGridView1.Columns[1].Width = 1000;
             dataGridView1.Columns[2].Visible = false;
         }

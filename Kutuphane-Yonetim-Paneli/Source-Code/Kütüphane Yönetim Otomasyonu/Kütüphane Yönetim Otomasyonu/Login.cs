@@ -29,11 +29,24 @@ namespace Kütüphane_Yönetim_Otomasyonu
             if (dr.Read())
             {
                 this.Hide();
-                MainMenu admin = new MainMenu();
-                admin.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
-                sqlConnection.Close();
-                admin.ShowDialog();
-                this.Close();
+                int Permission_ID = Convert.ToInt32(dr["Permission_ID"]);
+                if (Permission_ID==1)
+                {
+                    MainMenu admin = new MainMenu();
+                    admin.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
+                    sqlConnection.Close();
+                    admin.ShowDialog();
+                    this.Close();
+                }else if (Permission_ID == 3)
+                {
+                    VolunteerMenu volunteer = new VolunteerMenu();
+                    volunteer.ActiveEmployeeID = Convert.ToInt32(dr["ID"]);
+                    volunteer.ActiveEmployeePermission = Permission_ID;
+                    sqlConnection.Close();
+                    volunteer.ShowDialog();
+                    this.Close();
+                }
+               
             }
             sqlConnection.Close();
             sqlConnection.Open();
@@ -46,7 +59,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             if (dr2.Read())
             {
                 this.Hide();
-                UserMenu user = new UserMenu();
+                MemberMenu user = new MemberMenu();
                 user.ActiveMemberID = Convert.ToInt32(dr2["ID"]);
                 sqlConnection.Close();
                 user.ShowDialog();

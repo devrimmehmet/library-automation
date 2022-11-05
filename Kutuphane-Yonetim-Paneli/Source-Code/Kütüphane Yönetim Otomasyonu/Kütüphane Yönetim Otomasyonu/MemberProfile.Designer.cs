@@ -67,7 +67,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 296);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1130, 304);
+            this.dataGridView1.Size = new System.Drawing.Size(1126, 317);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Visible = false;
             // 
@@ -110,7 +110,7 @@
             this.txt_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Mail.Location = new System.Drawing.Point(415, 12);
             this.txt_Mail.Name = "txt_Mail";
-            this.txt_Mail.Size = new System.Drawing.Size(133, 26);
+            this.txt_Mail.Size = new System.Drawing.Size(265, 26);
             this.txt_Mail.TabIndex = 8;
             // 
             // txt_TC
@@ -131,6 +131,7 @@
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.Size = new System.Drawing.Size(133, 26);
             this.txt_Password.TabIndex = 12;
+            this.txt_Password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -352,7 +353,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1150, 650);
+            this.ClientSize = new System.Drawing.Size(1150, 625);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label11);

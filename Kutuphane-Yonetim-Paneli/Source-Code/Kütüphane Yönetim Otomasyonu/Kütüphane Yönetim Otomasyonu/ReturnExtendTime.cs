@@ -81,6 +81,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["TransactionNote"].Visible = false;
             dataGridView1.Columns["Mail"].Visible = false;
             dataGridView1.Columns["Address"].Visible = false;
+            dataGridView1.Columns["DeletedInfo1"].Visible = false;
+            dataGridView1.Columns["DeletedDate1"].Visible = false;
+            dataGridView1.Columns["DeletedEmployeeID1"].Visible = false;
 
             sqlConnection.Close();
         }
@@ -226,6 +229,14 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            if (txt_Id.Text=="" || textBox3.Text=="")
+            {
+                MessageBox.Show($"Seçim Yapmadınız.", "Seçim Yapılmadı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+
+            
             DateTime BookReturnDatePunisment = DateTime.Now;
             DateTime BookDepositDatePunisment = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["BookDepositDate"].Value);
             int daysPunishment = 5;
@@ -286,7 +297,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 richTextBox1.Text = "";
                 TransactionsTable();
             }
-
+            }
         }
 
 

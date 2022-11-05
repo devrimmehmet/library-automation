@@ -52,11 +52,29 @@
     <Compile Include="DeleteWithDescriptionEmployee.Designer.cs">
       <DependentUpon>DeleteWithDescriptionEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteWithDescriptionBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteWithDescriptionBooks.Designer.cs">
+      <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteWithDescriptionMembers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DeleteWithDescriptionMembers.Designer.cs">
       <DependentUpon>DeleteWithDescriptionMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VolunteerMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VolunteerMenu.Designer.cs">
+      <DependentUpon>VolunteerMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberMenu.Designer.cs">
+      <DependentUpon>MemberMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="MemberProfile.cs">
       <SubType>Form</SubType>
@@ -75,18 +93,6 @@
     </Compile>
     <Compile Include="ReturnExtendTime.Designer.cs">
       <DependentUpon>ReturnExtendTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserMenu.Designer.cs">
-      <DependentUpon>UserMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Transactions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transactions.Designer.cs">
-      <DependentUpon>Transactions.cs</DependentUpon>
     </Compile>
     <Compile Include="Books.cs">
       <SubType>Form</SubType>
@@ -144,12 +150,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConnectionString.cs" />
     <EmbeddedResource Include="DeleteWithDescriptionEmployee.resx">
       <DependentUpon>DeleteWithDescriptionEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DeleteWithDescriptionBooks.resx">
+      <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteWithDescriptionMembers.resx">
       <DependentUpon>DeleteWithDescriptionMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VolunteerMenu.resx">
+      <DependentUpon>VolunteerMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberMenu.resx">
+      <DependentUpon>MemberMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberProfile.resx">
       <DependentUpon>MemberProfile.cs</DependentUpon>
@@ -159,12 +173,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReturnExtendTime.resx">
       <DependentUpon>ReturnExtendTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserMenu.resx">
-      <DependentUpon>UserMenu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transactions.resx">
-      <DependentUpon>Transactions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
