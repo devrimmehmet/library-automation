@@ -19,7 +19,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 {
     public partial class ReturnExtendTime : Form
     {
-        public int ActiveEmployeeID=2;
+        public int ActiveEmployeeID = 2;
         public ReturnExtendTime()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["ReturnEmployee_ID"].Visible = false;
             dataGridView1.Columns["Book_ID"].Visible = false;
             dataGridView1.Columns["TransactionsDate"].HeaderText = "Emanet Tarihi";
-            dataGridView1.Columns["TransactionsDate"].Width =140;
+            dataGridView1.Columns["TransactionsDate"].Width = 140;
             dataGridView1.Columns["BookDepositDate"].HeaderText = "İade Tarihi";
             dataGridView1.Columns["BookDepositDate"].Width = 150;
             dataGridView1.Columns["IdentityNumber"].HeaderText = "TC";
@@ -64,7 +64,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
             dataGridView1.Columns["ID2"].Visible = false;
             dataGridView1.Columns["Name1"].HeaderText = "Kitabın Adı";
-            dataGridView1.Columns["Name1"].Width =330;
+            dataGridView1.Columns["Name1"].Width = 330;
             dataGridView1.Columns["Author_ID"].Visible = false;
             dataGridView1.Columns["PublicationYear"].Visible = false;
             dataGridView1.Columns["NumberOfPages"].Visible = false;
@@ -81,8 +81,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["TransactionNote"].Visible = false;
             dataGridView1.Columns["Mail"].Visible = false;
             dataGridView1.Columns["Address"].Visible = false;
-         
 
+            sqlConnection.Close();
         }
         private void FindMemberNameTransactionsTable(string MemberName)
         {
@@ -176,12 +176,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void Members_Load(object sender, EventArgs e)
         {
-         
+
             TransactionsTable();
             dataGridView1.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView1.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
-      
+
 
 
 
@@ -191,11 +191,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_Id.Text = dataGridView1.CurrentRow.Cells["ID"].Value.ToString();
-            textBox3.Text= dataGridView1.CurrentRow.Cells["Book_ID"].Value.ToString();
+            textBox3.Text = dataGridView1.CurrentRow.Cells["Book_ID"].Value.ToString();
             richTextBox1.Text = dataGridView1.CurrentRow.Cells["TransactionNote"].Value.ToString();
         }
 
-      
+
 
 
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
@@ -222,49 +222,116 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         }
 
-    
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            string BookReturnDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-          
-            sqlConnection.Open();
-            SqlCommand UpdateTransactions = new SqlCommand();
-            UpdateTransactions.Connection = sqlConnection;
-            UpdateTransactions.CommandText = "UpdateFromTransactions"; //stoured procedure'un saklandığı yer.
-            UpdateTransactions.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
-            UpdateTransactions.Parameters.AddWithValue("@ReturnEmployee_ID", ActiveEmployeeID);
-            UpdateTransactions.Parameters.AddWithValue("@BookReturnDate", BookReturnDate);
-            UpdateTransactions.Parameters.AddWithValue("@TransactionNote", richTextBox1.Text);
-            UpdateTransactions.Parameters.AddWithValue("@ID", txt_Id.Text);
-            UpdateTransactions.ExecuteNonQuery();
-            SqlCommand UpdateBooks = new SqlCommand($"Update Books set State=1 where ID={textBox3.Text}", sqlConnection);
-            UpdateBooks.ExecuteNonQuery();
-            sqlConnection.Close();
-            richTextBox1.Text = "";
-            TransactionsTable();
-           
+            DateTime BookReturnDatePunisment = DateTime.Now;
+            DateTime BookDepositDatePunisment = Convert.ToDateTime(dataGridView1.CurrentRow.Cells["BookDepositDate"].Value);
+            int daysPunishment = 5;
+            TimeSpan tS = BookReturnDatePunisment - BookDepositDatePunisment;
+            if (tS.Days > 0)
+            {
+               int totalPunishment = tS.Days*daysPunishment;
+                DialogResult result2 = MessageBox.Show($"Üye İade Gününü Geçirmiştir ödeme Yapması Gereklidir. \n Toplam {totalPunishment} TL ödeme yapılmalıdır. \n Ödeme yapılacak mı?", "Ödeme Bildirimi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result2 == DialogResult.Yes)
+                {
+                    string BookReturnDatePunishment = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                    sqlConnection.Open();
+                    SqlCommand UpdateTransactionsPunishment = new SqlCommand();
+                    UpdateTransactionsPunishment.Connection = sqlConnection;
+                    UpdateTransactionsPunishment.CommandText = "UpdateFromTransactions"; //stoured procedure'un saklandığı yer.
+                    UpdateTransactionsPunishment.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+                    UpdateTransactionsPunishment.Parameters.AddWithValue("@ReturnEmployee_ID", ActiveEmployeeID);
+                    UpdateTransactionsPunishment.Parameters.AddWithValue("@BookReturnDate", BookReturnDatePunishment);
+                    UpdateTransactionsPunishment.Parameters.AddWithValue("@TransactionNote", richTextBox1.Text);
+                    UpdateTransactionsPunishment.Parameters.AddWithValue("@ID", txt_Id.Text);
+                    UpdateTransactionsPunishment.ExecuteNonQuery();
+                    SqlCommand UpdateBooksPunishment = new SqlCommand($"Update Books set State=1 where ID={textBox3.Text}", sqlConnection);
+                    UpdateBooksPunishment.ExecuteNonQuery();
+                    SqlCommand AddPunishment = new SqlCommand($"Insert Into Punishments (Member_ID,Paid_Employee_ID,Punishment) values (@Member_ID,@Paid_Employee_ID,@Punishment)", sqlConnection);
+                    int currentMember= Convert.ToInt32(dataGridView1.CurrentRow.Cells["Member_ID"].Value);
+                    AddPunishment.Parameters.AddWithValue("@Member_ID", currentMember);
+                    AddPunishment.Parameters.AddWithValue("@Paid_Employee_ID", ActiveEmployeeID);
+                    AddPunishment.Parameters.AddWithValue("@Punishment", totalPunishment);
+                    AddPunishment.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    richTextBox1.Text = "";
+                    TransactionsTable();
+                }
+                else if (result2 == DialogResult.No)
+                {
+                    MessageBox.Show($"Borç ödeme yapılmadığı her gün {daysPunishment} TL artmaya devam edecektir.", "Ödeme Bildirimi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            else
+            {
+                string BookReturnDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                sqlConnection.Open();
+                SqlCommand UpdateTransactions = new SqlCommand();
+                UpdateTransactions.Connection = sqlConnection;
+                UpdateTransactions.CommandText = "UpdateFromTransactions"; //stoured procedure'un saklandığı yer.
+                UpdateTransactions.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+                UpdateTransactions.Parameters.AddWithValue("@ReturnEmployee_ID", ActiveEmployeeID);
+                UpdateTransactions.Parameters.AddWithValue("@BookReturnDate", BookReturnDate);
+                UpdateTransactions.Parameters.AddWithValue("@TransactionNote", richTextBox1.Text);
+                UpdateTransactions.Parameters.AddWithValue("@ID", txt_Id.Text);
+                UpdateTransactions.ExecuteNonQuery();
+                SqlCommand UpdateBooks = new SqlCommand($"Update Books set State=1 where ID={textBox3.Text}", sqlConnection);
+                UpdateBooks.ExecuteNonQuery();
+                sqlConnection.Close();
+                richTextBox1.Text = "";
+                TransactionsTable();
+            }
 
         }
 
-      
+
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
+
             sqlConnection.Open();
-            SqlCommand UpdateTransactions = new SqlCommand();
-            UpdateTransactions.Connection = sqlConnection;
-            UpdateTransactions.CommandText = "UpdateFromDateTransactions"; //stoured procedure'un saklandığı yer.
-            UpdateTransactions.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
-            UpdateTransactions.Parameters.AddWithValue("@TransactionNote", richTextBox1.Text);
-            UpdateTransactions.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
-            UpdateTransactions.Parameters.AddWithValue("@ID", txt_Id.Text);
-            UpdateTransactions.ExecuteNonQuery();
-            sqlConnection.Close();
-            richTextBox1.Text = "";
-            TransactionsTable();
-         
+            string ExtendTime = "select TransactionsDate,BookDepositDate from Transactions where ID=@ID";
+            SqlCommand ExtendTimeCmd = new SqlCommand(ExtendTime, sqlConnection);
+            ExtendTimeCmd.Parameters.AddWithValue("@ID", txt_Id.Text);
+            SqlDataReader dr = ExtendTimeCmd.ExecuteReader();
+            TimeSpan tS = TimeSpan.FromDays(14);
+            if (dr.Read())
+            {
+
+                DateTime TransactionDateExtendTime = Convert.ToDateTime(dr["TransactionsDate"]);
+                DateTime BookDepositDateExtendTime = Convert.ToDateTime(dr["BookDepositDate"]);
+                sqlConnection.Close();
+                tS = BookDepositDateExtendTime - TransactionDateExtendTime;
+
+            }
+            if (tS.Days == 14)
+            {
+                sqlConnection.Close();
+                string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
+                sqlConnection.Open();
+                SqlCommand UpdateTransactions = new SqlCommand();
+                UpdateTransactions.Connection = sqlConnection;
+                UpdateTransactions.CommandText = "UpdateFromDateTransactions"; //stoured procedure'un saklandığı yer.
+                UpdateTransactions.CommandType = CommandType.StoredProcedure; //bağlantı tipi stoured procedure olarak ayarlandı.
+                UpdateTransactions.Parameters.AddWithValue("@TransactionNote", richTextBox1.Text);
+                UpdateTransactions.Parameters.AddWithValue("@BookDepositDate", BookDepositDate);
+                UpdateTransactions.Parameters.AddWithValue("@ID", txt_Id.Text);
+                UpdateTransactions.ExecuteNonQuery();
+                sqlConnection.Close();
+                richTextBox1.Text = "";
+                TransactionsTable();
+            }
+            else
+            {
+                MessageBox.Show("Bu İşlem İçin Süre Uzatma İşlemi Daha Önce Yapılmıştır.", "2. Defa Gün Uzatma Talebi Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
@@ -283,7 +350,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             textBox7.Text = "";
-            if (textBox4.Text!="")
+            if (textBox4.Text != "")
             {
                 FindMemberNameTransactionsTable(textBox4.Text);
             }
@@ -291,6 +358,36 @@ namespace Kütüphane_Yönetim_Otomasyonu
             {
                 TransactionsTable();
             }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DateTime BookReturnDate = DateTime.Now;
+            DateTime BookDepositDate = DateTime.Now;
+            TimeSpan tS = BookReturnDate - BookDepositDate;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+
+                BookDepositDate = Convert.ToDateTime(dataGridView1.Rows[i].Cells["BookDepositDate"].Value);
+                tS = BookReturnDate - BookDepositDate;
+                if (tS.Days > 0)
+                {
+                    if (sqlConnection.State==ConnectionState.Closed)
+                    {
+                        sqlConnection.Open();
+                    }
+                    
+                    SqlCommand UpdateMemberStatus = new SqlCommand($"Update Members set Member_State_ID=3 where ID={Convert.ToInt32(dataGridView1.Rows[i].Cells["Member_ID"].Value)}", sqlConnection);
+                    UpdateMemberStatus.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+
+                }
+                dataGridView1.Rows[i].DefaultCellStyle = renk;
+            }
+
         }
     }
 

@@ -130,7 +130,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(826, 55);
+            this.button3.Location = new System.Drawing.Point(833, 58);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(143, 61);
             this.button3.TabIndex = 64;
@@ -238,6 +238,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1126, 431);
             this.dataGridView1.TabIndex = 71;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
             // ReturnExtendTime
             // 
