@@ -46,7 +46,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             sqlConnection.Close();
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Ad";
-            dataGridView1.Columns["Name"].Width = 200;
+            dataGridView1.Columns["Name"].Width = 170;
             dataGridView1.Columns[2].HeaderText = "Soyad";
             dataGridView1.Columns["Surname"].Width = 150;
             dataGridView1.Columns[3].HeaderText = "Telefon";
@@ -56,7 +56,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns[5].Visible = false;//"Cinsiyet"
             dataGridView1.Columns[6].Visible = false;//"Doğum Tarihi"
             dataGridView1.Columns[8].HeaderText = "Mail";
-            dataGridView1.Columns["Mail"].Width = 220;
+            dataGridView1.Columns["Mail"].Width = 250;
             dataGridView1.Columns[9].HeaderText = "Şifre";
             dataGridView1.Columns[15].HeaderText = "Yetki";
             dataGridView1.Columns["Permission_ID"].Visible = false;

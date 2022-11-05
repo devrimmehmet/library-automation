@@ -292,7 +292,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             string BookDepositDate = DateTime.Now.AddDays(+14).ToString("yyyy-MM-dd HH:mm:ss");
 
             sqlConnection.Open();
-            string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@ActiveEmployeeID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
+            string EntrustAddStr = "insert into Transactions (Member_ID, EntrustedEmployee_ID, Book_ID, TransactionsDate, BookDepositDate, TransactionState) values(@Member_ID,@EntrustedEmployee_ID,@Book_ID,@TransactionsDate,@BookDepositDate,0)";
             SqlCommand komut = new SqlCommand(EntrustAddStr, sqlConnection);
             komut.Parameters.AddWithValue("@Member_ID", txt_Member_ID.Text);
             komut.Parameters.AddWithValue("@EntrustedEmployee_ID", ActiveEmployeeID);

@@ -40,7 +40,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             pnl_Books.BackColor = Color.DarkSlateGray;
             pnl_Publisher.BackColor = Color.DarkSlateGray;
             pnl_Entrust.BackColor = Color.DarkSlateGray;
-            panel11.BackColor = Color.DarkSlateGray;
+            pnl_ReturnExtendTime.BackColor = Color.DarkSlateGray;
             panel12.BackColor = Color.DarkSlateGray;
         }
         private void pnl_Members_Click(object sender, EventArgs e)
@@ -135,6 +135,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SelectedFormPanelBackColor();
             pnl_Entrust.BackColor = Color.DarkGreen;
             Entrust frm2 = new Entrust();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2);
+            frm2.ActiveEmployeeID = this.ActiveEmployeeID;
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
+        }
+
+        private void pnl_ReturnExtendTime_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+            pnl_ReturnExtendTime.BackColor = Color.DarkGreen;
+            ReturnExtendTime frm2 = new ReturnExtendTime();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2);
             frm2.ActiveEmployeeID = this.ActiveEmployeeID;

@@ -60,7 +60,8 @@
             this.pnl_Books = new System.Windows.Forms.Panel();
             this.pnl_Publisher = new System.Windows.Forms.Panel();
             this.pnl_Entrust = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.pnl_ReturnExtendTime = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,6 +84,7 @@
             this.pnl_Books.SuspendLayout();
             this.pnl_Publisher.SuspendLayout();
             this.pnl_Entrust.SuspendLayout();
+            this.pnl_ReturnExtendTime.SuspendLayout();
             this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,12 +238,13 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(30, 3);
+            this.pictureBox6.Location = new System.Drawing.Point(124, 3);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(43, 43);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 15;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pnl_ReturnExtendTime_Click);
             // 
             // pictureBox7
             // 
@@ -424,16 +427,30 @@
             this.pnl_Entrust.TabIndex = 30;
             this.pnl_Entrust.Click += new System.EventHandler(this.pnl_Entrusts_Click);
             // 
-            // panel11
+            // pnl_ReturnExtendTime
             // 
-            this.panel11.Location = new System.Drawing.Point(12, 621);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(170, 49);
-            this.panel11.TabIndex = 30;
+            this.pnl_ReturnExtendTime.Controls.Add(this.pictureBox6);
+            this.pnl_ReturnExtendTime.Controls.Add(this.label6);
+            this.pnl_ReturnExtendTime.Location = new System.Drawing.Point(12, 621);
+            this.pnl_ReturnExtendTime.Name = "pnl_ReturnExtendTime";
+            this.pnl_ReturnExtendTime.Size = new System.Drawing.Size(170, 49);
+            this.pnl_ReturnExtendTime.TabIndex = 30;
+            this.pnl_ReturnExtendTime.Click += new System.EventHandler(this.pnl_ReturnExtendTime_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(3, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(118, 16);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "İade - Süre Uzat";
+            this.label6.Click += new System.EventHandler(this.pnl_ReturnExtendTime_Click);
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.pictureBox6);
             this.panel12.Controls.Add(this.pictureBox11);
             this.panel12.Controls.Add(this.pictureBox7);
             this.panel12.Location = new System.Drawing.Point(12, 676);
@@ -448,7 +465,7 @@
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.panel12);
-            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.pnl_ReturnExtendTime);
             this.Controls.Add(this.pnl_Entrust);
             this.Controls.Add(this.pnl_Publisher);
             this.Controls.Add(this.pnl_Books);
@@ -498,6 +515,8 @@
             this.pnl_Publisher.PerformLayout();
             this.pnl_Entrust.ResumeLayout(false);
             this.pnl_Entrust.PerformLayout();
+            this.pnl_ReturnExtendTime.ResumeLayout(false);
+            this.pnl_ReturnExtendTime.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -536,7 +555,8 @@
         private System.Windows.Forms.Panel pnl_Books;
         private System.Windows.Forms.Panel pnl_Publisher;
         private System.Windows.Forms.Panel pnl_Entrust;
-        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel pnl_ReturnExtendTime;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label6;
     }
 }

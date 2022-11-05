@@ -68,3 +68,4 @@ C:\Users\erhnt\Downloads\Compressed\library-automation-main_2\library-automation
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.DeleteWithDescriptionMembers.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.DeleteWithDescriptionEmployee.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.Entrust.resources
+C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.ReturnExtendTime.resources

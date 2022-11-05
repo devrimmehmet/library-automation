@@ -70,6 +70,12 @@
     <Compile Include="Entrust.Designer.cs">
       <DependentUpon>Entrust.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReturnExtendTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnExtendTime.Designer.cs">
+      <DependentUpon>ReturnExtendTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Entrust.resx">
       <DependentUpon>Entrust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnExtendTime.resx">
+      <DependentUpon>ReturnExtendTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMenu.resx">
       <DependentUpon>UserMenu.cs</DependentUpon>
