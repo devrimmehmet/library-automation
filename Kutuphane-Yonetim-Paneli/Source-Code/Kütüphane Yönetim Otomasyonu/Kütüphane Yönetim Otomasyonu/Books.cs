@@ -263,6 +263,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             rTxt_Description.MaxLength = 1000;
             txt_Search_Shelf.MaxLength = 11;
             txt_Search_Name.MaxLength = 50;
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -284,6 +285,8 @@ namespace Kütüphane_Yönetim_Otomasyonu
             cB_Category.Text = dataGridView1.CurrentRow.Cells["Name2"].Value.ToString();
             cB_Language.Text = dataGridView1.CurrentRow.Cells["Language"].Value.ToString();
             cB_Publisher.Text = dataGridView1.CurrentRow.Cells["Name1"].Value.ToString();
+            pictureBox3.ImageLocation = dataGridView1.CurrentRow.Cells["Photo"].Value.ToString();
+
         }
         private void Just_Numeric_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -459,7 +462,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                         {
                                             sqlConnection.Close();
                                             sqlConnection.Open();
-                                            string BooksAddStr = "insert into Books(Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID) values(@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID)";
+                                            string BooksAddStr = "insert into Books(Name, Author_ID, PublicationYear, NumberOfPages, Language_ID, Publisher_ID, Description, State, ShelfNumber, Category_ID,Photo) values(@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID,@Photo)";
                                             SqlCommand Add = new SqlCommand(BooksAddStr, sqlConnection);
                                             Add.Parameters.AddWithValue("@Name", txt_Name.Text);
                                             Add.Parameters.AddWithValue("@Author_ID", AuthorID);
@@ -471,6 +474,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             Add.Parameters.AddWithValue("@State", State);
                                             Add.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
                                             Add.Parameters.AddWithValue("@Category_ID", CategoryID);
+                                            Add.Parameters.AddWithValue("@Photo", textBox1.Text.ToString());
                                             Add.ExecuteNonQuery();
                                             sqlConnection.Close();
                                             TableReflesh();
@@ -619,7 +623,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                             {
                                                 int IDD = Convert.ToInt32(txt_Id.Text);
                                                 sqlConnection.Open();
-                                                SqlCommand BooksUpdate = new SqlCommand($"UpdateFromBooks @ID,@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID", sqlConnection);
+                                                SqlCommand BooksUpdate = new SqlCommand($"UpdateFromBooks @ID,@Name,@Author_ID,@PublicationYear,@NumberOfPages,@Language_ID,@Publisher_ID,@Description,@State,@ShelfNumber,@Category_ID,@Photo", sqlConnection);
                                                 BooksUpdate.Parameters.AddWithValue("@ID", IDD);
                                                 BooksUpdate.Parameters.AddWithValue("@Name", txt_Name.Text);
                                                 BooksUpdate.Parameters.AddWithValue("@Author_ID", AuthorID);
@@ -631,6 +635,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                                                 BooksUpdate.Parameters.AddWithValue("@State", State);
                                                 BooksUpdate.Parameters.AddWithValue("@ShelfNumber", txt_ShelfNumber.Text);
                                                 BooksUpdate.Parameters.AddWithValue("@Category_ID", CategoryID);
+                                                BooksUpdate.Parameters.AddWithValue("@Photo", textBox1.Text.ToString());
                                                 BooksUpdate.ExecuteNonQuery();
                                                 sqlConnection.Close();
                                                 TableReflesh();
@@ -687,6 +692,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dosya = new OpenFileDialog();
+            dosya.Filter = "Resim Dosyası |*.jpg;*.nef;*.png |  Tüm Dosyalar |*.*";
+            dosya.ShowDialog();
+            string dosyayolu = dosya.FileName;
+            textBox1.Text = dosyayolu;
+            pictureBox3.ImageLocation = dosyayolu;
         }
     }
 

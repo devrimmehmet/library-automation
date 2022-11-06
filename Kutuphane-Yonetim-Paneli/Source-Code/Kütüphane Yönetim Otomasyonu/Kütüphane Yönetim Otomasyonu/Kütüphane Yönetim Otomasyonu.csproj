@@ -58,6 +58,12 @@
     <Compile Include="DeleteWithDescriptionBooks.Designer.cs">
       <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemberUpdatePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberUpdatePassword.Designer.cs">
+      <DependentUpon>MemberUpdatePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteWithDescriptionMembers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteWithDescriptionBooks.resx">
       <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberUpdatePassword.resx">
+      <DependentUpon>MemberUpdatePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteWithDescriptionMembers.resx">
       <DependentUpon>DeleteWithDescriptionMembers.cs</DependentUpon>

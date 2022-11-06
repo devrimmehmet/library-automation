@@ -70,3 +70,4 @@ C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Pane
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.DeleteWithDescriptionBooks.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.VolunteerMenu.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.MemberMenu.resources
+C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.MemberUpdatePassword.resources

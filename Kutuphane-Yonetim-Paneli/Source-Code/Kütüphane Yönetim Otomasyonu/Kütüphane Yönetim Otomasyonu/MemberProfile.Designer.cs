@@ -56,6 +56,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.btn_UpdatePassword = new System.Windows.Forms.Button();
+            this.cB_State = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -65,9 +68,9 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 296);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 360);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1126, 317);
+            this.dataGridView1.Size = new System.Drawing.Size(1126, 253);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Visible = false;
             // 
@@ -126,6 +129,7 @@
             // 
             // txt_Password
             // 
+            this.txt_Password.Enabled = false;
             this.txt_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txt_Password.Location = new System.Drawing.Point(165, 206);
             this.txt_Password.Name = "txt_Password";
@@ -281,9 +285,9 @@
             this.button3.ForeColor = System.Drawing.Color.Green;
             this.button3.Location = new System.Drawing.Point(415, 244);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 43);
+            this.button3.Size = new System.Drawing.Size(265, 43);
             this.button3.TabIndex = 29;
-            this.button3.Text = "Güncelle";
+            this.button3.Text = "Güncelleme Talep Et";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -345,8 +349,44 @@
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(737, 223);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(401, 67);
+            this.dataGridView3.Size = new System.Drawing.Size(401, 84);
             this.dataGridView3.TabIndex = 35;
+            // 
+            // btn_UpdatePassword
+            // 
+            this.btn_UpdatePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_UpdatePassword.ForeColor = System.Drawing.Color.Black;
+            this.btn_UpdatePassword.Location = new System.Drawing.Point(304, 206);
+            this.btn_UpdatePassword.Name = "btn_UpdatePassword";
+            this.btn_UpdatePassword.Size = new System.Drawing.Size(105, 26);
+            this.btn_UpdatePassword.TabIndex = 37;
+            this.btn_UpdatePassword.Text = "Şifre Değiştir";
+            this.btn_UpdatePassword.UseVisualStyleBackColor = true;
+            this.btn_UpdatePassword.Click += new System.EventHandler(this.btn_UpdatePassword_Click);
+            // 
+            // cB_State
+            // 
+            this.cB_State.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cB_State.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cB_State.Enabled = false;
+            this.cB_State.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cB_State.FormattingEnabled = true;
+            this.cB_State.Location = new System.Drawing.Point(165, 270);
+            this.cB_State.Name = "cB_State";
+            this.cB_State.Size = new System.Drawing.Size(133, 28);
+            this.cB_State.TabIndex = 38;
+            this.cB_State.SelectedIndexChanged += new System.EventHandler(this.cB_State_SelectedIndexChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.ForeColor = System.Drawing.Color.Brown;
+            this.label14.Location = new System.Drawing.Point(97, 278);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 20);
+            this.label14.TabIndex = 39;
+            this.label14.Text = "Durum";
             // 
             // MemberProfile
             // 
@@ -354,6 +394,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(1150, 625);
+            this.Controls.Add(this.cB_State);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.btn_UpdatePassword);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.label11);
@@ -426,5 +469,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button btn_UpdatePassword;
+        private System.Windows.Forms.ComboBox cB_State;
+        private System.Windows.Forms.Label label14;
     }
 }
