@@ -63,9 +63,34 @@ namespace Kütüphane_Yönetim_Otomasyonu
             adp.Fill(dt);
             dataGridView2.DataSource = dt;
             sqlConnection.Close();
-           dataGridView2.Columns["Kitap Adı"].Width = 100;
-            dataGridView2.Columns["Yazarı"].Width = 250;
+           dataGridView2.Columns["Kitap Adı"].Width = 250;
+            dataGridView2.Columns["Yazarı"].Width = 200;
             
+        }
+        private void MyRequest()
+        {
+            SqlDataAdapter adp = new SqlDataAdapter($"select * from Requests r inner join RequestTypes rT on rt.ID=r.RequestType_ID where Member_ID=@Member_ID", sqlConnection);
+            adp.SelectCommand.Parameters.AddWithValue("@Member_ID",ActiveMemberID);
+            DataTable dt = new DataTable();
+            sqlConnection.Open();
+            adp.Fill(dt);
+            dataGridView4.DataSource = dt;
+            sqlConnection.Close();
+            dataGridView4.Columns["ID"].Visible = false;
+            dataGridView4.Columns["RequestType_ID"].Visible = false;
+            dataGridView4.Columns["RequestState"].Visible = false;
+            dataGridView4.Columns["Member_ID"].Visible = false;
+            dataGridView4.Columns["ID1"].Visible = false;
+            dataGridView4.Columns["Request"].HeaderText = "Talebim";
+            dataGridView4.Columns["Request"].Width = 250;
+            dataGridView4.Columns["RequestNote"].HeaderText = "Talep Sonucu";
+            dataGridView4.Columns["RequestNote"].Width = 340;
+            dataGridView4.Columns["RequestOpenDate"].HeaderText = "Talep Oluşturma Tarihi";
+            dataGridView4.Columns["RequestOpenDate"].Width = 150;
+            dataGridView4.Columns["RequestCloseDate"].HeaderText = "Talep Sonuçlanma Tarihi";
+            dataGridView4.Columns["RequestCloseDate"].Width =150;
+            dataGridView4.Columns["RequestType"].HeaderText = "Talep Türü";
+            dataGridView4.Columns["RequestType"].Width = 200;
         }
         private void NowReadBooks()
         {
@@ -75,12 +100,13 @@ namespace Kütüphane_Yönetim_Otomasyonu
             adp.Fill(dt);
             dataGridView3.DataSource = dt;
             sqlConnection.Close();
-            dataGridView3.Columns["Kitap Adı"].Width = 100;
-            dataGridView3.Columns["Yazarı"].Width = 250;
+            dataGridView3.Columns["Kitap Adı"].Width = 250;
+            dataGridView3.Columns["Yazarı"].Width = 200;
 
         }
         private void Members_Load(object sender, EventArgs e)
         {
+            MyRequest();
             TableReflesh();
             ReadBooks();
             NowReadBooks();
@@ -97,6 +123,9 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView3.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
             dataGridView3.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView3.AllowUserToAddRows = false; // satır ekleme iptal
+            dataGridView4.ReadOnly = true; // sadece okunabilir olması yani veri düzenleme kapalı
+            dataGridView4.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
+            dataGridView4.AllowUserToAddRows = false; // satır ekleme iptal
             ActiveRequestFind();
 
         }
@@ -195,6 +224,47 @@ namespace Kütüphane_Yönetim_Otomasyonu
         private void cB_State_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+
+            string Request = (dataGridView4.CurrentRow.Cells["Request"].Value).ToString();
+            string RequestNote = dataGridView4.CurrentRow.Cells["RequestNote"].Value.ToString();
+            string RequestOpenDate = dataGridView4.CurrentRow.Cells["RequestOpenDate"].Value.ToString();
+            string RequestCloseDate = (dataGridView4.CurrentRow.Cells["RequestCloseDate"].Value).ToString();
+            string RequestType = dataGridView4.CurrentRow.Cells["RequestType"].Value.ToString();
+            string RequestMsgShowBox = $"Talebimin Sonucu: {RequestNote}\nTalebim: {Request}\nTalep Tarihi: {RequestOpenDate}";
+            MessageBox.Show(RequestMsgShowBox, RequestType+" "+ RequestCloseDate);
+        }
+
+        private void dataGridView4_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            {
+                DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                if (dataGridView4.Rows[i].Cells["RequestCloseDate"].Value == null)
+                {
+                    renk.BackColor = Color.YellowGreen;
+                }
+                else if (dataGridView4.Rows[i].Cells["RequestCloseDate"].Value!= null)
+                {
+                    renk.BackColor = Color.Red;
+                    renk.ForeColor = Color.White;
+                }
+          
+                dataGridView4.Rows[i].DefaultCellStyle = renk;
+            }
+        }
+
+        private void btn_AddRequest_Click(object sender, EventArgs e)
+        {
+            MemberAddRequest deleteWithDescriptionMembers = new MemberAddRequest();
+            deleteWithDescriptionMembers.ActiveMemberID = ActiveMemberID;
+            deleteWithDescriptionMembers.ShowDialog();
+           
+            TableReflesh();
         }
     }
 }

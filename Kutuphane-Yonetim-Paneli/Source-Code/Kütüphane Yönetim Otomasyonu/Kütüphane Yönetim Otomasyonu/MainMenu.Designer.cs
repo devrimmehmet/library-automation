@@ -43,13 +43,11 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pnl_Members = new System.Windows.Forms.Panel();
@@ -63,6 +61,7 @@
             this.pnl_ReturnExtendTime = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.pnl_Requests = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -70,11 +69,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.pnl_Members.SuspendLayout();
             this.pnl_Employees.SuspendLayout();
@@ -86,6 +83,7 @@
             this.pnl_Entrust.SuspendLayout();
             this.pnl_ReturnExtendTime.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -246,16 +244,6 @@
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pnl_ReturnExtendTime_Click);
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(43, 43);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 17;
-            this.pictureBox7.TabStop = false;
-            // 
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
@@ -312,16 +300,6 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Kitaplar";
             this.label10.Click += new System.EventHandler(this.pnl_Books_Click);
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(75, 6);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(43, 43);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 25;
-            this.pictureBox11.TabStop = false;
             // 
             // label11
             // 
@@ -451,12 +429,22 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.pictureBox11);
-            this.panel12.Controls.Add(this.pictureBox7);
+            this.panel12.Controls.Add(this.pnl_Requests);
             this.panel12.Location = new System.Drawing.Point(12, 676);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(170, 49);
             this.panel12.TabIndex = 30;
+            // 
+            // pnl_Requests
+            // 
+            this.pnl_Requests.Image = ((System.Drawing.Image)(resources.GetObject("pnl_Requests.Image")));
+            this.pnl_Requests.Location = new System.Drawing.Point(124, 3);
+            this.pnl_Requests.Name = "pnl_Requests";
+            this.pnl_Requests.Size = new System.Drawing.Size(43, 43);
+            this.pnl_Requests.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pnl_Requests.TabIndex = 26;
+            this.pnl_Requests.TabStop = false;
+            this.pnl_Requests.Click += new System.EventHandler(this.pnl_Requests_Click);
             // 
             // MainMenu
             // 
@@ -493,11 +481,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.pnl_Members.ResumeLayout(false);
             this.pnl_Members.PerformLayout();
@@ -518,6 +504,7 @@
             this.pnl_ReturnExtendTime.ResumeLayout(false);
             this.pnl_ReturnExtendTime.PerformLayout();
             this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -538,13 +525,11 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Panel pnl_Members;
@@ -558,5 +543,6 @@
         private System.Windows.Forms.Panel pnl_ReturnExtendTime;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pnl_Requests;
     }
 }

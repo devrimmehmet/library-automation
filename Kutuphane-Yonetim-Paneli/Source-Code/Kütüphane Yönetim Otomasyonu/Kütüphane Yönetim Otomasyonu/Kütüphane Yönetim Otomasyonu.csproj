@@ -70,6 +70,18 @@
     <Compile Include="DeleteWithDescriptionBooks.Designer.cs">
       <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemberAddRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberAddRequest.Designer.cs">
+      <DependentUpon>MemberAddRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RequestsAndComments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestsAndComments.Designer.cs">
+      <DependentUpon>RequestsAndComments.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberUpdatePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteWithDescriptionBooks.resx">
       <DependentUpon>DeleteWithDescriptionBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberAddRequest.resx">
+      <DependentUpon>MemberAddRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestsAndComments.resx">
+      <DependentUpon>RequestsAndComments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MemberUpdatePassword.resx">
       <DependentUpon>MemberUpdatePassword.cs</DependentUpon>
