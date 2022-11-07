@@ -161,11 +161,25 @@ namespace Kütüphane_Yönetim_Otomasyonu
         {
             panel1.Controls.Clear();
             SelectedFormPanelBackColor();
-           // pnl_ReturnExtendTime.BackColor = Color.DarkGreen;
+
             RequestsAndComments frm2 = new RequestsAndComments();
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2);
         
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
+        }
+
+        private void pnl_deletedPage_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+           
+            DeletedNotePage frm2 = new DeletedNotePage();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2);
+
             frm2.Show();
             frm2.Dock = DockStyle.Fill;
             frm2.BringToFront();

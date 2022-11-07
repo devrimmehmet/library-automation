@@ -62,6 +62,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.pnl_Requests = new System.Windows.Forms.PictureBox();
+            this.pnl_deletedPage = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,6 +85,7 @@
             this.pnl_ReturnExtendTime.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_deletedPage)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -429,6 +431,7 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.pnl_deletedPage);
             this.panel12.Controls.Add(this.pnl_Requests);
             this.panel12.Location = new System.Drawing.Point(12, 676);
             this.panel12.Name = "panel12";
@@ -445,6 +448,17 @@
             this.pnl_Requests.TabIndex = 26;
             this.pnl_Requests.TabStop = false;
             this.pnl_Requests.Click += new System.EventHandler(this.pnl_Requests_Click);
+            // 
+            // pnl_deletedPage
+            // 
+            this.pnl_deletedPage.Image = ((System.Drawing.Image)(resources.GetObject("pnl_deletedPage.Image")));
+            this.pnl_deletedPage.Location = new System.Drawing.Point(64, 3);
+            this.pnl_deletedPage.Name = "pnl_deletedPage";
+            this.pnl_deletedPage.Size = new System.Drawing.Size(43, 43);
+            this.pnl_deletedPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pnl_deletedPage.TabIndex = 27;
+            this.pnl_deletedPage.TabStop = false;
+            this.pnl_deletedPage.Click += new System.EventHandler(this.pnl_deletedPage_Click);
             // 
             // MainMenu
             // 
@@ -505,6 +519,7 @@
             this.pnl_ReturnExtendTime.PerformLayout();
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_deletedPage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -544,5 +559,6 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pnl_Requests;
+        private System.Windows.Forms.PictureBox pnl_deletedPage;
     }
 }

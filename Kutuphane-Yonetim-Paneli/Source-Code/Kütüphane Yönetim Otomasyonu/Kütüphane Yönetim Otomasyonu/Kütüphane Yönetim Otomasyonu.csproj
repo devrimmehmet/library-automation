@@ -76,6 +76,12 @@
     <Compile Include="MemberAddRequest.Designer.cs">
       <DependentUpon>MemberAddRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeletedNotePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeletedNotePage.Designer.cs">
+      <DependentUpon>DeletedNotePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="RequestsAndComments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MemberAddRequest.resx">
       <DependentUpon>MemberAddRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeletedNotePage.resx">
+      <DependentUpon>DeletedNotePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RequestsAndComments.resx">
       <DependentUpon>RequestsAndComments.cs</DependentUpon>
