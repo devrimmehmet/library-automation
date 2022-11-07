@@ -58,6 +58,12 @@
     <Compile Include="BooksForMembers.Designer.cs">
       <DependentUpon>BooksForMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoneyTransactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoneyTransactions.Designer.cs">
+      <DependentUpon>MoneyTransactions.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteWithDescriptionEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BooksForMembers.resx">
       <DependentUpon>BooksForMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoneyTransactions.resx">
+      <DependentUpon>MoneyTransactions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteWithDescriptionEmployee.resx">
       <DependentUpon>DeleteWithDescriptionEmployee.cs</DependentUpon>

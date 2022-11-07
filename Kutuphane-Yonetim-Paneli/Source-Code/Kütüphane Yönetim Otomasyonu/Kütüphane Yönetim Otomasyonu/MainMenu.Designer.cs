@@ -61,8 +61,9 @@
             this.pnl_ReturnExtendTime = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.pnl_Requests = new System.Windows.Forms.PictureBox();
             this.pnl_deletedPage = new System.Windows.Forms.PictureBox();
+            this.pnl_Requests = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,8 +85,9 @@
             this.pnl_Entrust.SuspendLayout();
             this.pnl_ReturnExtendTime.SuspendLayout();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_deletedPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -432,11 +434,23 @@
             // panel12
             // 
             this.panel12.Controls.Add(this.pnl_deletedPage);
+            this.panel12.Controls.Add(this.pictureBox7);
             this.panel12.Controls.Add(this.pnl_Requests);
             this.panel12.Location = new System.Drawing.Point(12, 676);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(170, 49);
             this.panel12.TabIndex = 30;
+            // 
+            // pnl_deletedPage
+            // 
+            this.pnl_deletedPage.Image = ((System.Drawing.Image)(resources.GetObject("pnl_deletedPage.Image")));
+            this.pnl_deletedPage.Location = new System.Drawing.Point(64, 3);
+            this.pnl_deletedPage.Name = "pnl_deletedPage";
+            this.pnl_deletedPage.Size = new System.Drawing.Size(43, 43);
+            this.pnl_deletedPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pnl_deletedPage.TabIndex = 27;
+            this.pnl_deletedPage.TabStop = false;
+            this.pnl_deletedPage.Click += new System.EventHandler(this.pnl_deletedPage_Click);
             // 
             // pnl_Requests
             // 
@@ -449,16 +463,16 @@
             this.pnl_Requests.TabStop = false;
             this.pnl_Requests.Click += new System.EventHandler(this.pnl_Requests_Click);
             // 
-            // pnl_deletedPage
+            // pictureBox7
             // 
-            this.pnl_deletedPage.Image = ((System.Drawing.Image)(resources.GetObject("pnl_deletedPage.Image")));
-            this.pnl_deletedPage.Location = new System.Drawing.Point(64, 3);
-            this.pnl_deletedPage.Name = "pnl_deletedPage";
-            this.pnl_deletedPage.Size = new System.Drawing.Size(43, 43);
-            this.pnl_deletedPage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pnl_deletedPage.TabIndex = 27;
-            this.pnl_deletedPage.TabStop = false;
-            this.pnl_deletedPage.Click += new System.EventHandler(this.pnl_deletedPage_Click);
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(7, 3);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(43, 43);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 26;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // MainMenu
             // 
@@ -518,8 +532,9 @@
             this.pnl_ReturnExtendTime.ResumeLayout(false);
             this.pnl_ReturnExtendTime.PerformLayout();
             this.panel12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnl_deletedPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnl_Requests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,5 +575,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pnl_Requests;
         private System.Windows.Forms.PictureBox pnl_deletedPage;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }

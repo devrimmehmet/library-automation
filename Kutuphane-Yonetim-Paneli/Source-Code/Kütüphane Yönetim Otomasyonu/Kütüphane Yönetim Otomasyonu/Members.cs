@@ -449,6 +449,11 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 MessageBox.Show("Şifrede boşluk karakteri kullanılamaz.", "Paralo'da Boşluk Kullanılamaz!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 

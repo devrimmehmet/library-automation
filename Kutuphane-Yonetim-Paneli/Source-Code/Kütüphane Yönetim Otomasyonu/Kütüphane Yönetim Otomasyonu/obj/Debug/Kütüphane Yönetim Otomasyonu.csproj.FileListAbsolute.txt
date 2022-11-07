@@ -76,3 +76,4 @@ C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Pane
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.MemberAddRequest.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.RequestsAndComments.resources
 C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.DeletedNotePage.resources
+C:\Users\DevrimMehmet\Documents\GitHub\library-automation\Kutuphane-Yonetim-Paneli\Source-Code\Kütüphane Yönetim Otomasyonu\Kütüphane Yönetim Otomasyonu\obj\Debug\Kütüphane_Yönetim_Otomasyonu.MoneyTransactions.resources

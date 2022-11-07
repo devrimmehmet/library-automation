@@ -159,7 +159,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void pnl_Requests_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
+           panel1.Controls.Clear();
             SelectedFormPanelBackColor();
 
             RequestsAndComments frm2 = new RequestsAndComments();
@@ -177,6 +177,22 @@ namespace Kütüphane_Yönetim_Otomasyonu
             SelectedFormPanelBackColor();
            
             DeletedNotePage frm2 = new DeletedNotePage();
+            frm2.TopLevel = false;
+            panel1.Controls.Add(frm2);
+
+            frm2.Show();
+            frm2.Dock = DockStyle.Fill;
+            frm2.BringToFront();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+            panel1.Controls.Clear();
+            SelectedFormPanelBackColor();
+
+            MoneyTransactions frm2 = new MoneyTransactions();
+            frm2.activeEmployeeID = this.ActiveEmployeeID;
             frm2.TopLevel = false;
             panel1.Controls.Add(frm2);
 
