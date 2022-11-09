@@ -383,7 +383,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
                         int IDD = Convert.ToInt32(txt_ID.Text);
                         sqlConnection.Open();
-                        string MemberUpdateStr = $"UpdateFromMembers @ID,@Name,@Surname,@Gender,@BirthDate,@Phone,@Mail,@Address,@Member_State_ID,@Password";
+                        string MemberUpdateStr = $"UpdateFromMembers @ID,@Name,@Surname,@Gender,@BirthDate,@IdentityNumber,@Phone,@Mail,@Address,@Member_State_ID,@Password";
                         SqlCommand Update = new SqlCommand(MemberUpdateStr, sqlConnection);
                         Update.Parameters.AddWithValue("@ID", IDD);
                         Update.Parameters.AddWithValue("@Name", txt_Name.Text);
@@ -392,7 +392,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
                         string BirthDate = dTP_BirthDay.Value.ToString("yyyy-MM-dd");
                         Update.Parameters.AddWithValue("@BirthDate", BirthDate);
                         Update.Parameters.AddWithValue("@Phone", txt_Phone.Text);
-
+                        Update.Parameters.AddWithValue("@IdentityNumber", txt_IdentityNumber.Text);
                         Update.Parameters.AddWithValue("@Mail", txt_Mail.Text);
                         Update.Parameters.AddWithValue("@Address", rTxt_Address.Text);
                         Update.Parameters.AddWithValue("@Member_State_ID", MemberState);

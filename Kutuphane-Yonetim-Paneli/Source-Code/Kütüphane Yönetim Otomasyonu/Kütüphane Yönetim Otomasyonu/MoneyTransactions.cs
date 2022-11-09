@@ -21,7 +21,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             InitializeComponent();
         }
         SqlConnection sqlConnection = new SqlConnection("Data Source=.; Initial Catalog=Library; Integrated Security=true");
-        public int activeEmployeeID=0;
+        public int activeEmployeeID = 0;
         private void MoneyTransaction()
         {
             SqlDataAdapter adp = new SqlDataAdapter("select * from Exes e inner join Employees em on em.ID=e.Employee_ID", sqlConnection);
@@ -34,7 +34,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["Contribution"].Width = 170;
             dataGridView1.Columns["Money"].HeaderText = "Miktarı";
             dataGridView1.Columns["Money"].Width = 100;
-          
+
             dataGridView1.Columns["TransactionDate"].HeaderText = "Kullanım Tarihi";
             dataGridView1.Columns["TransactionDate"].Width = 150;
             dataGridView1.Columns["Description"].Visible = false;
@@ -56,7 +56,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.Columns["DeletedInfo"].Visible = false;
             dataGridView1.Columns["DeletedDate"].Visible = false;
             dataGridView1.Columns["DeletedEmployeeID"].Visible = false;
-           
+
         }
         decimal amount = 0;
         decimal amountFoundation = 0;
@@ -65,7 +65,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         decimal nowAmountFoundation = 0;
         decimal nowEmployeeContribution = 0;
         decimal nowBookContribution = 0;
-       private void startExes()
+        private void startExes()
         {
             sqlConnection.Open();
 
@@ -136,16 +136,16 @@ namespace Kütüphane_Yönetim_Otomasyonu
             dataGridView1.AllowUserToDeleteRows = false; // satırların silinmesi engelleniyor
             dataGridView1.AllowUserToAddRows = false; // satır ekleme iptal
             startExes();
-          
+
         }
         private void button1_Click(object sender, EventArgs e)
-        {  
-            if (mTB_money.Text=="")
+        {
+            if (mTB_money.Text == "")
             {
                 MessageBox.Show("Para Kısmı Boş Geçilemez.");
             }
             {
-                if (richTextBox1.Text=="")
+                if (richTextBox1.Text == "")
                 {
                     MessageBox.Show("Lütfen Detaylı Bir Açıklama Giriniz.");
 
@@ -153,27 +153,91 @@ namespace Kütüphane_Yönetim_Otomasyonu
                 else
                 {
                     decimal money = Convert.ToDecimal((mTB_money.Text).Remove(0, 1));
-
-                    sqlConnection.Open();
-                    string exesAddStr = "insert into Exes (Contribution,Money,Employee_ID,Description) values (@Contribution,@Money,@Employee_ID,@Description)";
-                    SqlCommand komut = new SqlCommand(exesAddStr, sqlConnection);
-                    komut.Parameters.AddWithValue("@Contribution", comboBox1.Text);
-                    komut.Parameters.AddWithValue("@Money", money);
-                    komut.Parameters.AddWithValue("@Employee_ID", activeEmployeeID);
-                    komut.Parameters.AddWithValue("@Description", richTextBox1.Text);
-                    int eklenti = komut.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    if (eklenti > 0)
+                    if (comboBox1.Text == "Vakıf Katkı Payı")
                     {
-                        MessageBox.Show("Katkı Payı Kullanıldı.");
-                        startExes();
-                        Default();
-                    }
-                    sqlConnection.Close();
+                        if (money <= nowAmountFoundation)
+                        {
+                            sqlConnection.Open();
+                            string exesAddStr = "insert into Exes (Contribution,Money,Employee_ID,Description) values (@Contribution,@Money,@Employee_ID,@Description)";
+                            SqlCommand komut = new SqlCommand(exesAddStr, sqlConnection);
+                            komut.Parameters.AddWithValue("@Contribution", comboBox1.Text);
+                            komut.Parameters.AddWithValue("@Money", money);
+                            komut.Parameters.AddWithValue("@Employee_ID", activeEmployeeID);
+                            komut.Parameters.AddWithValue("@Description", richTextBox1.Text);
+                            int eklenti = komut.ExecuteNonQuery();
+                            sqlConnection.Close();
+                            if (eklenti > 0)
+                            {
+                                MessageBox.Show("Vakıf Katkı Payı Kullanıldı.");
+                                startExes();
+                                Default();
+                            }
+                            sqlConnection.Close();
+                            Default();
+                            MoneyTransaction();
+                        } else
+                        {
+                            MessageBox.Show("Vakıf Katkı Payı Yapmak İstediğiniz İşlem Ücreti Kadar Bakiyeye Sahip Değil");
 
-                    MoneyTransaction();
+                        }
+                    }
+                    else if (comboBox1.Text == "Kitap Katkı Payı")
+                    {
+                        if (money <= nowBookContribution)
+                        {
+                            sqlConnection.Open();
+                            string exesAddStr = "insert into Exes (Contribution,Money,Employee_ID,Description) values (@Contribution,@Money,@Employee_ID,@Description)";
+                            SqlCommand komut = new SqlCommand(exesAddStr, sqlConnection);
+                            komut.Parameters.AddWithValue("@Contribution", comboBox1.Text);
+                            komut.Parameters.AddWithValue("@Money", money);
+                            komut.Parameters.AddWithValue("@Employee_ID", activeEmployeeID);
+                            komut.Parameters.AddWithValue("@Description", richTextBox1.Text);
+                            int eklenti = komut.ExecuteNonQuery();
+                            sqlConnection.Close();
+                            if (eklenti > 0)
+                            {
+                                MessageBox.Show("Kitap Katkı Payı Kullanıldı.");
+                                startExes();
+                                Default();
+                            }
+                            sqlConnection.Close();
+
+                            MoneyTransaction();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kitap Katkı Payı Yapmak İstediğiniz İşlem Ücreti Kadar Bakiyeye Sahip Değil");
+                        }
+                    }
+                    else if (comboBox1.Text == "Personel Katkı Payı")
+                    {
+                        if (money <= nowEmployeeContribution)
+                        {
+                            sqlConnection.Open();
+                            string exesAddStr = "insert into Exes (Contribution,Money,Employee_ID,Description) values (@Contribution,@Money,@Employee_ID,@Description)";
+                            SqlCommand komut = new SqlCommand(exesAddStr, sqlConnection);
+                            komut.Parameters.AddWithValue("@Contribution", comboBox1.Text);
+                            komut.Parameters.AddWithValue("@Money", money);
+                            komut.Parameters.AddWithValue("@Employee_ID", activeEmployeeID);
+                            komut.Parameters.AddWithValue("@Description", richTextBox1.Text);
+                            int eklenti = komut.ExecuteNonQuery();
+                            sqlConnection.Close();
+                            if (eklenti > 0)
+                            {
+                                MessageBox.Show("Personel Katkı Payı Kullanıldı.");
+                                startExes();
+                                Default();
+                            }
+                            sqlConnection.Close();
+
+                            MoneyTransaction();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Personel Katkı Payı Yapmak İstediğiniz İşlem Ücreti Kadar Bakiyeye Sahip Değil");
+                        }
+                    }
                 }
-              
             }
         }
         private void Default()
@@ -192,8 +256,12 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void maskedTextBox1_Leave(object sender, EventArgs e)
         {
-            decimal cubic = Convert.ToDecimal(mTB_money.Text);
-            mTB_money.Text = string.Format("{0:c}", Convert.ToDecimal(cubic));
+            if (mTB_money.Text!="")
+            {
+                decimal cubic = Convert.ToDecimal(mTB_money.Text);
+                mTB_money.Text = string.Format("{0:c}", Convert.ToDecimal(cubic));
+            }
+            
         }
         string RemoveCurrencyFormating(string input)
         {
@@ -206,7 +274,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
         }
         private void maskedTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)  && e.KeyChar != ',')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
             {
                 e.Handled = true;
             }
@@ -224,7 +292,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             mTB_money.Text = RemoveCurrencyFormating(mTB_money.Text);
         }
 
-      
+
     }
 }
 

@@ -241,21 +241,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
         private void dataGridView4_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            for (int i = 0; i < dataGridView4.Rows.Count; i++)
-            {
-                DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                if (dataGridView4.Rows[i].Cells["RequestCloseDate"].Value == null)
-                {
-                    renk.BackColor = Color.YellowGreen;
-                }
-                else if (dataGridView4.Rows[i].Cells["RequestCloseDate"].Value!= null)
-                {
-                    renk.BackColor = Color.Red;
-                    renk.ForeColor = Color.White;
-                }
-          
-                dataGridView4.Rows[i].DefaultCellStyle = renk;
-            }
+            //for (int i = 0; i < dataGridView4.Rows.Count; i++)
+            //{
+            //    MessageBox.Show((dataGridView4.Rows[i].Cells["RequestCloseDate"].Value).ToString());
+            //    DataGridViewCellStyle renk = new DataGridViewCellStyle();
+            //    if ((dataGridView4.Rows[i].Cells["RequestCloseDate"].Value).ToString() != "")
+            //    {
+            //        renk.BackColor = Color.YellowGreen;
+            //    }else if ((dataGridView4.Rows[i].Cells["RequestCloseDate"].Value).ToString() == "")
+            //    {
+            //        renk.BackColor = Color.Red;
+            //        renk.ForeColor = Color.White;
+            //    }
+            //    dataGridView4.Rows[i].DefaultCellStyle = renk;
+            //}
         }
 
         private void btn_AddRequest_Click(object sender, EventArgs e)

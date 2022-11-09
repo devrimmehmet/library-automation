@@ -292,7 +292,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             if (txt_Search_Name.Text != "")
             {
                 TableReflesh(txt_Search_Name.Text);
-                Default();
+              //  Default();
             }
             else
             {
@@ -338,7 +338,7 @@ namespace Kütüphane_Yönetim_Otomasyonu
             if (cB_CategoryForSearh.Text != "")
             {
                 TableSearchShelf(cB_CategoryForSearh.Text);
-                Default();
+                
             }
             else
             {
@@ -390,13 +390,26 @@ namespace Kütüphane_Yönetim_Otomasyonu
             
             sqlConnection.Open();
             dr4 = komut4.ExecuteReader();
-            List<int> readMemberList = new List<int>();
             while (dr4.Read())
             {
 
                 categoryList.Remove(Convert.ToInt32(dr4["ID"]));
             }
             sqlConnection.Close();
+                
+                SqlCommand komut6 = new SqlCommand($"select b.ID from Transactions t inner join Books b  on t.Book_ID = b.ID inner join Authors a on a.ID = b.Author_ID where Member_ID =@memberID and TransactionState = 0 and Category_ID=@categoryID group by b.ID", sqlConnection);
+                SqlDataReader dr6;
+                komut6.Parameters.AddWithValue("@memberID", ActiveMemberID);
+                komut6.Parameters.AddWithValue("@categoryID", CategoryIdforRandomBook);
+
+                sqlConnection.Open();
+                dr6 = komut6.ExecuteReader();
+                while (dr6.Read())
+                {
+
+                    categoryList.Remove(Convert.ToInt32(dr6["ID"]));
+                }
+                sqlConnection.Close();
                 int RandomFinishNumber = categoryList.Count();
                 if (RandomFinishNumber == 0)
                 {
@@ -406,31 +419,20 @@ namespace Kütüphane_Yönetim_Otomasyonu
 
                 Random rnd =new Random();
                 int selectedLikeBooks= rnd.Next(0,RandomFinishNumber);
-             //    MessageBox.Show(RandomFinishNumber.ToString());
-             //     MessageBox.Show("Önerilen Kitap ID" + categoryList[selectedLikeBooks].ToString());
-                SqlDataAdapter adp1 = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.DeletedState=0 and b.ID={categoryList[selectedLikeBooks]}", sqlConnection);
-                DataTable dt1 = new DataTable();
-                sqlConnection.Open();
-                adp1.Fill(dt1);
-                dataGridView1.DataSource = dt1;
+                //    MessageBox.Show(RandomFinishNumber.ToString());
+                //     MessageBox.Show("Önerilen Kitap ID" + categoryList[selectedLikeBooks].ToString());
+                if (RandomFinishNumber!=0)
+                {
+                    SqlDataAdapter adp1 = new SqlDataAdapter($"select * from Books b inner join Authors a on a.ID=b.Author_ID inner join Languages l on l.ID=b.Language_ID inner join Publishers p on p.ID=b.Publisher_ID inner join Categories c on c.ID=b.Category_ID where b.DeletedState=0 and b.ID={categoryList[selectedLikeBooks]}", sqlConnection);
+                    DataTable dt1 = new DataTable();
+                    sqlConnection.Open();
+                    adp1.Fill(dt1);
+                    dataGridView1.DataSource = dt1;
 
-                sqlConnection.Close();
+                    sqlConnection.Close();
+                }
+               
             }
-            //SqlDataAdapter adp = new SqlDataAdapter($"select b.Name as 'Kitap Adı' ,a.NameSurname as 'Yazarı' from Transactions t inner join Books b  on t.Book_ID=b.ID inner join Authors a on a.ID=b.Author_ID where  Member_ID={ActiveMemberID} and TransactionState=1", sqlConnection);
-            //DataTable dt = new DataTable();
-            //sqlConnection.Open();
-            //adp.Fill(dt);
-            //dataGridView2.DataSource = dt;
-            //sqlConnection.Close();
-            //dataGridView2.Columns["Kitap Adı"].Width = 100;
-            //dataGridView2.Columns["Yazarı"].Width = 250;
-            //TableReflesh();
-            //dataGridView1.Rows[1].Cells[1].Selected = true;
-            //dataGridView1.CurrentRow.Selected = true;
-            //int rowIndex = e.RowIndex;
-            //DataGridViewRow row = dataGridView1.Rows[rowIndex];
-            //textBox5.Text = row.Cells[1].Value;
-            // dataGridView1_CellClick(sender);
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
